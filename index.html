@@ -7,52 +7,55 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="desktop">
   <header>
     <div class="header-container">
       <!-- Left side: Logo -->
       <div class="logo">
-        <img src="logo.jpg" alt="Foundation Logo" />
+        <a href="index.html">
+    <img src="logo.jpg" alt="Foundation Logo" />
+</a>
       </div>
 
       <!-- Center: Navigation Links -->
       <nav>
         <ul class="nav-links">
           <li class="dropdown">
-            <a href="#">ABOUT US</a>
+            <a href="about.html">ABOUT US</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Our Mission</a></li>
-              <li><a href="#">Our Why</a></li>
-              <li><a href="#">Our Team</a></li>
-              <li><a href="#">Board of Trustees</a></li>
-              <li><a href="#">Financials</a></li>
-              <li><a href="#">Awards</a></li>
+              <li><a href="about.html#mission">Our Mission</a></li>
+              <li><a href="about.html#why">Our Why</a></li>
+              <li><a href="about.html#team">Our Team</a></li>
+              <li><a href="about.html#board">Board of Trustees</a></li>
+              <li><a href="about.html#financials">Financials</a></li>
+              <li><a href="about.html#awards">Awards</a></li>
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#">WHAT WE DO</a>
+            <a href="our_work.html">WHAT WE DO</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Our God Errands</a></li>
-              <li><a href="#">Our Testimonials</a></li>
+              <li><a href="our_work.html#god_errands">Our God Errands</a></li>
+              <li><a href="our_work.html#testimonials">Our Testimonials</a></li>
             </ul>
           </li>
           <li class="dropdown">
-  <a href="#">RESOURCES AND MEDIA</a>
+  <a href="media.html">RESOURCES AND MEDIA</a>
   <ul class="dropdown-menu resources">
     <div class="dropdown-column">
       <h4>NEWS & STORIES</h4>
-      <a href="#">Our Stories</a>
-      <a href="#">Project Spotlights</a>
-      <a href="#">TSAG in the News</a>
+      <a href="media.html#stories">Our Stories</a>
+      <a href="media.html#projects">Project Spotlights</a>
+      <a href="media.html#media">TSAG in the News</a>
     </div>
     <div class="dropdown-column">
       <h4>MULTIMEDIA</h4>
-      <a href="#">Photographs</a>
+      <a href="media.html#photos">Photographs</a>
       <a href="#">Videos</a>
     </div>
     <div class="dropdown-column">
       <h4>RESOURCES</h4>
-      <a href="#">Books</a>
-      <a href="#">Podcasts</a>
+      <a href="media.html#books">Books</a>
+      <a href="media.html#podcasts">Podcasts</a>
     </div>
   </ul>
 </li>
@@ -61,7 +64,7 @@
 
       <!-- Right side: Donate Button -->
       <div class="donate-button">
-        <a href="#">Donate</a>
+        <a href="donate.html">Donate</a>
       </div>
     </div>
   </header>
@@ -98,7 +101,7 @@
         <p>We have reached five thousand plus women through our various partnerships.</p>
       </div>
     </div>
-    <a href="#" class="learn-more-button">Learn more</a>
+    <a href="about.html#financials" class="learn-more-button">Learn more</a>
   </div>
   
   
@@ -109,13 +112,13 @@
         <img src="food.jpg" alt="Activity 1">
         <h3>Food Care Packages</h3>
         <p>We give out food care packages to vulnerable families in need every month.</p>
-        <a href="#" class="learn-more-button">Learn more</a>
+        <a href="our_work.html#food" class="learn-more-button">Learn more</a>
       </div>
       <div class="card">
         <img src="tssp.png" alt="Activity 2">
         <h3>Serenity Place</h3>
         <p>We operate a ten-bed Jesus Christ-Centric Safe Haven and an Oasis of Serenity for survivors of domestic abuse and their children.</p>
-        <a href="#" class="learn-more-button">Learn more</a>
+        <a href="our_work.html#tssp" class="learn-more-button">Learn more</a>
       </div>
       <div class="card">
       <div class="circular-logo-container">
@@ -123,10 +126,10 @@
         </div>
         <h3>Love is a Verb</h3>
         <p>We operate a social safety-net program that provides a N25,000 monthly allowance to extremely economically vulnerable women across Nigeria.</p>
-        <a href="#" class="learn-more-button">Learn more</a>
+        <a href="our_work.html#alive" class="learn-more-button">Learn more</a>
       </div>
     </div>
-    <a href="#" class="learn-more-button">Download 2024 Q3 Report</a>
+    <a href="about.html#financials" class="learn-more-button">Download Financials</a>
   </div>
   
   <section class="our-partners">
@@ -147,7 +150,9 @@
   <div class="donate-content">
     <h2>Support The Shola Adefolalu Gaska Foundation</h2>
     <p>Help restore the hope of vulnerable women and children</p>
-    <button>Donate Now</button>
+     <div class="donate-button">
+        <a href="donate.html">Donate</a>
+      </div>
   </div>
 </section>
 
@@ -174,7 +179,7 @@
       <a href="https://bonewssng.com/16-days-of-activism-the-sholly-place-shines-while-offering-hope/">Read more <span>&rarr;</span></a>
     </div>
   </div>
-  <button class="more-news-btn">More News</button>
+  <a href="media.html#media" class="learn-more-button">More News</a>
 </section>
 <section class="social-media-section">
   <h2>FOLLOW US ON SOCIAL MEDIA FOR WEEKLY UPDATES</h2>
@@ -192,7 +197,10 @@
     <footer>
         <p>&copy; 2024 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
     </footer>
-
+</div>
+<div id="mobile">
+<p>Mobile version still under construction</p>
+</div>
 </body>
 </html>
 

@@ -6,6 +6,25 @@
     <title>About Us</title>
     
     <style>
+    /* Hide both divs by default */
+#mobile, #desktop {
+    display: none;
+}
+
+/* Show div with ID x for mobile devices */
+@media (max-width: 767px) { /* Adjust the max-width as needed for your mobile breakpoint */
+    #mobile {
+        display: block; /* or inline-block, flex, etc., based on your layout needs */
+    }
+}
+
+/* Show div with ID y for desktop devices */
+@media (min-width: 768px) { /* Adjust the min-width as needed for your desktop breakpoint */
+    #desktop {
+        display: block; /* or inline-block, flex, etc., based on your layout needs */
+    }
+}
+
 /* Header styling */
 header {
   background-color: white;
@@ -236,52 +255,55 @@ section {
 
 </head>
 <body>
+<div id="desktop">
 <header>
     <div class="header-container">
       <!-- Left side: Logo -->
       <div class="logo">
-        <img src="logo.jpg" alt="Foundation Logo" />
+        <a href="index.html">
+    <img src="logo.jpg" alt="Foundation Logo" />
+</a>
       </div>
 
       <!-- Center: Navigation Links -->
       <nav>
         <ul class="nav-links">
           <li class="dropdown">
-            <a href="#">ABOUT US</a>
+            <a href="about.html">ABOUT US</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Our Mission</a></li>
-              <li><a href="#">Our Why</a></li>
-              <li><a href="#">Our Team</a></li>
-              <li><a href="#">Board of Trustees</a></li>
-              <li><a href="#">Financials</a></li>
-              <li><a href="#">Awards</a></li>
+              <li><a href="about.html#mission">Our Mission</a></li>
+              <li><a href="about.html#why">Our Why</a></li>
+              <li><a href="about.html#team">Our Team</a></li>
+              <li><a href="about.html#board">Board of Trustees</a></li>
+              <li><a href="about.html#financials">Financials</a></li>
+              <li><a href="about.html#awards">Awards</a></li>
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#">WHAT WE DO</a>
+            <a href="our_work.html">WHAT WE DO</a>
             <ul class="dropdown-menu">
-              <li><a href="#">God Errands</a></li>
-              <li><a href="#">Our Testimonials</a></li>
+              <li><a href="our_work.html#god_errands">Our God Errands</a></li>
+              <li><a href="our_work.html#testimonials">Our Testimonials</a></li>
             </ul>
           </li>
           <li class="dropdown">
-  <a href="#">RESOURCES AND MEDIA</a>
+  <a href="media.html">RESOURCES AND MEDIA</a>
   <ul class="dropdown-menu resources">
     <div class="dropdown-column">
       <h4>NEWS & STORIES</h4>
-      <a href="#">Our Stories</a>
-      <a href="#">Project Spotlights</a>
-      <a href="#">TSAG in the News</a>
+      <a href="media.html#stories">Our Stories</a>
+      <a href="media.html#projects">Project Spotlights</a>
+      <a href="media.html#media">TSAG in the News</a>
     </div>
     <div class="dropdown-column">
       <h4>MULTIMEDIA</h4>
-      <a href="#">Photographs</a>
+      <a href="media.html#photos">Photographs</a>
       <a href="#">Videos</a>
     </div>
     <div class="dropdown-column">
       <h4>RESOURCES</h4>
-      <a href="#">Books</a>
-      <a href="#">Podcasts</a>
+      <a href="media.html#books">Books</a>
+      <a href="media.html#podcasts">Podcasts</a>
     </div>
   </ul>
 </li>
@@ -290,7 +312,7 @@ section {
 
       <!-- Right side: Donate Button -->
       <div class="donate-button">
-        <a href="#">Donate</a>
+        <a href="donate.html">Donate</a>
       </div>
     </div>
   </header>
@@ -299,13 +321,13 @@ section {
   </div>
 </section>
     <!-- Our Mission Section -->
-    <section class="mission-section">
+    <section class="mission-section" id="mission">
         <h2>Our Mission</h2>
         <p>Our mission is to bring smiles to the faces of people in need (especially women and children) by providing financial, emotional and spiritual support.</p>
     </section>
 
     <!-- Our Why Section -->
-    <section class="why-section">
+    <section class="why-section" id="why">
         <h2>Our Why</h2>
         <p>The Sholly Smile Factory was birthed from a place of deep pain. The loss of my dear sister – Oluwashola Adefolalu Gaskain Poland back in 2016. </p>
         <p>Everything we do is in her honour. </p>
@@ -317,19 +339,19 @@ section {
     </section>
 
     <!-- Our Team Section -->
-    <section class="team-section">
+    <section class="team-section"id="team">
         <h2>Our Team</h2>
         <div id="team-cards" class="team-cards"></div>
     </section>
 
     <!-- Board of Trustees Section -->
-    <section class="trustees-section">
+    <section class="trustees-section" id="board">
         <h2>Board of Trustees</h2>
         <div id="trustees-cards" class="trustees-cards"></div>
     </section>
 
     <!-- Financials Section -->
-    <section class="financials-section">
+    <section class="financials-section" id="financials"">
         <h2>Financials</h2>
         <div>
             <h3>Yearly Expenditure Infographics</h3>
@@ -341,7 +363,7 @@ section {
         </div>
     </section>
     <!-- New Awards Section -->
-<section class="awards-section">
+<section class="awards-section" id="awards">
     <h2>Awards</h2>
     <div id="awards-card" class="awards-card">
         <img src="award.jpg" alt="Award Image" onclick="openModal(this.src)">
@@ -355,7 +377,10 @@ section {
 <footer>
         <p>&copy; 2024 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
     </footer>
-
+</div>
+<div id="mobile">
+<p>Mobile version still under construction</p>
+</div>
     <script>
     // Data for Our Team
 const teamData = [

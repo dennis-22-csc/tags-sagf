@@ -1,4 +1,22 @@
 /* styles.css */
+/* Hide both divs by default */
+#mobile, #desktop {
+    display: none;
+}
+
+/* Show div with ID x for mobile devices */
+@media (max-width: 767px) { /* Adjust the max-width as needed for your mobile breakpoint */
+    #mobile {
+        display: block; /* or inline-block, flex, etc., based on your layout needs */
+    }
+}
+
+/* Show div with ID y for desktop devices */
+@media (min-width: 768px) { /* Adjust the min-width as needed for your desktop breakpoint */
+    #desktop {
+        display: block; /* or inline-block, flex, etc., based on your layout needs */
+    }
+}
 
 /* General reset */
 * {

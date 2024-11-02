@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What We Do</title>
     <style>
+    /* Hide both divs by default */
+#mobile, #desktop {
+    display: none;
+}
+
+/* Show div with ID x for mobile devices */
+@media (max-width: 767px) { /* Adjust the max-width as needed for your mobile breakpoint */
+    #mobile {
+        display: block; /* or inline-block, flex, etc., based on your layout needs */
+    }
+}
+
+/* Show div with ID y for desktop devices */
+@media (min-width: 768px) { /* Adjust the min-width as needed for your desktop breakpoint */
+    #desktop {
+        display: block; /* or inline-block, flex, etc., based on your layout needs */
+    }
+}
+
         /* Basic styling for layout */
         /* Header styling */
 header {
@@ -265,53 +284,55 @@ header {
     </style>
 </head>
 <body>
-
+<div id="desktop">
 <header>
     <div class="header-container">
       <!-- Left side: Logo -->
       <div class="logo">
-        <img src="logo.jpg" alt="Foundation Logo" />
+        <a href="index.html">
+    <img src="logo.jpg" alt="Foundation Logo" />
+</a>
       </div>
 
       <!-- Center: Navigation Links -->
       <nav>
         <ul class="nav-links">
           <li class="dropdown">
-            <a href="#">ABOUT US</a>
+            <a href="about.html">ABOUT US</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Our Mission</a></li>
-              <li><a href="#">Our Why</a></li>
-              <li><a href="#">Our Team</a></li>
-              <li><a href="#">Board of Trustees</a></li>
-              <li><a href="#">Financials</a></li>
-              <li><a href="#">Awards</a></li>
+              <li><a href="about.html#mission">Our Mission</a></li>
+              <li><a href="about.html#why">Our Why</a></li>
+              <li><a href="about.html#team">Our Team</a></li>
+              <li><a href="about.html#board">Board of Trustees</a></li>
+              <li><a href="about.html#financials">Financials</a></li>
+              <li><a href="about.html#awards">Awards</a></li>
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#">WHAT WE DO</a>
+            <a href="our_work.html">WHAT WE DO</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Our God Errands</a></li>
-              <li><a href="#">Our Testimonials</a></li>
+              <li><a href="our_work.html#god_errands">Our God Errands</a></li>
+              <li><a href="our_work.html#testimonials">Our Testimonials</a></li>
             </ul>
           </li>
           <li class="dropdown">
-  <a href="#">RESOURCES AND MEDIA</a>
+  <a href="media.html">RESOURCES AND MEDIA</a>
   <ul class="dropdown-menu resources">
     <div class="dropdown-column">
       <h4>NEWS & STORIES</h4>
-      <a href="#">Our Stories</a>
-      <a href="#">Project Spotlights</a>
-      <a href="#">TSAG in the News</a>
+      <a href="media.html#stories">Our Stories</a>
+      <a href="media.html#projects">Project Spotlights</a>
+      <a href="media.html#media">TSAG in the News</a>
     </div>
     <div class="dropdown-column">
       <h4>MULTIMEDIA</h4>
-      <a href="#">Photographs</a>
+      <a href="media.html#photos">Photographs</a>
       <a href="#">Videos</a>
     </div>
     <div class="dropdown-column">
       <h4>RESOURCES</h4>
-      <a href="#">Books</a>
-      <a href="#">Podcasts</a>
+      <a href="media.html#books">Books</a>
+      <a href="media.html#podcasts">Podcasts</a>
     </div>
   </ul>
 </li>
@@ -320,7 +341,7 @@ header {
 
       <!-- Right side: Donate Button -->
       <div class="donate-button">
-        <a href="#">Donate</a>
+        <a href="donate.html">Donate</a>
       </div>
     </div>
   </header>
@@ -329,10 +350,10 @@ header {
   </section>
     <!-- What We Do Section -->
     <section class="section" id="god-errands">
-        <div class="section-title">GOD ERRANDS</div>
+        <div class="section-title">OUR GOD ERRANDS</div>
 
         <!-- Errand Card 1 -->
-        <div class="errand-card">
+        <div class="errand-card" id="food">
             <div class="card-content">
                 <div class="left-column">
                     <div class="errand-title">Fighting Food Poverty</div>
@@ -350,7 +371,7 @@ header {
         </div>
 
         <!-- Errand Card 2 -->
-        <div class="errand-card">
+        <div class="errand-card" id="tssp">
             <div class="card-content">
                 <div class="left-column">
                     <div class="errand-title">Providing a Safe Haven for Domestic Abuse Survivors</div>
@@ -369,7 +390,7 @@ header {
         </div>
 
         <!-- Errand Card 3 -->
-        <div class="errand-card">
+        <div class="errand-card" id="alive">
             <div class="card-content">
                 <div class="left-column">
                     <div class="errand-title">Empowering Financially Vulnerable Women</div>
@@ -386,7 +407,7 @@ header {
             <div class="completed-tasks">20+ women empowered till date</div>
         </div>
     </section>
-<section>
+<section id="testimonials">
     <h2>Our Testimonials</h2>
     <div class="testimonial-container">
         <!-- Testimonials will be inserted here by JavaScript -->
@@ -395,7 +416,10 @@ header {
 <footer>
         <p>&copy; 2024 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
     </footer>
-
+</div>
+<div id="mobile">
+<p>Mobile version still under construction</p>
+</div>
     <script>
     // Images data for each errand (add more image paths as needed)
     const errandImages = {

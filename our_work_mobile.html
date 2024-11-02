@@ -5,530 +5,221 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What We Do</title>
     <style>
-    
-    /* Hide both divs by default */
-#mobile, #desktop {
-    display: none;
-}
-
-/* Show div with ID x for mobile devices */
-@media (max-width: 767px) { /* Adjust the max-width as needed for your mobile breakpoint */
-    #mobile {
-        display: block; /* or inline-block, flex, etc., based on your layout needs */
-    }
-}
-
-/* Show div with ID y for desktop devices */
-@media (min-width: 768px) { /* Adjust the min-width as needed for your desktop breakpoint */
-    #desktop {
-        display: block; /* or inline-block, flex, etc., based on your layout needs */
-    }
-}
-
         /* Basic styling for layout */
         /* Header styling */
-header {
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 10px 20px;
-}
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px 0; /* Top and bottom padding */
+            width: 100%; /* Ensures header takes full width */
+            position: relative; /* Positioning context for the drawer */
+        }
 
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: auto;
-}
+        .header-container {
+            display: flex;
+            align-items: center; /* Vertically centers items */
+            justify-content: space-between; /* Space items to occupy full width */
+            padding: 0 20px; /* Add horizontal padding */
+        }
 
-/* Logo styling */
-.logo img {
-  height: 50px;
-}
+        .logo {
+            flex: none; /* Prevent flex-grow, keeps logo size fixed */
+        }
 
-/* Navigation styling */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-}
+        .foundation-name {
+            flex: 1; /* Allow foundation name to take available space */
+            text-align: center; /* Center text within its space */
+            margin: 0; /* Remove any default margins */
+        }
 
-.nav-links a {
-  color: #333;
-  text-decoration: none;
-  font-weight: 500;
-  position: relative;
-}
+        /* New styling for right-side container */
+        .right-side {
+            display: flex; /* Align donate button and menu icon in a column */
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-end; /* Align items to the right */
+        }
 
-/* Default hide for all dropdown menus */
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  list-style: none;
-  min-width: 300px;
-  z-index: 10;
-}
+        .menu-icon {
+            flex: none; /* Prevent flex-grow, keeps menu icon size fixed */
+            cursor: pointer; 
+            font-size: 24px; /* Adjust font size as needed */
+            margin-top: 10px; /* Space between donate button and menu icon */
+        }
 
-/* Show dropdown on hover */
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
+        /* Logo styling */
+        .logo img {
+            height: 50px;
+            max-width: 100%; /* Adjust logo size for smaller screens */
+        }
 
-.dropdown:hover .resources {
-  display: flex; /* Only apply flex layout on hover */
-  gap: 20px;
-}
+        /* Foundation name styling */
+        .foundation-name h1 {
+            font-size: 4vw; /* Responsive font size */
+            margin: 0;
+        }
 
-.dropdown-menu a {
-  display: block;
-  padding: 8px 15px;
-  white-space: nowrap;
-  color: #333;
-}
-
-.dropdown-menu a:hover {
-  background-color: #f0f0f0;
-}
-
-
-/* Flex layout for individual columns */
-.dropdown-column {
-  display: flex;
-  flex-direction: column; /* Stacks items vertically within each column */
-  gap: 8px;
-}
-
-/* Heading and link styles */
-.resources h4 {
-  font-size: 14px;
-  margin-bottom: 8px;
-  color: #666;
-}
-
-.resources a {
-  color: #333;
-  text-decoration: none;
-}
-
-.resources a:hover {
-  background-color: #f0f0f0;
-}
-
-/* Donate button styling */
-.donate-button a {
-  background-color: #FFCC00; /* Example yellow color for the button */
-  color: #333;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.donate-button a:hover {
-  background-color: #FFD633;
-}
-
- footer {
-            text-align: center;
-            padding: 10px;
-        }   
-        
-  .about-header-section {
-  background-color: #FFD700; /* Shade of yellow */
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 1.2rem;
-}
-
-        .section {
+        /* Navigation drawer styling */
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -300px; /* Initially hidden */
+            width: 80%; /* Occupies 80% of device width */
+            max-height: 100vh;
+            background-color: white;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+            transition: right 0.3s ease; /* Smooth transition */
+            z-index: 1000;
             padding: 20px;
-            border-bottom: 1px solid #ddd;
+            overflow-y: auto; /* Enable scrolling if content exceeds height */
+           
         }
-        .section-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
+
+        .drawer.open {
+            right: 0; /* Show drawer */
         }
-        .errand-card {
+
+        .nav-item {
             display: flex;
-            flex-direction: column;
-            width: 800px; /* Adjust width as needed */
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin: 20px auto; /* Center card on the page */
-        }
-
-        .card-content {
-            display: flex;
-            flex-grow: 1;
-            padding: 16px;
-        }
-
-        .left-column {
-            flex: 1;
-            margin-right: 10px; 
-        }
-
-        .right-column {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-        }
-
-        .errand-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .errand-description {
-            font-size: 1em;
-            margin-bottom: 16px;
-        }
-        
-        .errand-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 4px;
-            cursor: pointer; /* Make the image clickable */
-        }
-        
-        .arrow-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
         }
 
         .arrow {
             cursor: pointer;
-            font-size: 2em;
-            margin: 0 10px;
         }
 
-        .completed-tasks {
-            text-align: center;
-            font-weight: bold;
-            padding: 10px 0; 
+        .sub-menu {
+            display: none;
+            padding-left: 20px;
         }
-            
-        .close-icon {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
-            z-index: 1001;
+
+        .sub-menu.open {
+            display: block; /* Show sub-menu */
         }
         
-        .expanded-image {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-            max-width: 90%;
-            max-height: 90%;
+        a {
+            text-decoration: none; /* Remove underline */
+            display: block; /* Make the <a> element a block-level item */
+            padding: 10px 15px; /* Add padding for spacing */
+            border: 1px solid transparent; /* Transparent border */
+            transition: background-color 0.3s, border-color 0.3s; /* Smooth hover effect */
         }
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+        a:hover {
+            background-color: #f0f0f0; /* Light grey background on hover */
+            border-color: #ccc; /* Border becomes visible on hover */
         }
 
-        /* Testimonials Section */
-        .testimonial-container {
-            display: flex;
-            flex-wrap: wrap; /* Allow cards to wrap to next line on small screens */
-            justify-content: center; /* Center cards horizontally */
-            gap: 20px; /* Space between cards */
-            max-width: 1200px; /* Set a max width for the container */
-            margin: 0 auto; /* Center the container on the page */
+        /* Donate button styling */
+        .donate-button a {
+            background-color: #FFCC00; /* Example yellow color for the button */
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center; /* Center text in the button */
         }
 
-        .testimonial-card {
-            background-color: #ffffff;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 20px;
-            width: 300px; /* Fixed width for cards */
-            height: auto; /* Auto height based on content */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s; /* Smooth hover effect */
+        .donate-button a:hover {
+            background-color: #FFD633;
         }
 
-        .testimonial-card:hover {
-            transform: scale(1.05); /* Slightly enlarge card on hover */
-        }
-
-        @media (max-width: 768px) {
-            .testimonial-card {
-                width: 90%; /* Adjust card width on small screens */
-            }
+        /* Close icon in the drawer */
+        .close-icon {
+            cursor: pointer;
+            font-size: 24px;
+            margin-bottom: 20px; /* Space below the close icon */
         }
     </style>
 </head>
 <body>
-<div id="desktop">
+
 <header>
     <div class="header-container">
-      <!-- Left side: Logo -->
-      <div class="logo">
-        <img src="logo.jpg" alt="Foundation Logo" />
-      </div>
-
-      <!-- Center: Navigation Links -->
-      <nav>
-        <ul class="nav-links">
-          <li class="dropdown">
-            <a href="#">ABOUT US</a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Our Mission</a></li>
-              <li><a href="#">Our Why</a></li>
-              <li><a href="#">Our Team</a></li>
-              <li><a href="#">Board of Trustees</a></li>
-              <li><a href="#">Financials</a></li>
-              <li><a href="#">Awards</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#">WHAT WE DO</a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Our God Errands</a></li>
-              <li><a href="#">Our Testimonials</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-  <a href="#">RESOURCES AND MEDIA</a>
-  <ul class="dropdown-menu resources">
-    <div class="dropdown-column">
-      <h4>NEWS & STORIES</h4>
-      <a href="#">Our Stories</a>
-      <a href="#">Project Spotlights</a>
-      <a href="#">TSAG in the News</a>
-    </div>
-    <div class="dropdown-column">
-      <h4>MULTIMEDIA</h4>
-      <a href="#">Photographs</a>
-      <a href="#">Videos</a>
-    </div>
-    <div class="dropdown-column">
-      <h4>RESOURCES</h4>
-      <a href="#">Books</a>
-      <a href="#">Podcasts</a>
-    </div>
-  </ul>
-</li>
-        </ul>
-      </nav>
-
-      <!-- Right side: Donate Button -->
-      <div class="donate-button">
-        <a href="#">Donate</a>
-      </div>
-    </div>
-  </header>
-<section class="about-header-section">
-  <h2>WHAT WE DO</h2>
-  </section>
-    <!-- What We Do Section -->
-    <section class="section" id="god-errands">
-        <div class="section-title">GOD ERRANDS</div>
-
-        <!-- Errand Card 1 -->
-        <div class="errand-card">
-            <div class="card-content">
-                <div class="left-column">
-                    <div class="errand-title">Fighting Food Poverty</div>
-                    <p class="errand-description">Since September 2020, we have been giving out Sholly COVID-19 Care packages to vulnerable families in need every month. In each package, each family gets bags of rice, beans, garri and vegetable oil. To date, close to 400 families have benefited from this initiative.</p>
-                </div>
-                <div class="right-column">
-                    <img src="care_packages/may_2022.jpg" alt="Errand 1 Image" class="errand-image" id="errand1-image">
-                    <div class="arrow-container">
-                        <span class="arrow left-arrow" onclick="switchImage('errand1', -1)">&#9664;</span>
-                        <span class="arrow right-arrow" onclick="switchImage('errand1', 1)">&#9654;</span>
-                    </div>
-                </div>
-            </div>
-            <div class="completed-tasks">5000+ food packages distributed till date</div>
+        <!-- Left side: Logo -->
+        <div class="logo">
+            <img src="logo.jpg" alt="Foundation Logo" />
         </div>
 
-        <!-- Errand Card 2 -->
-        <div class="errand-card">
-            <div class="card-content">
-                <div class="left-column">
-                    <div class="errand-title">Providing a Safe Haven for Domestic Abuse Survivors</div>
-                    <p class="errand-description">On June 12, 2021, The Foundation opened the doors to its Shelter: The Sholly Serenity Place aka Sholly’s Safe Home. It is a ten-bed Jesus Christ-Centric Safe Haven and an Oasis of Serenity for survivors of domestic abuse and their children. Our WHY is to provide safe, temporary accommodation for our residents while they receive counselling and legal advice from Lagos State’s Domestic and Sexual Violence Agency (DSVA) or the NGO/ Church handling their cases. </p>
-                    <p class="errand-description">We believe that knowing that she will have a safe place to lay her head will facilitate a quicker and smoother transition from despair to hope as she works with her Counsellor and/or Lawyer. This will, in turn, hasten her readiness to take the needed next steps towards her future. Guests referred to us are accommodated, fed and cared for totally free of cost. Our core values are Care, Compassion, Honesty and Respect for People.</p>
-                </div>
-                <div class="right-column">
-                    <img src="tssp/tssp1.jpg" alt="Errand 2 Image" class="errand-image" id="errand2-image">
-                    <div class="arrow-container">
-                        <span class="arrow left-arrow" onclick="switchImage('errand2', -1)">&#9664;</span>
-                        <span class="arrow right-arrow" onclick="switchImage('errand2', 1)">&#9654;</span>
-                    </div>
-                </div>
-            </div>
-            <div class="completed-tasks">150 women and children accommodated till date</div>
+        <!-- Center: Foundation Name -->
+        <div class="foundation-name">
+            <h1>The Shola Adefolalu Gaska Foundation</h1>
         </div>
 
-        <!-- Errand Card 3 -->
-        <div class="errand-card">
-            <div class="card-content">
-                <div class="left-column">
-                    <div class="errand-title">Empowering Financially Vulnerable Women</div>
-                    <p class="errand-description">In May 2024, to honor the memories of loved ones gone, we launched the Adefolalu Love is A Verb (ALiVe) initiative. This social safety-net provides a N25,000 monthly allowance to extremely economically vulnerable women from across eight states in Nigeria. Our hope is to have reached families across Nigeria come Q4 2026 or sooner.</p>
-                </div>
-                <div class="right-column">
-                    <img src="alive.png" alt="Errand 3 Image" class="errand-image" id="errand3-image">
-                    <div class="arrow-container">
-                        <span class="arrow left-arrow" style="display:none;">&#9664;</span>
-                        <span class="arrow right-arrow" style="display:none;">&#9654;</span>
-                    </div>
-                </div>
+        <!-- Right side: Container for Donate Button and Menu Icon -->
+        <div class="right-side">
+            <div class="donate-button">
+                <a href="#">Donate</a>
             </div>
-            <div class="completed-tasks">20+ women empowered till date</div>
+            <div class="menu-icon" onclick="toggleDrawer()">&#9776;</div>
         </div>
-    </section>
-<section>
-    <h2>Our Testimonials</h2>
-    <div class="testimonial-container">
-        <!-- Testimonials will be inserted here by JavaScript -->
     </div>
-</section>
-<footer>
-        <p>&copy; 2024 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
-    </footer>
-</div>
-<div id="mobile">
-<p>Mobile version still under construction</p>
-</div>
-    <script>
-    // Images data for each errand (add more image paths as needed)
-    const errandImages = {
-        "errand1": [
-            "care_packages/may_2022.jpg", 
-            "care_packages/june_2022.jpg", 
-            "care_packages/dec_2022.jpg", 
-            "care_packages/special_dec_2022.jpg", 
-            "care_packages/jan_2023.jpg", 
-            "care_packages/feb_2023.jpg", 
-            "care_packages/feb_2023_abuja.jpg",
-            "care_packages/april_2023.jpg", 
-            "care_packages/jan_2024.jpg", 
-            "care_packages/feb_2024.jpg", 
-            "care_packages/march_2024.jpg", 
-            "care_packages/april_2024.jpg", 
-            "care_packages/may_2024.jpg", 
-            "care_packages/june_2024.jpg", 
-            "care_packages/july_2024.jpg", 
-            "care_packages/aug_2024.jpg"
-        ],
-        "errand2": ["tssp/tssp1.jpg", "tssp/tssp2.jpg", "tssp/tssp3.jpg", "tssp/tssp4.jpg", "tssp/tssp5.jpg", "tssp/tssp6.jpg", "tssp/tssp7.jpg", "tssp/tssp8.jpg", "tssp/tssp9.jpg", "tssp/tssp10.jpg", "tssp/tssp11.jpg", "tssp/tssp12.jpg"],
-        "errand3": ["alive.png"] // Only one image, so arrows hidden
-    };
+</header>
 
-    // Current image index tracker for each errand
-    const currentImageIndex = {
-        "errand1": 0,
-        "errand2": 0,
-        "errand3": 0
-    };
-
-    // Function to switch images
-    function switchImage(errandId, direction) {
-        const images = errandImages[errandId];
-        currentImageIndex[errandId] += direction;
-
-        // Loop back if at the end or beginning of the images
-        if (currentImageIndex[errandId] < 0) {
-            currentImageIndex[errandId] = images.length - 1;
-        } else if (currentImageIndex[errandId] >= images.length) {
-            currentImageIndex[errandId] = 0;
-        }
-
-        document.getElementById(`${errandId}-image`).src = images[currentImageIndex[errandId]];
-    }
-
-    // Show arrows for errand images with more than one image
-    Object.keys(errandImages).forEach(errandId => {
-        const images = errandImages[errandId];
-        if (images.length > 1) {
-            document.querySelectorAll(`.${errandId} .left-arrow, .${errandId} .right-arrow`).forEach(arrow => arrow.style.display = 'block');
-        }
-    });
-
-    // Function to enlarge the image on click
-    function enlargeImage(imageSrc) {
-        const overlay = document.createElement('div');
-        overlay.classList.add('overlay');
-
-        const img = document.createElement('img');
-        img.src = imageSrc;
-        img.classList.add('expanded-image');
-        
-        // Close icon
-            const closeIcon = document.createElement('span');
-            closeIcon.className = 'close-icon';
-            closeIcon.innerHTML = '&times;'; // Close icon (X)
-            closeIcon.onclick = () => {
-                document.body.removeChild(overlay);
-            };
-
-        overlay.appendChild(img);
-        overlay.appendChild(closeIcon); // Add close button to cancel to overlay
-        document.body.appendChild(overlay);
-    }
-
-    // Add click event listeners to images
-    document.querySelectorAll('.errand-image').forEach(image => {
-        image.addEventListener('click', () => enlargeImage(image.src));
-    });
+<!-- Navigation Drawer -->
+<div class="drawer" id="navDrawer">
+    <div class="close-icon" onclick="toggleDrawer()">&times;</div> <!-- Close icon -->
+    <div class="nav-item">
+        <span>ABOUT US</span>
+        <span class="arrow" onclick="toggleSubMenu('aboutSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="aboutSubMenu">
+        <div><a href="#">Our Mission</a></div>
+        <div><a href="#">Our Why</a></div>
+        <div><a href="#">Our Team</a></div>
+        <div><a href="#">Board of Trustees</a></div>
+        <div><a href="#">Financials</a></div>
+        <div><a href="#">Awards</a></div>
+    </div>
     
-    // Testimonials Data
-const testimonialsData = [
-    "I thank God for making me to know TSSP (The Sholly Serenity Place)  when I have been having a heavy burden and marital emotional  distress in my marriage over 4 - 5 years which the journey looks like  hell with prayers and fasting till it seems hope is gone.  My marriage has been toxic and a friend introduced me to TSSP. TSSP  brings smiles and laughter to myself and children….The staff there are  friendly, nice  respectful, caring and accommodating and even the  environment…..The Sholly Serenity Place is “Salt” in my life and my  children……I have a new family in TSSP. I have so much to say but in  short “I THANK YOU GOD” for how far He has been with me and my  children. I LOVE TSSP.",
-    "“ I thank God for making me to know TSSP (The Sholly Serenity Place)  when I have been having a heavy burden and marital emotional  distress in my marriage over 4 - 5 years which the journey looks like  hell with prayers and fasting till it seems hope is gone.  My marriage has been toxic and a friend introduced me to TSSP. TSSP  brings smiles and laughter to myself and children….The staff there are  friendly, nice  respectful, caring and accommodating and even the  environment…..The Sholly Serenity Place is “Salt” in my life and my  children……I have a new family in TSSP. I have so much to say but in  short “I THANK YOU GOD” for how far He has been with me and my  children. I LOVE TSSP”.",
-    "“ I thank God for making me to know TSSP (The Sholly Serenity Place)  when I have been having a heavy burden and marital emotional  distress in my marriage over 4 - 5 years which the journey looks like  hell with prayers and fasting till it seems hope is gone.  My marriage has been toxic and a friend introduced me to TSSP. TSSP  brings smiles and laughter to myself and children….The staff there are  friendly, nice  respectful, caring and accommodating and even the  environment…..The Sholly Serenity Place is “Salt” in my life and my  children……I have a new family in TSSP. I have so much to say but in  short “I THANK YOU GOD” for how far He has been with me and my  children. I LOVE TSSP”.",
-    "“ I thank God for making me to know TSSP (The Sholly Serenity Place)  when I have been having a heavy burden and marital emotional  distress in my marriage over 4 - 5 years which the journey looks like  hell with prayers and fasting till it seems hope is gone.  My marriage has been toxic and a friend introduced me to TSSP. TSSP  brings smiles and laughter to myself and children….The staff there are  friendly, nice  respectful, caring and accommodating and even the  environment…..The Sholly Serenity Place is “Salt” in my life and my  children……I have a new family in TSSP. I have so much to say but in  short “I THANK YOU GOD” for how far He has been with me and my  children. I LOVE TSSP”.",
-    "“ I thank God for making me to know TSSP (The Sholly Serenity Place)  when I have been having a heavy burden and marital emotional  distress in my marriage over 4 - 5 years which the journey looks like  hell with prayers and fasting till it seems hope is gone.  My marriage has been toxic and a friend introduced me to TSSP. TSSP  brings smiles and laughter to myself and children….The staff there are  friendly, nice  respectful, caring and accommodating and even the  environment…..The Sholly Serenity Place is “Salt” in my life and my  children……I have a new family in TSSP. I have so much to say but in  short “I THANK YOU GOD” for how far He has been with me and my  children. I LOVE TSSP”.",
-    "“ I thank God for making me to know TSSP (The Sholly Serenity Place)  when I have been having a heavy burden and marital emotional  distress in my marriage over 4 - 5 years which the journey looks like  hell with prayers and fasting till it seems hope is gone.  My marriage has been toxic and a friend introduced me to TSSP. TSSP  brings smiles and laughter to myself and children….The staff there are  friendly, nice  respectful, caring and accommodating and even the  environment…..The Sholly Serenity Place is “Salt” in my life and my  children……I have a new family in TSSP. I have so much to say but in  short “I THANK YOU GOD” for how far He has been with me and my  children. I LOVE TSSP”.",
-    "“ I thank God for making me to know TSSP (The Sholly Serenity Place)  when I have been having a heavy burden and marital emotional  distress in my marriage over 4 - 5 years which the journey looks like  hell with prayers and fasting till it seems hope is gone.  My marriage has been toxic and a friend introduced me to TSSP. TSSP  brings smiles and laughter to myself and children….The staff there are  friendly, nice  respectful, caring and accommodating and even the  environment…..The Sholly Serenity Place is “Salt” in my life and my  children……I have a new family in TSSP. I have so much to say but in  short “I THANK YOU GOD” for how far He has been with me and my  children. I LOVE TSSP”."
-];
+    <div class="nav-item">
+        <span>WHAT WE DO</span>
+        <span class="arrow" onclick="toggleSubMenu('whatWeDoSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="whatWeDoSubMenu">
+        <div><a href="#">Our God Errands</a></div>
+        <div><a href="#">Our Testimonials</a></div>
+    </div>
+    
+    <div class="nav-item">
+        <span>RESOURCES AND MEDIA</span>
+        <span class="arrow" onclick="toggleSubMenu('resourcesSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="resourcesSubMenu">
+        <div><a href="#">Our Stories</a></div>
+        <div><a href="#">Project Spotlights</a></div>
+        <div><a href="#">TSAG in the News</a></div>
+        <div><a href="#">Photographs</a></div>
+        <div><a href="#">Videos</a></div>
+        <div><a href="#">Books</a></div>
+        <div><a href="#">Podcasts</a></div>
+    </div>
 
-const testimonialsContainer = document.querySelector('.testimonial-container');
+    <div class="donate-button" style="margin-top: auto;">
+        <a href="#">Donate</a>
+    </div>
+</div>
+<script>
+    function toggleDrawer() {
+        const drawer = document.getElementById('navDrawer');
+        const isOpen = drawer.classList.toggle('open');
 
-        // Function to create testimonial cards
-        function createTestimonialCards() {
-            testimonialsData.forEach(testimonial => {
-                const testimonialCard = document.createElement('div');
-                testimonialCard.className = 'testimonial-card';
-                testimonialCard.innerHTML = `<p>${testimonial}</p>`;
-                testimonialsContainer.appendChild(testimonialCard);
+        if (isOpen) {
+            // Close all submenus when opening the drawer
+            const subMenus = document.querySelectorAll('.sub-menu');
+            subMenus.forEach((subMenu) => {
+                subMenu.classList.remove('open');
             });
         }
+    }
 
-        // Create the testimonial cards on page load
-        createTestimonialCards();
-
-
-         </script>
+    function toggleSubMenu(menuId) {
+        const subMenu = document.getElementById(menuId);
+        subMenu.classList.toggle('open');
+    }
+</script>
 </body>
 </html>
 

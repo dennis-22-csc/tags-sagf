@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate to The Shola Adefolalu Gaska Foundation</title>
     <style>
+    /* Hide both divs by default */
+#mobile, #desktop {
+    display: none;
+}
+
+/* Show div with ID x for mobile devices */
+@media (max-width: 767px) { /* Adjust the max-width as needed for your mobile breakpoint */
+    #mobile {
+        display: block; /* or inline-block, flex, etc., based on your layout needs */
+    }
+}
+
+/* Show div with ID y for desktop devices */
+@media (min-width: 768px) { /* Adjust the min-width as needed for your desktop breakpoint */
+    #desktop {
+        display: block; /* or inline-block, flex, etc., based on your layout needs */
+    }
+}
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -249,50 +268,54 @@
     </style>
 </head>
 <body>
+<div id="desktop">
 <header>
     <div class="header-container">
       <div class="logo">
-        <img src="logo.jpg" alt="Foundation Logo" />
+      <a href="index.html">
+    <img src="logo.jpg" alt="Foundation Logo" />
+</a>
+        
       </div>
 
       <nav>
         <ul class="nav-links">
           <li class="dropdown">
-            <a href="#">ABOUT US</a>
+            <a href="about.html">ABOUT US</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Our Mission</a></li>
-              <li><a href="#">Our Why</a></li>
-              <li><a href="#">Our Team</a></li>
-              <li><a href="#">Board of Trustees</a></li>
-              <li><a href="#">Financials</a></li>
-              <li><a href="#">Awards</a></li>
+              <li><a href="about.html#mission">Our Mission</a></li>
+              <li><a href="about.html#why">Our Why</a></li>
+              <li><a href="about.html#team">Our Team</a></li>
+              <li><a href="about.html#board">Board of Trustees</a></li>
+              <li><a href="about.html#financials">Financials</a></li>
+              <li><a href="about.html#awards">Awards</a></li>
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#">WHAT WE DO</a>
+            <a href="our_work.html">WHAT WE DO</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Our God Errands</a></li>
-              <li><a href="#">Our Testimonials</a></li>
+              <li><a href="our_work.html#god_errands">Our God Errands</a></li>
+              <li><a href="our_work.html#testimonials">Our Testimonials</a></li>
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#">RESOURCES AND MEDIA</a>
+            <a href="media.html">RESOURCES AND MEDIA</a>
             <ul class="dropdown-menu resources">
                 <div class="dropdown-column">
                     <h4>NEWS & STORIES</h4>
-                    <a href="#">Our Stories</a>
-                    <a href="#">Project Spotlights</a>
-                    <a href="#">TSAG in the News</a>
+                    <a href="media.html#stories">Our Stories</a>
+                    <a href="media.html#projects">Project Spotlights</a>
+                    <a href="media.html#media">TSAG in the News</a>
                 </div>
                 <div class="dropdown-column">
                     <h4>MULTIMEDIA</h4>
-                    <a href="#">Photographs</a>
+                    <a href="media.html#photos">Photographs</a>
                     <a href="#">Videos</a>
                 </div>
                 <div class="dropdown-column">
                     <h4>RESOURCES</h4>
-                    <a href="#">Books</a>
-                    <a href="#">Podcasts</a>
+                    <a href="media.html#books">Books</a>
+                    <a href="media.html#podcasts">Podcasts</a>
                 </div>
             </ul>
           </li>
@@ -300,7 +323,7 @@
       </nav>
 
       <div class="donate-button">
-        <a href="#">Donate</a>
+        <a href="donate.html">Donate</a>
       </div>
     </div>
 </header>
@@ -339,7 +362,7 @@
                 <div class="tab-content-item">
                     <h3>Global Donation</h3>
                     <p>Donate from anywhere in the world through our global Giving platform by clicking on the link below.</p>
-                    <a href="https://globalgiving.org" target="_blank">Global Giving Platform</a>
+                    <a href="https://globalgiving.org/projects/feeding-dv-survivors-in-shelter-in-lagos-nigeria" target="_blank">Global Giving Platform</a>
                 </div>
             </div>
         </div>
@@ -350,7 +373,10 @@
 <footer>
     <p>&copy; 2024 The Shola Adefolalu Gaska Foundation | All Rights Reserved</p>
 </footer>
-
+</div>
+<div id="mobile">
+<p>Mobile version still under construction</p>
+</div>
 <script>
     function showTabContent(index) {
         const tabs = document.querySelectorAll('.tab-item');
