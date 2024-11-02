@@ -69,6 +69,7 @@
             transition: right 0.3s;
             z-index: 1000;
             padding: 20px;
+            overflow-y: auto;
         }
 
         .drawer.open {
@@ -85,17 +86,30 @@
         .arrow {
             cursor: pointer;
         }
-                .sub-menu {
-            display: none;
-            padding-left: 20px;
-            padding-top: 10px; /* Added padding for better spacing */
-            padding-bottom: 10px; /* Added padding for better spacing */
-            list-style: none; /* Remove bullet points */
-        }
+        
+        .sub-menu {
+    display: none;
+    padding: 10px; /* Padding for content inside */
+    border: 1px solid #ccc; /* Border to give a box-like appearance */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background color */
+    list-style: none; /* Remove bullet points */
+    margin-top: 5px; /* Space between the submenu and parent item */
+}
 
-        .sub-menu li {
-            padding: 5px 0; /* Add padding between submenu items */
-        }
+.sub-menu li {
+    padding: 5px 10px; /* Padding inside each item */
+    border-bottom: 1px solid #e0e0e0; /* Separator line between items */
+}
+
+.sub-menu li:last-child {
+    border-bottom: none; /* Remove the bottom border from the last item */
+}
+
+.sub-menu li:hover {
+    background-color: #e6e6e6; /* Hover effect */
+    cursor: pointer; /* Pointer cursor on hover */
+}
 
         .sub-menu.open {
             display: block; /* Show sub-menu */
