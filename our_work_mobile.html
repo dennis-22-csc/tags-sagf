@@ -69,7 +69,8 @@
             transition: right 0.3s;
             z-index: 1000;
             padding: 20px;
-            overflow-y: auto;
+            max-height: 100vh; /* Ensures the drawer doesn't overflow the viewport */
+    overflow-y: auto;
         }
 
         .drawer.open {
@@ -86,34 +87,29 @@
         .arrow {
             cursor: pointer;
         }
-        
+
         .sub-menu {
-    display: none;
-    padding: 10px; /* Padding for content inside */
-    border: 1px solid #ccc; /* Border to give a box-like appearance */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #f9f9f9; /* Light background color */
-    list-style: none; /* Remove bullet points */
-    margin-top: 5px; /* Space between the submenu and parent item */
-}
-
-.sub-menu li {
-    padding: 5px 10px; /* Padding inside each item */
-    border-bottom: 1px solid #e0e0e0; /* Separator line between items */
-}
-
-.sub-menu li:last-child {
-    border-bottom: none; /* Remove the bottom border from the last item */
-}
-
-.sub-menu li:hover {
-    background-color: #e6e6e6; /* Hover effect */
-    cursor: pointer; /* Pointer cursor on hover */
-}
+            display: none;
+            padding-left: 20px;
+        }
 
         .sub-menu.open {
             display: block; /* Show sub-menu */
         }
+        
+        a {
+    text-decoration: none; /* Remove underline */
+    display: block; /* Make the <a> element a block-level item */
+    padding: 10px 15px; /* Add padding for spacing */
+    border: 1px solid transparent; /* Transparent border */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth hover effect */
+}
+
+a:hover {
+    background-color: #f0f0f0; /* Light grey background on hover */
+    border-color: #ccc; /* Border becomes visible on hover */
+}
+
 
         /* Donate button styling */
         .donate-button a {
