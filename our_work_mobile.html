@@ -12,6 +12,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             padding: 10px 0; /* Top and bottom padding */
             width: 100%; /* Ensures header takes full width */
+            position: relative; /* Positioning context for the drawer */
         }
 
         .header-container {
@@ -63,14 +64,13 @@
             top: 0;
             right: -300px; /* Initially hidden */
             width: 80%; /* Occupies 80% of device width */
-            height: auto; /* Adjust to content height */
+            height: 100%; /* Full height of viewport */
             background-color: white;
             box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
-            transition: right 0.3s;
+            transition: right 0.3s ease; /* Smooth transition */
             z-index: 1000;
             padding: 20px;
-            max-height: 100vh; /* Ensures the drawer doesn't overflow the viewport */
-    overflow-y: auto;
+            overflow-y: auto; /* Enable scrolling if content exceeds height */
         }
 
         .drawer.open {
@@ -98,18 +98,17 @@
         }
         
         a {
-    text-decoration: none; /* Remove underline */
-    display: block; /* Make the <a> element a block-level item */
-    padding: 10px 15px; /* Add padding for spacing */
-    border: 1px solid transparent; /* Transparent border */
-    transition: background-color 0.3s, border-color 0.3s; /* Smooth hover effect */
-}
+            text-decoration: none; /* Remove underline */
+            display: block; /* Make the <a> element a block-level item */
+            padding: 10px 15px; /* Add padding for spacing */
+            border: 1px solid transparent; /* Transparent border */
+            transition: background-color 0.3s, border-color 0.3s; /* Smooth hover effect */
+        }
 
-a:hover {
-    background-color: #f0f0f0; /* Light grey background on hover */
-    border-color: #ccc; /* Border becomes visible on hover */
-}
-
+        a:hover {
+            background-color: #f0f0f0; /* Light grey background on hover */
+            border-color: #ccc; /* Border becomes visible on hover */
+        }
 
         /* Donate button styling */
         .donate-button a {
@@ -119,6 +118,7 @@ a:hover {
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
+            text-align: center; /* Center text in the button */
         }
 
         .donate-button a:hover {
