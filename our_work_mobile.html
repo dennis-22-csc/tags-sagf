@@ -75,24 +75,25 @@
             right: 0; /* Show drawer */
         }
 
-        .nav-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
+        /* Styling for navigation links */
+        .nav-links {
+            list-style: none; /* Remove bullet points */
+            padding: 0; /* Remove default padding */
+            display: flex; /* Use flex for layout */
+            flex-direction: column; /* Stack links vertically */
+            gap: 20px; /* Space between links */
         }
 
-        .arrow {
-            cursor: pointer;
+        .nav-links a {
+            color: #333; /* Link color */
+            text-decoration: none; /* Remove underline */
+            font-weight: 500; /* Font weight */
+            position: relative; /* For potential hover effects */
+            padding: 10px 0; /* Vertical padding */
         }
 
-        .sub-menu {
-            display: none;
-            padding-left: 20px;
-        }
-
-        .sub-menu.open {
-            display: block; /* Show sub-menu */
+        .nav-links a:hover {
+            color: #007BFF; /* Change color on hover */
         }
 
         /* Donate button styling */
@@ -144,41 +145,53 @@
 <!-- Navigation Drawer -->
 <div class="drawer" id="navDrawer">
     <div class="close-icon" onclick="toggleDrawer()">&times;</div> <!-- Close icon -->
-    <div class="nav-item">
-        <span>ABOUT US</span>
-        <span class="arrow" onclick="toggleSubMenu('aboutSubMenu')">&#9662;</span>
-    </div>
-    <div class="sub-menu" id="aboutSubMenu">
-        <div><a href="#">Our Mission</a></div>
-        <div><a href="#">Our Why</a></div>
-        <div><a href="#">Our Team</a></div>
-        <div><a href="#">Board of Trustees</a></div>
-        <div><a href="#">Financials</a></div>
-        <div><a href="#">Awards</a></div>
-    </div>
-    
-    <div class="nav-item">
-        <span>WHAT WE DO</span>
-        <span class="arrow" onclick="toggleSubMenu('whatWeDoSubMenu')">&#9662;</span>
-    </div>
-    <div class="sub-menu" id="whatWeDoSubMenu">
-        <div><a href="#">Our God Errands</a></div>
-        <div><a href="#">Our Testimonials</a></div>
-    </div>
-    
-    <div class="nav-item">
-        <span>RESOURCES AND MEDIA</span>
-        <span class="arrow" onclick="toggleSubMenu('resourcesSubMenu')">&#9662;</span>
-    </div>
-    <div class="sub-menu" id="resourcesSubMenu">
-        <div><a href="#">Our Stories</a></div>
-        <div><a href="#">Project Spotlights</a></div>
-        <div><a href="#">TSAG in the News</a></div>
-        <div><a href="#">Photographs</a></div>
-        <div><a href="#">Videos</a></div>
-        <div><a href="#">Books</a></div>
-        <div><a href="#">Podcasts</a></div>
-    </div>
+    <ul class="nav-links">
+        <li>
+            <div class="nav-item">
+                <span>ABOUT US</span>
+                <span class="arrow" onclick="toggleSubMenu('aboutSubMenu')">&#9662;</span>
+            </div>
+            <div class="sub-menu" id="aboutSubMenu">
+                <ul class="nav-links">
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Our Why</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Board of Trustees</a></li>
+                    <li><a href="#">Financials</a></li>
+                    <li><a href="#">Awards</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="nav-item">
+                <span>WHAT WE DO</span>
+                <span class="arrow" onclick="toggleSubMenu('whatWeDoSubMenu')">&#9662;</span>
+            </div>
+            <div class="sub-menu" id="whatWeDoSubMenu">
+                <ul class="nav-links">
+                    <li><a href="#">Our God Errands</a></li>
+                    <li><a href="#">Our Testimonials</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="nav-item">
+                <span>RESOURCES AND MEDIA</span>
+                <span class="arrow" onclick="toggleSubMenu('resourcesSubMenu')">&#9662;</span>
+            </div>
+            <div class="sub-menu" id="resourcesSubMenu">
+                <ul class="nav-links">
+                    <li><a href="#">Our Stories</a></li>
+                    <li><a href="#">Project Spotlights</a></li>
+                    <li><a href="#">TSAG in the News</a></li>
+                    <li><a href="#">Photographs</a></li>
+                    <li><a href="#">Videos</a></li>
+                    <li><a href="#">Books</a></li>
+                    <li><a href="#">Podcasts</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
 
     <div class="donate-button" style="margin-top: auto;">
         <a href="#">Donate</a>
