@@ -71,6 +71,7 @@
             z-index: 1000;
             padding: 20px;
             overflow-y: auto; /* Enable scrolling if content exceeds height */
+            padding-bottom: 50px;
         }
 
         .drawer.open {
@@ -200,11 +201,18 @@
         <a href="#">Donate</a>
     </div>
 </div>
-
 <script>
     function toggleDrawer() {
         const drawer = document.getElementById('navDrawer');
-        drawer.classList.toggle('open');
+        const isOpen = drawer.classList.toggle('open');
+
+        if (isOpen) {
+            // Close all submenus when opening the drawer
+            const subMenus = document.querySelectorAll('.sub-menu');
+            subMenus.forEach((subMenu) => {
+                subMenu.classList.remove('open');
+            });
+        }
     }
 
     function toggleSubMenu(menuId) {
@@ -212,7 +220,6 @@
         subMenu.classList.toggle('open');
     }
 </script>
-
 </body>
 </html>
 
