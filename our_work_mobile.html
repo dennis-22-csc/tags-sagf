@@ -13,14 +13,29 @@
             padding: 10px 20px;
             position: relative;
         }
-
+        
         .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 100%; /* Make sure header doesn't exceed device width */
-            margin: auto;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Keeps the logo on the left and menu icon on the right */
+    max-width: 100%; /* Ensure header doesn't exceed device width */
+    padding: 10px 20px; /* Add some padding */
+}
+
+.logo {
+    flex: 0 0 auto; /* Ensure logo doesn't grow */
+}
+
+.foundation-name {
+    flex: 1; /* Allow the foundation name to take available space */
+    text-align: center; /* Center align the foundation name */
+}
+
+.menu-icon {
+    flex: 0 0 auto; /* Ensure menu icon doesn't grow */
+    cursor: pointer;
+    font-size: 24px; /* Adjust font size as needed */
+}
 
         /* Logo styling */
         .logo img {
@@ -88,12 +103,7 @@
             background-color: #FFD633;
         }
 
-        .menu-icon {
-            cursor: pointer;
-            font-size: 24px;
-            margin-left: 20px; /* Margin to separate from the donate button */
-            justify-content: right;
-        }
+        
 
         /* Close icon in the drawer */
         .close-icon {
