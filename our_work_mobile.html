@@ -3,113 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Navigation Drawer</title>
+    <title>What We Do</title>
     <style>
         /* Basic styling for layout */
+        /* Header styling */
         header {
             background-color: white;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 10px 0;
-            width: 100%;
+            padding: 10px 0; /* Top and bottom padding */
+            width: 100%; /* Ensures header takes full width */
         }
 
         .header-container {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
+            align-items: center; /* Vertically centers items */
+            justify-content: space-between; /* Space items to occupy full width */
+            padding: 0 20px; /* Add horizontal padding */
         }
 
-        .logo img {
-            height: 50px;
-            max-width: 100%;
+        .logo {
+            flex: none; /* Prevent flex-grow, keeps logo size fixed */
         }
 
-        .foundation-name h1 {
-            font-size: 4vw;
-            margin: 0;
-            text-align: center;
+        .foundation-name {
+            flex: 1; /* Allow foundation name to take available space */
+            text-align: center; /* Center text within its space */
+            margin: 0; /* Remove any default margins */
         }
 
+        /* New styling for right-side container */
         .right-side {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
+            display: flex; /* Align donate button and menu icon in a column */
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-end; /* Align items to the right */
         }
 
         .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-            margin-top: 10px;
+            flex: none; /* Prevent flex-grow, keeps menu icon size fixed */
+            cursor: pointer; 
+            font-size: 24px; /* Adjust font size as needed */
+            margin-top: 10px; /* Space between donate button and menu icon */
         }
 
-        .donate-button a {
-            background-color: #FFCC00;
-            color: #333;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-bottom: 10px;
+        /* Logo styling */
+        .logo img {
+            height: 50px;
+            max-width: 100%; /* Adjust logo size for smaller screens */
         }
 
-        /* Drawer styling */
+        /* Foundation name styling */
+        .foundation-name h1 {
+            font-size: 4vw; /* Responsive font size */
+            margin: 0;
+        }
+
+        /* Navigation drawer styling */
         .drawer {
             position: fixed;
             top: 0;
-            right: -100%;
-            width: 80%;
-            height: 100%;
+            right: -300px; /* Initially hidden */
+            width: 80%; /* Occupies 80% of device width */
+            height: auto; /* Adjust to content height */
             background-color: white;
             box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
             transition: right 0.3s;
             z-index: 1000;
             padding: 20px;
-            overflow-y: auto;
         }
 
         .drawer.open {
-            right: 0;
+            right: 0; /* Show drawer */
         }
 
-        /* Navigation styling */
-        .nav-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .nav-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
         }
 
-        .nav-links li {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
+        .arrow {
             cursor: pointer;
-            position: relative;
         }
-
-        .nav-links a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            display: block;
-        }
-
-        .nav-links .arrow {
-            position: absolute;
-            right: 10px;
-        }
-
-        .sub-menu {
+                .sub-menu {
             display: none;
             padding-left: 20px;
-        }
-
-        .sub-menu.open {
-            display: block;
+            padding-top: 10px; /* Added padding for better spacing */
+            padding-bottom: 10px; /* Added padding for better spacing */
+            list-style: none; /* Remove bullet points */
         }
 
         .sub-menu li {
-            padding: 8px 0;
-            list-style: none;
+            padding: 5px 0; /* Add padding between submenu items */
+        }
+
+        .sub-menu.open {
+            display: block; /* Show sub-menu */
+        }
+
+        /* Donate button styling */
+        .donate-button a {
+            background-color: #FFCC00; /* Example yellow color for the button */
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .donate-button a:hover {
+            background-color: #FFD633;
+        }
+
+        /* Close icon in the drawer */
+        .close-icon {
+            cursor: pointer;
+            font-size: 24px;
+            margin-bottom: 20px; /* Space below the close icon */
         }
     </style>
 </head>
@@ -117,63 +127,68 @@
 
 <header>
     <div class="header-container">
+        <!-- Left side: Logo -->
         <div class="logo">
-            <img src="logo.png" alt="Foundation Logo">
+            <img src="logo.jpg" alt="Foundation Logo" />
         </div>
+
+        <!-- Center: Foundation Name -->
         <div class="foundation-name">
-            <h1>Foundation Name</h1>
+            <h1>The Shola Adefolalu Gaska Foundation</h1>
         </div>
+
+        <!-- Right side: Container for Donate Button and Menu Icon -->
         <div class="right-side">
             <div class="donate-button">
                 <a href="#">Donate</a>
             </div>
-            <div class="menu-icon" onclick="toggleDrawer()">☰</div>
+            <div class="menu-icon" onclick="toggleDrawer()">&#9776;</div>
         </div>
     </div>
 </header>
 
+<!-- Navigation Drawer -->
 <div class="drawer" id="navDrawer">
-    <ul class="nav-links">
-        <li onclick="toggleSubMenu(this)">About Us <span class="arrow">▼</span>
-            <ul class="sub-menu">
-                <li><a href="#">Our Mission</a></li>
-                <li><a href="#">Our Why</a></li>
-                <li><a href="#">Our Team</a></li>
-                <li><a href="#">Board of Trustees</a></li>
-                <li><a href="#">Financials</a></li>
-                <li><a href="#">Awards</a></li>
-            </ul>
-        </li>
-        <li onclick="toggleSubMenu(this)">What We Do <span class="arrow">▼</span>
-            <ul class="sub-menu">
-                <li><a href="#">Our God Errands</a></li>
-                <li><a href="#">Our Testimonials</a></li>
-            </ul>
-        </li>
-        <li onclick="toggleSubMenu(this)">Media and Resources <span class="arrow">▼</span>
-            <ul class="sub-menu">
-                <li onclick="toggleSubMenu(this)">News and Stories <span class="arrow">▼</span>
-                    <ul class="sub-menu">
-                        <li><a href="#">Our Stories</a></li>
-                        <li><a href="#">Project Spotlights</a></li>
-                        <li><a href="#">TSAG in the News</a></li>
-                    </ul>
-                </li>
-                <li onclick="toggleSubMenu(this)">Multimedia <span class="arrow">▼</span>
-                    <ul class="sub-menu">
-                        <li><a href="#">Photographs</a></li>
-                        <li><a href="#">Videos</a></li>
-                    </ul>
-                </li>
-                <li onclick="toggleSubMenu(this)">Resources <span class="arrow">▼</span>
-                    <ul class="sub-menu">
-                        <li><a href="#">Books</a></li>
-                        <li><a href="#">Podcasts</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
+    <div class="close-icon" onclick="toggleDrawer()">&times;</div> <!-- Close icon -->
+    <div class="nav-item">
+        <span>ABOUT US</span>
+        <span class="arrow" onclick="toggleSubMenu('aboutSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="aboutSubMenu">
+        <div><a href="#">Our Mission</a></div>
+        <div><a href="#">Our Why</a></div>
+        <div><a href="#">Our Team</a></div>
+        <div><a href="#">Board of Trustees</a></div>
+        <div><a href="#">Financials</a></div>
+        <div><a href="#">Awards</a></div>
+    </div>
+    
+    <div class="nav-item">
+        <span>WHAT WE DO</span>
+        <span class="arrow" onclick="toggleSubMenu('whatWeDoSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="whatWeDoSubMenu">
+        <div><a href="#">Our God Errands</a></div>
+        <div><a href="#">Our Testimonials</a></div>
+    </div>
+    
+    <div class="nav-item">
+        <span>RESOURCES AND MEDIA</span>
+        <span class="arrow" onclick="toggleSubMenu('resourcesSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="resourcesSubMenu">
+        <div><a href="#">Our Stories</a></div>
+        <div><a href="#">Project Spotlights</a></div>
+        <div><a href="#">TSAG in the News</a></div>
+        <div><a href="#">Photographs</a></div>
+        <div><a href="#">Videos</a></div>
+        <div><a href="#">Books</a></div>
+        <div><a href="#">Podcasts</a></div>
+    </div>
+
+    <div class="donate-button" style="margin-top: auto;">
+        <a href="#">Donate</a>
+    </div>
 </div>
 
 <script>
@@ -182,11 +197,9 @@
         drawer.classList.toggle('open');
     }
 
-    function toggleSubMenu(item) {
-        const subMenu = item.querySelector('.sub-menu');
-        if (subMenu) {
-            subMenu.classList.toggle('open');
-        }
+    function toggleSubMenu(menuId) {
+        const subMenu = document.getElementById(menuId);
+        subMenu.classList.toggle('open');
     }
 </script>
 
