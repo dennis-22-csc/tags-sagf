@@ -12,47 +12,40 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             padding: 10px 20px;
             position: relative;
-            width: 100%; /* Ensures header doesn't exceed device width */
-            box-sizing: border-box; /* Include padding in width calculation */
         }
 
         .header-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 100%; /* Full width for mobile */
-            padding: 0 10px; /* Add padding for mobile */
-            box-sizing: border-box; /* Include padding in width calculation */
+            max-width: 100%; /* Make sure header doesn't exceed device width */
+            margin: auto;
         }
 
         /* Logo styling */
         .logo img {
-            height: auto;
-            max-height: 50px; /* Logo height should adjust */
-            width: auto; /* Maintain aspect ratio */
-            max-width: 100%; /* Responsive */
+            height: 50px;
+            max-width: 100%; /* Adjust logo size for smaller screens */
         }
 
         /* Foundation name styling */
         .foundation-name h1 {
-            font-size: 5vw; /* Responsive font size */
+            font-size: 4vw; /* Responsive font size */
             margin: 0;
-            text-align: center; /* Center the title */
         }
 
         /* Navigation drawer styling */
         .drawer {
             position: fixed;
             top: 0;
-            right: -80%; /* Initially hidden */
-            width: 80%; /* Set width of drawer */
-            height: 100%;
+            right: -300px; /* Initially hidden */
+            width: 80%; /* Occupies 80% of device width */
+            height: auto; /* Adjust to content height */
             background-color: white;
             box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
             transition: right 0.3s;
             z-index: 1000;
             padding: 20px;
-            box-sizing: border-box; /* Include padding in width calculation */
         }
 
         .drawer.open {
@@ -87,8 +80,8 @@
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            display: block; /* Block display for full width */
-            margin-bottom: 10px; /* Margin between button and menu icon */
+            display: block; /* Make button full-width for better tap target */
+            margin-bottom: 10px; /* Margin below the donate button */
         }
 
         .donate-button a:hover {
@@ -98,14 +91,14 @@
         .menu-icon {
             cursor: pointer;
             font-size: 24px;
-            margin-left: 10px; /* Margin for separation */
+            margin-left: 20px; /* Margin to separate from the donate button */
         }
 
-        /* Close icon styling */
+        /* Close icon in the drawer */
         .close-icon {
-            font-size: 24px;
             cursor: pointer;
-            margin-bottom: 20px; /* Margin below the close icon */
+            font-size: 24px;
+            margin-bottom: 20px; /* Space below the close icon */
         }
     </style>
 </head>
