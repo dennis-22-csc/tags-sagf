@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate to The Shola Adefolalu Gaska Foundation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+       header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Logo styling */
+.logo img {
+  height: 50px;
+}
+
+/* Navigation styling */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+/* Default hide for all dropdown menus */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  list-style: none;
+  min-width: 300px;
+  z-index: 10;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown:hover .resources {
+  display: flex; /* Only apply flex layout on hover */
+  gap: 20px;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 15px;
+  white-space: nowrap;
+  color: #333;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+
+/* Flex layout for individual columns */
+.dropdown-column {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically within each column */
+  gap: 8px;
+}
+
+/* Heading and link styles */
+.resources h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.resources a {
+  color: #333;
+  text-decoration: none;
+}
+
+.resources a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Donate button styling */
+.donate-button a {
+  background-color: #FFCC00; /* Example yellow color for the button */
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.donate-button a:hover {
+  background-color: #FFD633;
+}
+
+ footer {
+            text-align: center;
+            padding: 10px;
+        }   
+        
+  .about-header-section {
+  background-color: #FFD700; /* Shade of yellow */
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1.2rem;
+}
+
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        .left-half, .right-half {
+            flex: 1;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .left-half {
+            background-color: #f3f3f3;
+        }
+
+        .left-half h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .support-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .support-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .support-list li {
+            margin-bottom: 30px; 
+        }
+
+        .support-list li:nth-child(1)::before {
+            content: '🛍️'; /* Icon for grocery */
+            margin-right: 8px;
+        }
+
+        .support-list li:nth-child(2)::before {
+            content: '🏠'; /* Icon for shelter */
+            margin-right: 8px;
+        }
+
+        .support-list li:nth-child(3)::before {
+            content: '👩‍👧'; /* Icon for woman and child */
+            margin-right: 8px;
+        }
+
+        .support-list li:nth-child(4)::before {
+            content: '👩'; /* Woman emoji */
+            margin-right: 8px;
+        }
+
+        .right-half {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .right-half img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            object-fit: cover;
+            margin-top: 50px;
+        }
+
+        .tabs {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .tab__list {
+            display: flex;
+            background-color: #f1f1f1;
+        }
+
+        .tab-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .tab-item:hover {
+            background-color: #e1e1e1;
+        }
+
+        .tab-item.is--active {
+            background-color: white;
+            border-bottom: 2px solid #FFCC00;
+            font-weight: bold;
+        }
+
+        .tab__content {
+            padding: 20px;
+        }
+
+        .tab-content-item {
+            display: none;
+        }
+
+        .tab-content-item.is--active {
+            display: block;
+        }
+
+        .tab-content-item a {
+            color: #FFCC00;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="logo.jpg" alt="Foundation Logo" />
+      </div>
+
+      <nav>
+        <ul class="nav-links">
+          <li class="dropdown">
+            <a href="#">ABOUT US</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Our Mission</a></li>
+              <li><a href="#">Our Why</a></li>
+              <li><a href="#">Our Team</a></li>
+              <li><a href="#">Board of Trustees</a></li>
+              <li><a href="#">Financials</a></li>
+              <li><a href="#">Awards</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">WHAT WE DO</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Our God Errands</a></li>
+              <li><a href="#">Our Testimonials</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">RESOURCES AND MEDIA</a>
+            <ul class="dropdown-menu resources">
+                <div class="dropdown-column">
+                    <h4>NEWS & STORIES</h4>
+                    <a href="#">Our Stories</a>
+                    <a href="#">Project Spotlights</a>
+                    <a href="#">TSAG in the News</a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>MULTIMEDIA</h4>
+                    <a href="#">Photographs</a>
+                    <a href="#">Videos</a>
+                </div>
+                <div class="dropdown-column">
+                    <h4>RESOURCES</h4>
+                    <a href="#">Books</a>
+                    <a href="#">Podcasts</a>
+                </div>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="donate-button">
+        <a href="#">Donate</a>
+      </div>
+    </div>
+</header>
+
+<section class="about-header-section">
+  <h2>DONATE TO US</h2>
+</section>
+
+<div class="container">
+    <div class="left-half">
+        <h2>Donate to The Shola Adefolalu Gaska Foundation</h2>
+        <p class="description">Your donation supports The Shola Adefolalu Gaska Foundation’s efforts in providing financial, emotional and spiritual support to women and children.</p>
+        <div class="support-card">
+            <h3>Your support will help The Shola Adefolalu Gaska Foundation:</h3>
+            <ul class="support-list">
+                <li>Give more food packages</li>
+                <li>Expand our shelter</li>
+                <li>Accomodate more women and children</li>
+                <li>Empower more financially vulnerable women</li>
+                
+            </ul>
+        </div>
+    </div>
+    <div class="right-half">
+        <div class="tabs">
+            <div class="tab__list">
+                <div class="tab-item is--active" onclick="showTabContent(0)">Nigeria Donation</div>
+                <div class="tab-item" onclick="showTabContent(1)">Global Donation</div>
+            </div>
+            <div class="tab__content">
+                <div class="tab-content-item is--active">
+                    <h3>Donate from Nigeria</h3>
+                    <p>Email us at <strong>theshollysmilefactory@gmail.com</strong> to get our Nigeria bank details.</p>
+                    <p>Or you can call us on <strong>+2348107967992</strong>.
+                </div>
+                <div class="tab-content-item">
+                    <h3>Global Donation</h3>
+                    <p>Donate from anywhere in the world through our global Giving platform by clicking on the link below.</p>
+                    <a href="https://globalgiving.org" target="_blank">Global Giving Platform</a>
+                </div>
+            </div>
+        </div>
+        <img src="thank_you.jpg" alt="Donation Support" />
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 The Shola Adefolalu Gaska Foundation | All Rights Reserved</p>
+</footer>
+
+<script>
+    function showTabContent(index) {
+        const tabs = document.querySelectorAll('.tab-item');
+        const contentItems = document.querySelectorAll('.tab-content-item');
+
+        tabs.forEach((tab, i) => {
+            tab.classList.toggle('is--active', i === index);
+            contentItems[i].classList.toggle('is--active', i === index);
+        });
+    }
+</script>
+</body>
+</html>
+

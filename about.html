@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    
+    <style>
+/* Header styling */
+header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Logo styling */
+.logo img {
+  height: 50px;
+}
+
+/* Navigation styling */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+/* Default hide for all dropdown menus */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  list-style: none;
+  min-width: 300px;
+  z-index: 10;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown:hover .resources {
+  display: flex; /* Only apply flex layout on hover */
+  gap: 20px;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 15px;
+  white-space: nowrap;
+  color: #333;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+
+/* Flex layout for individual columns */
+.dropdown-column {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically within each column */
+  gap: 8px;
+}
+
+/* Heading and link styles */
+.resources h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.resources a {
+  color: #333;
+  text-decoration: none;
+}
+
+.resources a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Donate button styling */
+.donate-button a {
+  background-color: #FFCC00; /* Example yellow color for the button */
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.donate-button a:hover {
+  background-color: #FFD633;
+}
+
+ footer {
+            text-align: center;
+            padding: 10px;
+        }   
+/* General Section Styles */
+section {
+    padding: 50px;
+    margin: 20px auto;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.about-header-section {
+  background-color: #FFD700; /* Shade of yellow */
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1.2rem;
+}
+
+/* Team and Trustees Section Cards */
+.team-cards, .trustees-cards, .yearly-infographics, .quarterly-reports, .awards_card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.team-card, .trustee-card, .infographic, .quarterly-report {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+}
+
+/* Team and Trustee Cards */
+.team-card h3, .trustee-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.team-card p, .trustee-card p {
+    font-size: 1em;
+    color: #666;
+}
+
+/* Infographics and Quarterly Reports */
+.infographic img, .quarterly-report img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.infographic h4, .quarterly-report h4 {
+    font-size: 1.1em;
+    color: #333;
+    margin-top: 8px;
+    margin-bottom: 10px;
+}
+
+/* Download Button in Quarterly Reports */
+.download-button {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-top: 10px;
+    background-color: #FFCC00;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+    background-color: #FFD633;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .team-card, .trustee-card, .infographic, .quarterly-report {
+        width: 100%;
+    }
+}
+ 
+
+/* New styles for the modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    margin: 10% auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+    </style>
+
+</head>
+<body>
+<header>
+    <div class="header-container">
+      <!-- Left side: Logo -->
+      <div class="logo">
+        <img src="logo.jpg" alt="Foundation Logo" />
+      </div>
+
+      <!-- Center: Navigation Links -->
+      <nav>
+        <ul class="nav-links">
+          <li class="dropdown">
+            <a href="#">ABOUT US</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Our Mission</a></li>
+              <li><a href="#">Our Why</a></li>
+              <li><a href="#">Our Team</a></li>
+              <li><a href="#">Board of Trustees</a></li>
+              <li><a href="#">Financials</a></li>
+              <li><a href="#">Awards</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">WHAT WE DO</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">God Errands</a></li>
+              <li><a href="#">Our Testimonials</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+  <a href="#">RESOURCES AND MEDIA</a>
+  <ul class="dropdown-menu resources">
+    <div class="dropdown-column">
+      <h4>NEWS & STORIES</h4>
+      <a href="#">Our Stories</a>
+      <a href="#">Project Spotlights</a>
+      <a href="#">TSAG in the News</a>
+    </div>
+    <div class="dropdown-column">
+      <h4>MULTIMEDIA</h4>
+      <a href="#">Photographs</a>
+      <a href="#">Videos</a>
+    </div>
+    <div class="dropdown-column">
+      <h4>RESOURCES</h4>
+      <a href="#">Books</a>
+      <a href="#">Podcasts</a>
+    </div>
+  </ul>
+</li>
+        </ul>
+      </nav>
+
+      <!-- Right side: Donate Button -->
+      <div class="donate-button">
+        <a href="#">Donate</a>
+      </div>
+    </div>
+  </header>
+<section class="about-header-section">
+  <h2>ABOUT US</h2>
+  </div>
+</section>
+    <!-- Our Mission Section -->
+    <section class="mission-section">
+        <h2>Our Mission</h2>
+        <p>Our mission is to bring smiles to the faces of people in need (especially women and children) by providing financial, emotional and spiritual support.</p>
+    </section>
+
+    <!-- Our Why Section -->
+    <section class="why-section">
+        <h2>Our Why</h2>
+        <p>The Sholly Smile Factory was birthed from a place of deep pain. The loss of my dear sister – Oluwashola Adefolalu Gaskain Poland back in 2016. </p>
+        <p>Everything we do is in her honour. </p>
+        <p>Till today, we do not know what REALLY happened to her but from all we do know, we believe she was a victim of some form of domestic abuse. </p>
+        <p>Losing Sholly has been the MOST painful thing that has ever happened to me but I bless God for helping me to find a way to bring purpose out of this deep pain. </p>
+        <p>By helping others, I am finding healing. </p>
+        <p>Thanks to the errands God is sending us, Sholly is no longer remembered for the horrible story of her death because we are creating a new, beautiful story from her death. One that touches lives. One that re-creates smiles, like the ones Sholly was famous for.
+</p>
+    </section>
+
+    <!-- Our Team Section -->
+    <section class="team-section">
+        <h2>Our Team</h2>
+        <div id="team-cards" class="team-cards"></div>
+    </section>
+
+    <!-- Board of Trustees Section -->
+    <section class="trustees-section">
+        <h2>Board of Trustees</h2>
+        <div id="trustees-cards" class="trustees-cards"></div>
+    </section>
+
+    <!-- Financials Section -->
+    <section class="financials-section">
+        <h2>Financials</h2>
+        <div>
+            <h3>Yearly Expenditure Infographics</h3>
+            <div id="yearly-infographics" class="yearly-infographics"></div>
+        </div>
+        <div>
+            <h3>Quarterly Reports - 2024</h3>
+            <div id="quarterly-reports" class="quarterly-reports"></div>
+        </div>
+    </section>
+    <!-- New Awards Section -->
+<section class="awards-section">
+    <h2>Awards</h2>
+    <div id="awards-card" class="awards-card">
+        <img src="award.jpg" alt="Award Image" onclick="openModal(this.src)">
+    </div>
+</section>
+<!-- Modal for Image Expansion -->
+<div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+</div>
+<footer>
+        <p>&copy; 2024 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
+    </footer>
+
+    <script>
+    // Data for Our Team
+const teamData = [
+    { name: "Abimbola (Salt) Essien Nelson", position: "Chief Errand Girl (CEG)" },
+    { name: "Afolake Olayinka", position: "TSSP Guest Relations Manager" },
+    { name: "Agnes Adeh", position: "TSSP Guest Welfare Manager" },
+    { name: "Ifechukwu Udenna", position: "TSSP Campaign Manager" },
+
+];
+
+// Data for Board of Trustees
+const trusteesData = [
+    { name: "Abimbola (Salt) Essien Nelson", position: "Founder/Chairman", company: "The Shola Adefolalu Gaska Foundation" },
+    { name: "Henry Essien-Nelson", position: "Experienced Banker, Financial Services and Business Consultant", company: "LeoRex Group" },
+    { name: "Olufunmilola Adedipe", position: "Secretary", company: "The Shola Adefolalu Gaska Foundation" },
+    { name: "Ize Adava", position: "Lead, Operations & Relations", company: "3rd Sector Support Africa (3rdSecSup)" },
+    { name: "Okaima (Keke) Ohizua", position: "Past Executive Director & Chief Operating Officer", company: "Transcorp Power Plc " },
+    { name: "Yemisi Sawyer", position: "Senior Lead, Learning Facilitation", company: "Kyndryl" },
+    { name: "Funkeyi Akintayo", position: "", company: "" },
+
+];
+
+// Data for Yearly Infographics
+const yearlyInfographicsData = [
+    { title: "2020", image: "infographics_20.jpg" },
+    { title: "2021", image: "infographics_21.jpg" },
+    { title: "2022", image: "infographics_22.jpg" },
+    { title: "2023", image: "infographics_23.jpg" },
+];
+
+// Data for Quarterly Reports
+const quarterlyReportsData = [
+    { title: "Q1 2024", image: "infographics_q1_24.jpg", reportUrl: "path/to/q1-report.pdf" },
+    { title: "Q2 2024", image: "infographics_q2_24.jpg", reportUrl: "path/to/q2-report.pdf" },
+    { title: "Q3 2024", image: "infographics_q3_24.jpg", reportUrl: "path/to/q3-report.pdf" },
+];
+
+// Function to populate Our Team section
+function populateTeam() {
+    const teamContainer = document.getElementById("team-cards");
+    teamData.forEach(member => {
+        const card = document.createElement("div");
+        card.className = "team-card";
+        card.innerHTML = `
+            <h3>${member.name}</h3>
+            <p>${member.position}</p>
+        `;
+        teamContainer.appendChild(card);
+    });
+}
+
+// Function to populate Board of Trustees section
+function populateTrustees() {
+    const trusteesContainer = document.getElementById("trustees-cards");
+    trusteesData.forEach(trustee => {
+        const card = document.createElement("div");
+        card.className = "trustee-card";
+        card.innerHTML = `
+            <h3>${trustee.name}</h3>
+            <p>${trustee.position}, ${trustee.company}</p>
+        `;
+        trusteesContainer.appendChild(card);
+    });
+}
+
+// Function to populate Yearly Infographics section
+function populateYearlyInfographics() {
+    const yearlyContainer = document.getElementById("yearly-infographics");
+    yearlyInfographicsData.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "infographic";
+        card.innerHTML = `
+            <img src="${item.image}" alt="${item.title}">
+            <h4>${item.title}</h4>
+        `;
+        yearlyContainer.appendChild(card);
+    });
+}
+
+// Function to populate Quarterly Reports section
+function populateQuarterlyReports() {
+    const quarterlyContainer = document.getElementById("quarterly-reports");
+    quarterlyReportsData.forEach(report => {
+        const card = document.createElement("div");
+        card.className = "quarterly-report";
+        card.innerHTML = `
+            <img src="${report.image}" alt="${report.title}">
+            <h4>${report.title}</h4>
+            <a href="${report.reportUrl}" class="download-button" target="_blank">Download Report</a>
+        `;
+        quarterlyContainer.appendChild(card);
+    });
+}
+
+// Function to handle card clicks and open modal with image
+function openModal(imageSrc) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    modal.style.display = "block";
+    modalImg.src = imageSrc;
+}
+
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+}
+
+// Adding click event listeners for infographics and reports images
+function enableImageExpansion() {
+    document.querySelectorAll('.infographic img, .quarterly-report img').forEach(img => {
+        img.addEventListener('click', function() {
+            openModal(this.src);
+        });
+    });
+}
+
+// Initialize all sections
+populateTeam();
+populateTrustees();
+populateYearlyInfographics();
+populateQuarterlyReports();
+enableImageExpansion();
+    </script>
+</body>
+</html>
+

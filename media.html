@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media and Resources</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="header-container">
+      <!-- Left side: Logo -->
+      <div class="logo">
+        <img src="logo.jpg" alt="Foundation Logo" />
+      </div>
+
+      <!-- Center: Navigation Links -->
+      <nav>
+        <ul class="nav-links">
+          <li class="dropdown">
+            <a href="#">ABOUT US</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Our Mission</a></li>
+              <li><a href="#">Our Why</a></li>
+              <li><a href="#">Our Team</a></li>
+              <li><a href="#">Board of Trustees</a></li>
+              <li><a href="#">Financials</a></li>
+              <li><a href="#">Awards</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">WHAT WE DO</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Our God Errands</a></li>
+              <li><a href="#">Our Testimonials</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+  <a href="#">RESOURCES AND MEDIA</a>
+  <ul class="dropdown-menu resources">
+    <div class="dropdown-column">
+      <h4>NEWS & STORIES</h4>
+      <a href="#">Our Stories</a>
+      <a href="#">Project Spotlights</a>
+      <a href="#">TSAG in the News</a>
+    </div>
+    <div class="dropdown-column">
+      <h4>MULTIMEDIA</h4>
+      <a href="#">Photographs</a>
+      <a href="#">Videos</a>
+    </div>
+    <div class="dropdown-column">
+      <h4>RESOURCES</h4>
+      <a href="#">Books</a>
+      <a href="#">Podcasts</a>
+    </div>
+  </ul>
+</li>
+        </ul>
+      </nav>
+
+      <!-- Right side: Donate Button -->
+      <div class="donate-button">
+        <a href="#">Donate</a>
+      </div>
+    </div>
+  </header>
+  <section class="resource-media-section">
+  <h2>RESOURCES AND MEDIA</h2>
+  </div>
+</section>
+    <div class="stories-section">
+        <h2>Our Stories</h2>
+        <div class="story-cards" id="story-cards-container"></div>
+    </div>
+
+    <div class="projects-section">
+        <h2>Project Spotlights</h2>
+        <div class="project-cards" id="project-cards-container"></div>
+    </div>
+
+    <div class="media-section">
+        <h2>The Foundation In The News</h2>
+        <div class="media-cards" id="media-cards-container"></div>
+    </div>
+
+    <div class="photos-section">
+        <h2>Photographs</h2>
+        <div class="photo-cards" id="photo-cards-container"></div>
+    </div>
+
+    <div class="publications-section">
+        <h2>Books</h2>
+        <div class="publication-cards" id="publication-cards-container"></div>
+        <h2>Podcasts</h2>
+        <div class="podcast-cards" id="podcast-cards-container"></div>
+    </div>
+    <footer>
+        <p>&copy; 2024 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
+    </footer>
+
+    <script>
+       // Data for photo albums
+        const photoAlbums = [
+            {
+                title: 'The Sholly Serenity Place InfoDeck',
+                count: 12,
+                imageUrl: 'info_deck.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.281157607337681&type=3' 
+            },
+            {
+                title: 'The Sholly Smile Factory’s Good Works',
+                count: 68,
+                imageUrl: 'good_works.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.2769120740017661&type=3' 
+            },
+            {
+                title: 'Oluwashola: The Story of Us: The PhotoWall',
+                count: 129,
+                imageUrl: 'oluwashola.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.2516287795300958&type=3' 
+            },
+            {
+                title: 'The Sholly Serenity Place',
+                count: 201,
+                imageUrl: 'serenity.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.2768953006701101&type=3' 
+            },
+            {
+                title: 'The Sholly Smile Factory Good Peoples',
+                count: 45,
+                imageUrl: 'good_people.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.2821198088143259&type=3' 
+            },
+            {
+                title: 'Sholly’s 40th Birthday Fiesta Guest PhotoBook',
+                count: 78,
+                imageUrl: 'sholly_40.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.2705178809745188&type=3' 
+            },
+            {
+                title: 'Operation Resettle Mr. Sunday',
+                count: 8,
+                imageUrl: 'sunday.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.2676278799301856&type=3' 
+            },
+            {
+                title: 'Then she grew up, got a degree and got married',
+                count: 24,
+                imageUrl: 'sholly_up.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.1799745076955237&type=3' 
+            },
+            {
+                title: 'Sholly’s Rising 3: Still, I Rise Up To My Higher',
+                count: 121,
+                imageUrl: 'sholly_rising.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.2386490584947347&type=3' 
+            },
+            {
+                title: 'Sholly’s What’s Love Got To Do With. Healing Talk',
+                count: 107,
+                imageUrl: 'salt_speech.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.2338670623062677&type=3' 
+            },
+            {
+                title: 'Sholly’s ‘What’s Love Got to do with Faith’ Talk',
+                count: 37,
+                imageUrl: 'sholly_lives.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.2261826777413729&type=3' 
+            },
+            {
+                title: '2018 Yellow Takeover For Sholly',
+                count: 91,
+                imageUrl: 'yellow.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.2195959897333751&type=3' 
+            },
+            {
+                title: 'Yellow Takeover For Sholly 2017',
+                count: 142,
+                imageUrl: 'yellow_2017.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.1965257410404002&type=3' 
+            },
+            {
+                title: 'Sholly’s 2018 Rising “When Life Goes Low, We Rise Up!',
+                count: 104,
+                imageUrl: 'sholly_cake.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.2143201022609639&type=3' 
+            },
+            {
+                title: 'Feb 22 will always be a Good Day',
+                count: 76,
+                imageUrl: 'sholly_cover.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.1993680957561647&type=3' 
+            },
+            {
+                title: 'Just a taste of Sholly\s Rising',
+                count: 33,
+                imageUrl: 'sholly_rising_taste.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.1930406787222398&type=3' 
+            },
+            {
+                title: 'We Rise Up in Sholly\'s Honour',
+                count: 7,
+                imageUrl: 'sholly_rising1.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.1927425417520535&type=3' 
+            },
+            {
+                title: 'When Sholly was a little girl.....',
+                count: 10,
+                imageUrl: 'sholly_little.jpg',
+                link:'https://web.facebook.com/media/set/?set=a.1799742073622204&type=3' 
+            }
+        ];
+
+        // Data for stories
+        const stories = [
+            {
+                title: 'A Heartfelt Gift from Young Queens',
+                description: 'A group of young girls raised funds to provide a trailer load of provisions for those in need, showcasing their incredible generosity and selflessness.',
+                imageUrl: 'young_queens.jpg',
+                link: 'https://web.facebook.com/photo/?fbid=809485591171544&set=pb.100063303304967.-2207520000'
+            },
+            {
+                title: 'A Weekend of Growth and Gratitude',
+                description: 'This past weekend was memorable as we taught our children to plant flower seeds, fulfilling a personal bucket list item while creating beautiful new memories at #TSSP.',
+                imageUrl: 'flowers.jpg',
+                link:'https://web.facebook.com/photo/?fbid=608946387892133&set=pb.100063303304967.-2207520000' 
+            },
+            {
+                title: 'A Grateful Heart for Our Supporters',
+                description: 'I’m overwhelmed with gratitude for a group of women who are raising funds for The Sholly Serenity Place while sharing their mission of giving back to vulnerable communities in Nigeria and Ghana.',
+                imageUrl: 'supporters.jpg',
+                link:'https://web.facebook.com/photo/?fbid=575900137863425&set=pb.100063303304967.-2207520000' 
+            }
+        ];
+
+        // Data for projects
+        const projects = [
+            {
+                title: 'Embracing Our TSSP Children and Creating a Safer Space',
+                description: 'Reflecting on our journey at The Sholly Serenity Place, I share how God has transformed our mission to include caring for children and made our compound a safer, more welcoming space for them to play.',
+                imageUrl: 'playground.jpeg',
+                link: 'https://www.linkedin.com/company/the-shola-adefolalu-gaska-foundation/posts/?feedView=all'
+            },
+            {
+                title: 'Celebrating 100 Days of Impact at The Sholly Serenity Place',
+                description: 'On September 14, 2021, we joyfully marked our 100th day of operations at The Sholly Serenity Place, reflecting on the positive impact we’ve made and giving glory to God for guiding our mission.',
+                imageUrl: 'day_100.jpg',
+                link: 'https://web.facebook.com/photo.php?fbid=205471134906329&set=pb.100063303304967.-2207520000&type=3'
+            },
+            {
+                title: 'How Papa God Organized TSSP’s 1st Birthday Party',
+                description: 'In a heartfelt podcast, Salt shares how Papa God made the lead-up to and celebration of TSSP’s 1st birthday unforgettable, reminding us all that He is more than enough.',
+                imageUrl: 'birthday1.jpg',
+                link: 'https://web.facebook.com/photo.php?fbid=361343709319070&set=pb.100063303304967.-2207520000&type=3'
+            }
+        ];
+        
+        // Data for news
+        const news = [
+            {
+                title: 'Shola Adefolalu Gaska Foundation announces inaugural winners of Professor Daniel Oladele Adefolalu Prizes',
+                description: 'The Shola Adefolalu Gaska Foundation is dedicated to promoting educational excellence and supporting students in their academic pursuits.',
+                imageUrl: 'queencollege.jpg',
+                link: 'https://freedomonline.com.ng/shola-adefolalu-gaska-foundation-announces-inaugural-winners-of-professor-daniel-oladele-adefolalu-prizes/'
+            },
+            {
+                title: 'The Shola Adefolalu Gaska Foundation launches initiative to strengthen families.',
+                description: 'The initiative aims to touch the lives of vulnerable women and families across Nigeria, beginning with Lagos, Cross River, Akwa Ibom, Niger and ...',
+                imageUrl: 'alive.png',
+                link: 'https://www.thisdaylive.com/index.php/2024/06/24/shola-adefolalu-gaska-foundation-launches-initiative-to-strengthen-families/'
+            },
+            {
+                title: '16 Days of Activism: The Sholly Place Shines While Offering Hope',
+                description: 'The Shola Adefolalu Gaska Foundation aka the Sholly Smile Factory which runs the shelter is a not-for-profit organisation set up in honour ...',
+                imageUrl: 'salt.jpg',
+                link: 'https://bonewssng.com/16-days-of-activism-the-sholly-place-shines-while-offering-hope/'
+            },
+            {
+                title: 'Lagos Govt honours Shola Adefolalu Gaska Foundation',
+                description: 'Most Responsive NGO\' award from the Lagos state government. The Sholly place is one of the roughy two dozen women\'s shelters in Nigeria. The ...',
+                imageUrl: 'salt_award.jpg',
+                link: 'https://nigerianewsmark.com.ng/2023/12/05/lagos-govt-honours-shola-adefolalu-gaska-foundation/'
+            },
+            {
+                title: 'The Shola Adefolalu Gaska Foundation Opens Safe Haven for Abuse Survivors',
+                description: 'The Shola Adefolalu Gaska Foundation is a non-profit organization set up to bring smiles to the faces of people in need (especially women and ...',
+                imageUrl: 'tssp_launch.jpeg',
+                link: 'https://bonewssng.com/the-shola-adefolalu-gaska-foundation-opens-safe-haven-for-abuse-survivors/'
+            }
+        ];
+        
+        // Data for publications
+        const publications = [
+            {
+                title: 'Oluwashola, The Story of Us',
+                description: 'Oluwashola: The Story of Us. This is not just a book. It\'s Salt\'s life. Her sister, Sholly\'s life. Her family\'s life. In all it\'s perfectly imperfect glory.',
+                imageUrl: 'sholly_book.jpg',
+                link: 'https://www.amazon.com/Oluwashola-Story-Us-Salt-Essien-Nelson/dp/1637676697'
+            }
+        ];
+
+        // Data for podcasts
+        const podcasts = [
+            {
+                title: 'Salt Talks',
+                description: 'Salt Talks is a weekly podcast via which Salt talks about her life, her journey as a woman desperately seeking to be an Authentic Christian. Her talks are random but she hopes that no matter what she shares about you leave inspired to shine your little light no matter what. Yes. She hopes you seek to be Light. And Salt. Too😊🌻💛',
+                imageUrl: 'salt_talks.jpg',
+                link: 'https://open.spotify.com/show/4I5306SaLkdvh536wsxtGu'
+            }
+        ];
+
+        // Functions to generate cards
+        function generatePhotoCards() {
+            const container = document.getElementById('photo-cards-container');
+
+            photoAlbums.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('photo-card');
+
+                card.innerHTML = `
+                    <img src="${item.imageUrl}" alt="${item.title}">
+                    <h4>${item.title}</h4>
+                    <p>${item.count} photos</p>
+                    <a href="${item.link}">View Album</a>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function generateStoryCards() {
+            const container = document.getElementById('story-cards-container');
+
+            stories.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('story-card');
+
+                card.innerHTML = `
+                    <img src="${item.imageUrl}" alt="${item.title}">
+                    <h4>${item.title}</h4>
+                    <p>${item.description}</p>
+                    <a href="${item.link}">Read More</a>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function generateProjectCards() {
+            const container = document.getElementById('project-cards-container');
+
+            projects.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('project-card');
+
+                card.innerHTML = `
+                    <img src="${item.imageUrl}" alt="${item.title}">
+                    <h4>${item.title}</h4>
+                    <p>${item.description}</p>
+                    <a href="${item.link}">Learn More</a>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function generateNewsCards() {
+            const container = document.getElementById('media-cards-container');
+
+            news.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('media-card');
+
+                card.innerHTML = `
+                    <img src="${item.imageUrl}" alt="${item.title}">
+                    <h4>${item.title}</h4>
+                    <p>${item.description}</p>
+                    <a href="${item.link}">Read More</a>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function generatePublicationCards() {
+            const container = document.getElementById('publication-cards-container');
+
+            publications.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('publication-card');
+
+                card.innerHTML = `
+                    <img src="${item.imageUrl}" alt="${item.title}">
+                    <h4>${item.title}</h4>
+                    <p>${item.description}</p>
+                    <a href="${item.link}">Buy on Amazon</a>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function generatePodcastCards() {
+            const container = document.getElementById('podcast-cards-container');
+
+            podcasts.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('podcast-card');
+
+                card.innerHTML = `
+                    <img src="${item.imageUrl}" alt="${item.title}">
+                    <h4>${item.title}</h4>
+                    <p>${item.description}</p>
+                    <a href="${item.link}">Listen Now</a>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Generate all cards on page load
+        window.onload = function() {
+            generatePhotoCards();
+            generateStoryCards();
+            generateProjectCards();
+            generateNewsCards();
+            generatePublicationCards();
+            generatePodcastCards();
+        };
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,649 @@
+/* styles.css */
+
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header styling */
+header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Logo styling */
+.logo img {
+  height: 50px;
+}
+
+/* Navigation styling */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+/* Default hide for all dropdown menus */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  list-style: none;
+  min-width: 300px;
+  z-index: 10;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown:hover .resources {
+  display: flex; /* Only apply flex layout on hover */
+  gap: 20px;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 15px;
+  white-space: nowrap;
+  color: #333;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+
+/* Flex layout for individual columns */
+.dropdown-column {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically within each column */
+  gap: 8px;
+}
+
+/* Heading and link styles */
+.resources h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.resources a {
+  color: #333;
+  text-decoration: none;
+}
+
+.resources a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Donate button styling */
+.donate-button a {
+  background-color: #FFCC00; /* Example yellow color for the button */
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.donate-button a:hover {
+  background-color: #FFD633;
+}
+
+
+.hero {
+            position: relative;
+            background-image: url('sholly.png');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0);
+            transition: background 0.3s ease;
+        }
+
+        .hero:hover::before {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero .content {
+            position: relative;
+            z-index: 1;
+        }
+
+/* Section styling */
+    .foundation-section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    /* Title styling */
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #333;
+      
+    }
+
+    /* Paragraph styling */
+    .foundation-section p {
+      margin-bottom: 15px;
+      color: #666;
+      line-height: 1.6;
+      
+    }
+
+    /* Container for the horizontal divs */
+    .features-container {
+      display: flex;
+      justify-content: space-around; /* Space out the divs */
+      margin: 30px 0; /* Space around the features */
+    }
+
+    /* Individual feature div styling */
+    .feature {
+      
+      padding: 15px;
+      width: 30%; /* Each feature takes 30% of the container width */
+      text-align: center; /* Center text */
+        }
+
+    .feature img {
+      width: 50px; /* Adjust icon size */
+      margin-bottom: 10px; /* Space below icon */
+    }
+
+    /* Learn more button styling */
+    .learn-more-button {
+      display: inline;
+      margin-top: 20px;
+      background-color: #FFCC00; /* Yellow button */
+      color: #333;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .learn-more-button::after {
+      content: '→'; /* Right-facing arrow */
+      margin-left: 8px; /* Spacing between text and arrow */
+    }
+
+   
+/* Section styling */
+    .activity-section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .cards-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 100px;
+      margin-top: 50px;
+    }
+
+    .card {
+      background-color: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      flex: 1; /* Equal size for all cards */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .circular-logo {
+    width: 100px; /* Set a specific width */
+    height: 100px; /* Set a specific height for a circular logo */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image covers the area */
+    overflow: hidden; /* Ensures parts of the image don't overflow */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+    .card img {
+      width: 100%;
+      height:50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+      
+    }
+
+    .card h3 {
+      margin: 15px 0;
+      font-size: 18px;
+    }
+
+    .card p {
+      margin-bottom: 15px;
+      color: #666;
+    }
+   
+
+/* Our Partners Section */
+.our-partners {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #f8f9fa;
+  overflow: hidden;
+}
+
+.our-partners h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.marquee {
+  display: flex;
+  block-size: var(--marquee-item-height);
+  margin-block: var(--marquee-item-height);
+  position: relative;
+  overflow-x: hidden;
+  mask-image: linear-gradient(
+    to right,
+    hsl(0 0% 0% / 0),
+    hsl(0 0% 0% / 1) 20%,
+    hsl(0 0% 0% / 1) 80%,
+    hsl(0 0% 0% / 0)
+  );
+}
+
+.marquee--9 {
+  --marquee-item-width: 100px;
+  --marquee-item-height: 100px;
+  --marquee-duration: 36s;
+  --marquee-items: 8;
+}
+
+.marquee__item {
+  --marquee-item-offset: max(
+    calc(var(--marquee-item-width) * var(--marquee-items)),
+    calc(100% + var(--marquee-item-width))
+  );
+  --marquee-delay: calc(var(--marquee-duration) / var(--marquee-items) * (var(--marquee-items) - var(--marquee-item-index)) * -1);
+  position: absolute;
+  inset-inline-start: var(--marquee-item-offset);
+  transform: translateX(-50%);
+  animation: go linear var(--marquee-duration) var(--marquee-delay, 0s) infinite;
+}
+
+.marquee--9 .marquee__item:nth-of-type(1) {
+  --marquee-item-index: 1;
+}
+
+.marquee--9 .marquee__item:nth-of-type(2) {
+  --marquee-item-index: 2;
+}
+
+.marquee--9 .marquee__item:nth-of-type(3) {
+  --marquee-item-index: 3;
+}
+
+.marquee--9 .marquee__item:nth-of-type(4) {
+  --marquee-item-index: 4;
+}
+
+.marquee--9 .marquee__item:nth-of-type(5) {
+  --marquee-item-index: 5;
+}
+
+.marquee--9 .marquee__item:nth-of-type(6) {
+  --marquee-item-index: 6;
+}
+
+.marquee--9 .marquee__item:nth-of-type(7) {
+  --marquee-item-index: 7;
+}
+
+.marquee--9 .marquee__item:nth-of-type(8) {
+  --marquee-item-index: 8;
+}
+
+.marquee--9 .marquee__item:nth-of-type(8) {
+  --marquee-item-index: 9;
+}
+
+
+
+
+@keyframes go {
+  to {  
+    inset-inline-start: calc(var(--marquee-item-width) * -1);
+  }
+}
+
+    
+/* Donate Section with Background Image */
+.donate-section {
+  background-image: url('women_group.png'); /* Replace with the actual background image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height:400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* Overlay for better text readability */
+.donate-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.donate-content {
+  position: relative;
+  z-index: 2; /* Ensure content appears above overlay */
+}
+
+/* Heading and Paragraph Styling */
+.donate-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.donate-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+/* Button Styling */
+.donate-content button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #ff4500; /* Customize button color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.donate-content button:hover {
+  background-color: #ff5722; /* Button hover effect */
+}
+
+/* Latest News Section */
+.latest-news {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.latest-news h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+/* News Cards Styling */
+.news-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.news-card {
+  padding: 20px;
+  width: 300px;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.news-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.news-card h3 {
+  font-size: 1.5rem;
+}
+
+.news-card p {
+  font-size: 1rem;
+}
+
+/* Read More Link Styling */
+.news-card a {
+  color: yellow;
+  text-decoration: underline;
+  font-size: 1rem;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s ease;
+}
+
+.news-card a:hover {
+  color: #ffd700;
+}
+
+/* More News Button Styling */
+.more-news-btn {
+  margin-top: 30px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: yellow;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.more-news-btn:hover {
+  background-color: #ffd700;
+}
+
+/* Social Media Section Styling */
+.social-media-section {
+  background-color: #FFD700; /* Shade of yellow */
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Social Icons Styling */
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icon img {
+  width: 40px;
+  height: 40px;
+  background-color: #FFD700; /* Match background color */
+  padding: 5px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.social-icon img:hover {
+  transform: scale(1.1);
+}
+
+/* Email List Section Styling */
+ .email-list {
+            width: 350px;
+            height: 150px;
+            background-color: white;
+            border: 5px solid yellow;
+            margin: 20px auto; /* Center the section */
+            position: relative;
+            text-align: center;
+            padding-top: 30px; /* Add padding to avoid text being cut */
+        }
+
+        .email-list h3 {
+            margin: 0;
+            position: absolute;
+            top: -20px; /* Position to cut the upper border */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white; /* Match background to avoid overlap */
+            padding: 0 10px; /* Add some padding */
+        }
+
+        .email-list p {
+            margin: 10px 0;
+        }
+
+        .email-list button {
+            padding: 10px 20px;
+            background-color: #FFD700;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .photos-section, .stories-section, .projects-section, .media-section, .publications-section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .photo-cards, .story-cards, .project-cards, .media-cards, .publication-cards, .podcast-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .photo-card, .story-card, .project-card, .media-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 15px;
+            width: 200px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .publication-card, .podcast-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 15px;
+            width: 500px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        
+        .photo-card img, .story-card img, .project-card img, .media-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .photo-card h4, .story-card h4, .project-card h4, .media-card h4, .publication-card h4, .podcast-card h4 {
+            margin: 10px 0 5px;
+        }
+
+        .photo-card p, .story-card p, .project-card p, .media-card p, .publication-card p, .podcast-card p {
+            margin: 0;
+            color: #555;
+        }
+
+        .photo-card a, .project-card a, .story-card a, .media-card a, .publication-card a, .podcast-card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #FFCC00;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .photo-card a, .project-card a:hover, .story-card a:hover, .media-card a:hover, .publication-card a:hover, .podcast-card a:hover {
+            background-color: #FFD633;
+        }
+        
+       
+.publication-card img,  .podcast-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+ .resource-media-section {
+  background-color: #FFD700; /* Shade of yellow */
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1.2rem;
+}
+
+
