@@ -8,34 +8,37 @@
         /* Basic styling for layout */
         /* Header styling */
         header {
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 10px 20px;
-            position: relative;
-        }
-        
-        .header-container {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 0; /* Top and bottom padding */
+    width: 100%; /* Ensures header takes full width */
+}
+
+.header-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between; /* Keeps the logo on the left and menu icon on the right */
-    max-width: 100%; /* Ensure header doesn't exceed device width */
-    padding: 10px 20px; /* Add some padding */
+    align-items: center; /* Vertically centers items */
+    justify-content: space-between; /* Space items to occupy full width */
+    width: 100%; /* Ensure full width for the header */
+    padding: 0 20px; /* Add horizontal padding */
 }
 
 .logo {
-    flex: 0 0 auto; /* Ensure logo doesn't grow */
+    flex: none; /* Prevent flex-grow, keeps logo size fixed */
 }
 
 .foundation-name {
-    flex: 1; /* Allow the foundation name to take available space */
-    text-align: center; /* Center align the foundation name */
+    flex: 1; /* Allow foundation name to take available space */
+    text-align: center; /* Center text within its space */
+    margin: 0; /* Remove any default margins */
 }
 
 .menu-icon {
-    flex: 0 0 auto; /* Ensure menu icon doesn't grow */
-    cursor: pointer;
+    flex: none; /* Prevent flex-grow, keeps menu icon size fixed */
+    cursor: pointer; 
     font-size: 24px; /* Adjust font size as needed */
 }
+
+        
 
         /* Logo styling */
         .logo img {
