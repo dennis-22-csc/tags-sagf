@@ -33,15 +33,16 @@
 
         /* New styling for right-side container */
         .right-side {
-            display: flex; /* Align donate button and menu icon in a row */
-            align-items: center; /* Vertically center items */
+            display: flex; /* Align donate button and menu icon in a column */
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-end; /* Align items to the right */
         }
 
         .menu-icon {
             flex: none; /* Prevent flex-grow, keeps menu icon size fixed */
             cursor: pointer; 
             font-size: 24px; /* Adjust font size as needed */
-            margin-left: 10px; /* Add space between donate button and menu icon */
+            margin-top: 10px; /* Space between donate button and menu icon */
         }
 
         /* Logo styling */
@@ -130,7 +131,7 @@
             <h1>The Shola Adefolalu Gaska Foundation</h1>
         </div>
 
-        <!-- Right side: Container for Menu Icon and Donate Button -->
+        <!-- Right side: Container for Donate Button and Menu Icon -->
         <div class="right-side">
             <div class="donate-button">
                 <a href="#">Donate</a>
