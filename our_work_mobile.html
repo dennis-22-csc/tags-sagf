@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What We Do</title>
+    <style>
+        /* Basic styling for layout */
+        /* Header styling */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* Logo styling */
+        .logo img {
+            height: 50px;
+        }
+
+        /* Navigation drawer styling */
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -300px; /* Initially hidden */
+            width: 250px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+            transition: right 0.3s;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .drawer.open {
+            right: 0; /* Show drawer */
+        }
+
+        .nav-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .arrow {
+            cursor: pointer;
+        }
+
+        .sub-menu {
+            display: none;
+            padding-left: 20px;
+        }
+
+        .sub-menu.open {
+            display: block; /* Show sub-menu */
+        }
+
+        /* Donate button styling */
+        .donate-button a {
+            background-color: #FFCC00; /* Example yellow color for the button */
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .donate-button a:hover {
+            background-color: #FFD633;
+        }
+
+        .menu-icon {
+            cursor: pointer;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <!-- Left side: Logo -->
+        <div class="logo">
+            <img src="logo.jpg" alt="Foundation Logo" />
+        </div>
+
+        <!-- Center: Foundation Name -->
+        <div class="foundation-name">
+            <h1>Foundation Name</h1>
+        </div>
+
+        <!-- Right side: Menu Icon and Donate Button -->
+        <div>
+            <div class="donate-button">
+                <a href="#">Donate</a>
+            </div>
+            <div class="menu-icon" onclick="toggleDrawer()">&#9776;</div>
+        </div>
+    </div>
+</header>
+
+<!-- Navigation Drawer -->
+<div class="drawer" id="navDrawer">
+    <div class="nav-item">
+        <span>ABOUT US</span>
+        <span class="arrow" onclick="toggleSubMenu('aboutSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="aboutSubMenu">
+        <div><a href="#">Our Mission</a></div>
+        <div><a href="#">Our Why</a></div>
+        <div><a href="#">Our Team</a></div>
+        <div><a href="#">Board of Trustees</a></div>
+        <div><a href="#">Financials</a></div>
+        <div><a href="#">Awards</a></div>
+    </div>
+    
+    <div class="nav-item">
+        <span>WHAT WE DO</span>
+        <span class="arrow" onclick="toggleSubMenu('whatWeDoSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="whatWeDoSubMenu">
+        <div><a href="#">Our God Errands</a></div>
+        <div><a href="#">Our Testimonials</a></div>
+    </div>
+    
+    <div class="nav-item">
+        <span>RESOURCES AND MEDIA</span>
+        <span class="arrow" onclick="toggleSubMenu('resourcesSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="resourcesSubMenu">
+        <div><a href="#">Our Stories</a></div>
+        <div><a href="#">Project Spotlights</a></div>
+        <div><a href="#">TSAG in the News</a></div>
+        <div><a href="#">Photographs</a></div>
+        <div><a href="#">Videos</a></div>
+        <div><a href="#">Books</a></div>
+        <div><a href="#">Podcasts</a></div>
+    </div>
+
+    <div class="donate-button" style="margin-top: auto;">
+        <a href="#">Donate</a>
+    </div>
+</div>
+
+<script>
+    function toggleDrawer() {
+        const drawer = document.getElementById('navDrawer');
+        drawer.classList.toggle('open');
+    }
+
+    function toggleSubMenu(menuId) {
+        const subMenu = document.getElementById(menuId);
+        subMenu.classList.toggle('open');
+    }
+</script>
+
+<section class="about-header-section">
+    <h2>WHAT WE DO</h2>
+</section>
+
+<!-- Rest of your content goes here -->
+</body>
+</html>
+
