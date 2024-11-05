@@ -845,15 +845,19 @@ margin-bottom: 10px;
 .our-partners {
 text-align: center;
  background-color: #f8f9fa;
- 
+ padding-top: 20px;
+ padding-bottom: 20px;
 } 
 
-
+#d-financials {
+	display: inline-block;
+	margin-top: 50px;
+    margin-bottom: 20px;
+} 
 
 .donate-section {
 
-  background-image: url('women_group.png'); /* Replace with the actual background image path */
-
+  background-image: url('women_group.png');
   background-size: cover;
 
   background-position: center;
@@ -1163,7 +1167,22 @@ text-decoration: underline;
 
         }
 
+/* General Section Styles */
+.foundation-section, 
+.features-container,
+.activity-section,
+.latest-news,
+.donate-section
+{
+    padding: 50px;
+    margin: 20px auto;
+    max-width: 1200px;
+    text-align: center;
+}
 
+.our-partners {
+	
+	} 
   </style>
 </head>
 
@@ -1418,7 +1437,7 @@ text-decoration: underline;
 
     </div>
 
-    <a href="about.html#financials" class="learn-more-button">Download Financials</a>
+    <a href="about.html#financials" class="learn-more-button" id="d-financials">Download Financials</a>
 
   </div>
 
