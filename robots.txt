@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /           # Allows crawling of your GitHub Pages site
+
+Disallow: /sagf/   # Disallows crawling of the repository's GitHub page
