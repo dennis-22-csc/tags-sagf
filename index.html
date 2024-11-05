@@ -1,206 +1,1645 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Home Page</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+  	/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+    	/* Hide both divs by default */
+#mobile-header, #navDrawer, #desktop-header {
+    display: none;
+}
+
+/* Show div with ID x for mobile devices */
+@media (max-width: 767px) { /* Adjust the max-width as needed for your mobile breakpoint */
+    #mobile-header, #navDrawer  {
+        display: block; /* or inline-block, flex, etc., based on your layout needs */
+    }
+}
+
+/* Show div with ID y for desktop devices */
+@media (min-width: 768px) { /* Adjust the min-width as needed for your desktop breakpoint */
+    #desktop-header {
+        display: block; /* or inline-block, flex, etc., based on your layout needs */
+    }
+}
+
+@media only screen and (min-width: 769px) {
+         header {
+  padding: 10px 20px;
+}
+.header-container {
+  max-width: 1200px;
+  margin: auto;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+/* Default hide for all dropdown menus */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  list-style: none;
+  min-width: 300px;
+  z-index: 10;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown:hover .resources {
+  display: flex; /* Only apply flex layout on hover */
+  gap: 20px;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 15px;
+  white-space: nowrap;
+  color: #333;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+
+/* Flex layout for individual columns */
+.dropdown-column {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically within each column */
+  gap: 8px;
+}
+
+/* Heading and link styles */
+.resources h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.resources a {
+  color: #333;
+  text-decoration: none;
+}
+
+.resources a:hover {
+  background-color: #f0f0f0;
+}
+
+.hero { 
+            height: 400px;
+            font-size: 2em;
+        }
+
+.foundation-section {
+      max-width: 1200px;
+      margin: 40px auto;
+      text-align: center;
+    }
+
+.features-container {
+
+      
+
+      justify-content: space-around; /* Space out the divs */
+
+      margin: 30px 0; /* Space around the features */
+
+    }
+
+.feature {
+
+      
+
+      padding: 15px;
+
+      width: 30%; /* Each feature takes 30% of the container width */
+
+      
+        }
+        .feature img {
+
+      width: 50px; /* Adjust icon size */
+
+      margin-bottom: 10px; /* Space below icon */
+
+    }
+    
+    .activity-section {
+
+      max-width: 1200px;
+
+      margin: 40px auto;
+
+    }
+
+
+.cards-container {
+      justify-content: space-between;
+      margin-bottom: 100px;
+      margin-top: 50px;
+    }
+ .card {
+      padding: 20px;  
+    }
+    
+    .circular-logo {
+
+    width: 100px; /* Set a specific width */
+
+    height: 100px; /* Set a specific height for a circular logo */
+
+    border-radius: 50%; /* Makes the image circular */
+
+    object-fit: cover; /* Ensures the image covers the area */
+
+    overflow: hidden; /* Ensures parts of the image don't overflow */
+
+    margin: 0 auto; /* Center the image horizontally */
+
+}
+.card img {
+      height:50%;
+    }
+.our-partners {
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+.marquee {
+  
+  block-size: var(--marquee-item-height);
+
+  margin-block: var(--marquee-item-height);
+
+  position: relative;
+
+  overflow-x: hidden;
+
+  mask-image: linear-gradient(
+
+    to right,
+
+    hsl(0 0% 0% / 0),
+
+    hsl(0 0% 0% / 1) 20%,
+
+    hsl(0 0% 0% / 1) 80%,
+
+    hsl(0 0% 0% / 0)
+
+  );
+
+}
+
+.marquee--9 {
+
+  --marquee-item-width: 100px;
+
+  --marquee-item-height: 100px;
+
+  --marquee-duration: 36s;
+
+  --marquee-items: 9;
+
+}
+
+.marquee__item {
+  position: absolute;
+  transform: translateX(-50%);
+  animation: go linear var(--marquee-duration) var(--marquee-delay, 0s) infinite;
+}
+@keyframes go {
+  to {  
+    inset-inline-start: calc(var(--marquee-item-width) * -1);
+  }
+
+}
+
+.latest-news {
+  padding: 40px 20px;
+}
+
+.latest-news h2 {
+
+  font-size: 2.5rem;
+
+  margin-bottom: 30px;
+
+}
+.news-cards {
+
+ 
+
+  justify-content: center;
+
+  
+
+  flex-wrap: wrap;
+
+}
+
+.news-card {
+
+  width: 300px;
+
+  text-align: left;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+}
+.news-card h3 {
+
+  font-size: 1.5rem;
+
+}
+.news-card p {
+
+  font-size: 1rem;
+
+}
+
+.news-card a {
+
+  font-size: 1rem;
+
+  align-self: flex-start;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  
+}
+.email-list {
+
+            width: 350px;
+
+           
+        }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+ header {
+            padding: 10px 0; /* Top and bottom padding */
+            width: 100%; /* Ensures header takes full width */
+            position: relative; /* Positioning context for the drawer */
+        }
+ .header-container {
+            padding: 0 20px; /* Add horizontal padding */
+        }
+        .logo {
+            flex: none; /* Prevent flex-grow, keeps logo size fixed */
+        }
+   .logo img {
+            max-width: 100%; /* Adjust logo size for smaller screens */
+        } 
+        .donate-button a {      
+  text-align: center; /* Center text in the button */
+}
+
+.foundation-name {
+            flex: 1; /* Allow foundation name to take available space */
+            text-align: center; /* Center text within its space */
+            margin: 0; /* Remove any default margins */
+        }
+        .foundation-name h1 {
+            font-size: 4vw; /* Responsive font size */
+            margin: 0;
+        }
+        /* New styling for right-side container */
+        .right-side {
+            display: flex; /* Align donate button and menu icon in a column */
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-end; /* Align items to the right */
+        }
+
+        .menu-icon {
+            flex: none; /* Prevent flex-grow, keeps menu icon size fixed */
+            cursor: pointer; 
+            font-size: 24px; /* Adjust font size as needed */
+            margin-top: 10px; /* Space between donate button and menu icon */
+        }
+
+
+.drawer-donate-button {
+            margin-top: auto;
+            margin-bottom: 50px;
+            text-align: center;
+            padding: 16px;
+            background-color: #FFCC00;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .drawer-donate-button a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .drawer-donate-button a:hover {
+            background-color: #FFD633;
+        }
+
+        
+        
+        
+        /* Navigation drawer styling */
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            overflow-y: auto;
+            border-top-right-radius: 8px; /* Rounded corner for Material Design */
+            border-bottom-right-radius: 8px;
+        }
+
+        .drawer.open {
+            transform: translateX(0);
+        }
+
+        
+
+        .nav-item {
+            font-size: 18px;
+            padding: 12px 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f0f0f0;
+            color: #FFD633;
+            transition: background-color 0.2s;
+        }
+
+        .nav-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        .sub-menu {
+            display: none;
+            padding-left: 16px;
+        }
+
+        .sub-menu.open {
+            display: block;
+        }
+
+        .sub-menu div {
+            padding: 8px 0;
+        }
+
+        .sub-menu a {
+            text-decoration: none;
+            color: #FFD633;
+            font-size: 16px;
+        }
+
+        .sub-menu a:hover {
+            text-decoration: underline;
+        }
+
+        .arrow {
+            font-size: 30px;
+        }
+
+
+        /* Close icon in the drawer */
+        .close-icon {
+            cursor: pointer;
+            font-size: 24px;
+            margin-bottom: 20px; /* Space below the close icon */
+        }
+        
+
+       .hero {
+      height: 250px;
+      font-size: 1.5em;
+    }
+ 
+        
+ .features-container {
+
+     
+
+      flex-direction: column;
+
+      gap: 20px;
+
+    }
+    
+    .cards-container {
+      flex-direction: column; 
+    }
+.card { 
+      padding: 15px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .card img {
+      height:auto;
+    }
+
+.our-partners {
+      padding: 20px;
+    }
+.marquee {
+
+  
+  --marquee-item-width: 40px;
+
+  --marquee-item-height: 40px;
+
+  --marquee-duration: 5s;
+
+  --marquee-items: 9;      
+
+}
+.marquee__item {
+  width: var(--marquee-item-width);
+  height: var(--marquee-item-height);
+  animation: scroll var(--marquee-duration) var(--marquee-delay, 0s) infinite;
+  position: relative;
+  border-radius: 50%;
+}
+@keyframes scroll {
+
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(calc(-100% - var(--marquee-item-width)));
+  }
+
+}
+
+.latest-news {
+  padding: 16px;
+}
+
+.latest-news h2 {
+
+  font-size: 1.5rem;
+
+  font-weight: 500;
+
+  margin-bottom: 16px;
+
+  text-align: center;
+
+}
+
+.news-cards {
+
+  
+
+  flex-direction: column;
+
+  
+
+}
+
+.news-card {
+
+  
+  margin-bottom: 20px;
+  
+  
+  overflow: hidden;
+
+  
+}
+.news-card h3 {
+
+  font-size: 1.2rem;
+
+  font-weight: 500;
+
+  margin: 16px 16px 8px;
+
+}
+
+.news-card p {
+
+  font-size: 0.9rem;
+  margin: 0 16px 16px;
+
+}
+
+
+.news-card a {
+
+  display: inline-block;
+
+  
+  font-weight: 500;
+
+  margin: 0 16px 16px;
+
+  
+}
+
+
+    
+.email-list {
+
+            width: 250px;
+
+           
+        }
+
+
+}
+        
+header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+display: flex;
+ align-items: center;
+  justify-content: space-between; /* Space items to occupy full width */
+            
+}
+.logo img {
+height: 50px;
+}
+
+.donate-button a {
+background-color: #FFCC00; /* Example yellow color for the button */
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.donate-button a:hover {
+  background-color: #FFD633;
+}
+
+.hero {
+            position: relative;
+            background-image: url('sholly.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+      
+}
+
+.hero::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: rgba(0, 0, 0, 0);
+
+            transition: background 0.3s ease;
+
+        }
+.hero:hover::before {
+
+            background: rgba(0, 0, 0, 0.5);
+
+        }
+.hero .content {
+
+            position: relative;
+
+            z-index: 1;
+
+        }
+.foundation-section {
+
+      padding: 20px;
+
+      background-color: white;
+
+      text-align: center;
+
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+
+   
+    }
+
+ h1 {
+
+      font-size: 28px;
+
+      margin-bottom: 20px;
+
+      color: #333;
+
+      
+
+    }
+    
+    .foundation-section p {
+
+      margin-bottom: 15px;
+
+      color: #666;
+
+      line-height: 1.6;
+
+      
+
+    }
+    .features-container {
+
+      display: flex;
+} 
+
+.feature {
+
+      text-align: center;
+
+    }
+  .learn-more-button {
+
+      display: inline;
+
+      margin-top: 20px;
+
+      background-color: #FFCC00; /* Yellow button */
+
+      color: #333;
+
+      padding: 10px 15px;
+
+      border-radius: 5px;
+
+      text-decoration: none;
+
+      font-weight: bold;
+
+      position: relative;
+
+    }
+    
+    .learn-more-button::after {
+
+      content: '→'; /* Right-facing arrow */
+
+      margin-left: 8px; /* Spacing between text and arrow */
+
+    }
+    
+    .activity-section {
+
+      padding: 20px;
+
+      text-align: center;
+
+    }
+
+  .cards-container {
+display: flex;
+gap: 20px;
+
+}
+
+.card {
+background-color: white;
+border: 1px solid #e0e0e0;
+border-radius: 8px;
+flex: 1; /* Equal size for all cards */
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ .card img {
+width: 100%;
+object-fit: cover;
+margin-bottom: 10px;
+}
+.card h3 {
+
+      margin: 15px 0;
+
+      font-size: 18px;
+
+    }
+
+
+
+    .card p {
+
+      margin-bottom: 15px;
+
+      color: #666;
+
+    }
+
+.our-partners h2 {
+
+  font-size: 2rem;
+
+  margin-bottom: 20px;
+
+  color: #333;
+
+}
+
+.our-partners {
+text-align: center;
+ background-color: #f8f9fa;
+} 
+
+.marquee {
+
+  display: flex;
+
+} 
+
+.marquee__item {
+--marquee-delay: calc(var(--marquee-duration) / var(--marquee-items) * (var(--marquee-items) - var(--marquee-item-index)) * -1);
+inset-inline-start: var(--marquee-item-offset);
+ --marquee-item-offset: max(
+    calc(var(--marquee-item-width) * var(--marquee-items)),
+    calc(100% + var(--marquee-item-width))
+  );   
+}
+
+.marquee--9 .marquee__item:nth-of-type(2) {
+  --marquee-item-index: 2;
+}
+
+.marquee--9 .marquee__item:nth-of-type(3) {
+  --marquee-item-index: 3;
+}
+
+.marquee--9 .marquee__item:nth-of-type(4) {
+  --marquee-item-index: 4;
+}
+
+.marquee--9 .marquee__item:nth-of-type(5) {
+  --marquee-item-index: 5;
+}
+
+.marquee--9 .marquee__item:nth-of-type(6) {
+  --marquee-item-index: 6;
+}
+
+.marquee--9 .marquee__item:nth-of-type(7) {
+  --marquee-item-index: 7;
+}
+
+.marquee--9 .marquee__item:nth-of-type(8) {
+  --marquee-item-index: 8;
+}
+
+.marquee--9 .marquee__item:nth-of-type(9) {
+  --marquee-item-index: 9;
+}
+
+.donate-section {
+
+  background-image: url('women_group.png'); /* Replace with the actual background image path */
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  height:400px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: white;
+
+  text-align: center;
+
+  padding: 20px;
+
+  position: relative;
+
+}
+
+.donate-section::before {
+
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  z-index: 1;
+
+}
+
+.donate-content {
+
+  position: relative;
+
+  z-index: 2; /* Ensure content appears above overlay */
+
+}
+
+.donate-content h1 {
+
+  font-size: 2.5rem;
+
+  margin-bottom: 20px;
+
+}
+
+
+
+.donate-content p {
+
+  font-size: 1.2rem;
+
+  margin-bottom: 30px;
+
+}
+
+
+
+/* Button Styling */
+
+.donate-content button {
+
+  padding: 10px 20px;
+
+  font-size: 1rem;
+
+  color: #fff;
+
+  background-color: #ff4500; /* Customize button color */
+
+  border: none;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+
+}
+
+
+
+.donate-content button:hover {
+
+  background-color: #ff5722; /* Button hover effect */
+
+}
+
+
+.latest-news {
+text-align: center;
+}
+
+.news-cards {
+ display: flex;
+ gap: 20px;
+}
+
+.news-card {
+padding: 20px;
+border-radius: 8px;
+
+}
+.news-card img {
+
+  width: 100%;
+
+  height: auto;
+
+  border-radius: 5px;
+
+}
+
+.news-card a {
+color: yellow;
+
+text-decoration: underline;
+
+  transition: color 0.3s ease;
+}
+
+.news-card a:hover {
+
+  color: #ffd700;
+
+}
+
+.news-card a span {
+
+  margin-left: 4px;
+
+}
+
+.more-news-btn {
+
+  margin-top: 30px;
+
+  padding: 12px 24px;
+
+  font-size: 1rem;
+
+  background-color: yellow;
+
+  color: #333;
+
+  border: none;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+
+}
+
+
+
+.more-news-btn:hover {
+
+  background-color: #ffd700;
+
+}
+
+
+
+/* Social Media Section Styling */
+
+.social-media-section {
+
+  background-color: #FFD700; /* Shade of yellow */
+
+  color: white;
+
+  text-align: center;
+
+  padding: 20px 0;
+
+  font-size: 1.2rem;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 15px;
+
+}
+
+
+
+/* Social Icons Styling */
+
+.social-icons {
+
+  display: flex;
+
+  gap: 20px;
+
+}
+
+
+
+.social-icon img {
+
+  width: 40px;
+
+  height: 40px;
+
+  background-color: #FFD700; /* Match background color */
+
+  padding: 5px;
+
+  border-radius: 50%;
+
+  transition: transform 0.3s ease;
+
+}
+
+
+
+.social-icon img:hover {
+
+  transform: scale(1.1);
+
+}
+.email-list {
+ height: 150px;
+
+            background-color: white;
+
+            border: 5px solid yellow;
+
+            margin: 20px auto; /* Center the section */
+
+            position: relative;
+
+            text-align: center;
+
+            padding-top: 30px; /* Add padding to avoid text being cut */
+
+}
+
+
+.email-list h3 {
+
+            margin: 0;
+
+            position: absolute;
+
+            top: -20px; /* Position to cut the upper border */
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            background-color: white; /* Match background to avoid overlap */
+
+            padding: 0 10px; /* Add some padding */
+
+        }
+
+.email-list p {
+
+            margin: 10px 0;
+
+        }
+
+
+
+        .email-list button {
+
+            padding: 10px 20px;
+
+            background-color: #FFD700;
+
+            color: white;
+
+            border: none;
+
+            cursor: pointer;
+
+            font-size: 1em;
+
+            border-radius: 5;
+            }
+            
+            
+
+        footer {
+
+            text-align: center;
+
+            padding: 10px;
+
+        }
+
+
+  </style>
 </head>
+
 <body>
-<div id="desktop">
-  <header>
+  <header id="desktop-header">
     <div class="header-container">
+
       <!-- Left side: Logo -->
+
       <div class="logo">
+
         <a href="index.html">
+
     <img src="logo.jpg" alt="Foundation Logo" />
+
 </a>
+
       </div>
+
+
 
       <!-- Center: Navigation Links -->
+
       <nav>
+
         <ul class="nav-links">
+
           <li class="dropdown">
+
             <a href="about.html">ABOUT US</a>
+
             <ul class="dropdown-menu">
+
               <li><a href="about.html#mission">Our Mission</a></li>
+
               <li><a href="about.html#why">Our Why</a></li>
+
               <li><a href="about.html#team">Our Team</a></li>
+
               <li><a href="about.html#board">Board of Trustees</a></li>
+
               <li><a href="about.html#financials">Financials</a></li>
+
               <li><a href="about.html#awards">Awards</a></li>
+
             </ul>
+
           </li>
+
           <li class="dropdown">
+
             <a href="our_work.html">WHAT WE DO</a>
+
             <ul class="dropdown-menu">
+
               <li><a href="our_work.html#god_errands">Our God Errands</a></li>
+
               <li><a href="our_work.html#testimonials">Our Testimonials</a></li>
+
             </ul>
+
           </li>
+
           <li class="dropdown">
+
   <a href="media.html">RESOURCES AND MEDIA</a>
+
   <ul class="dropdown-menu resources">
+
     <div class="dropdown-column">
+
       <h4>NEWS & STORIES</h4>
+
       <a href="media.html#stories">Our Stories</a>
+
       <a href="media.html#projects">Project Spotlights</a>
+
       <a href="media.html#media">TSAG in the News</a>
+
     </div>
+
     <div class="dropdown-column">
+
       <h4>MULTIMEDIA</h4>
+
       <a href="media.html#photos">Photographs</a>
+
       <a href="#">Videos</a>
+
     </div>
+
     <div class="dropdown-column">
+
       <h4>RESOURCES</h4>
+
       <a href="media.html#books">Books</a>
+
       <a href="media.html#podcasts">Podcasts</a>
+
     </div>
+
   </ul>
+
 </li>
+
         </ul>
+
       </nav>
 
+
+
       <!-- Right side: Donate Button -->
+
       <div class="donate-button">
+
         <a href="donate.html">Donate</a>
+
       </div>
+
     </div>
   </header>
-  <div class="hero">
-        <div class="content">
-            <h2>Touching Lives.</h2>
-            <h2>Renewing Hopes.</h2>
-            <h2>Reconnecting People to Christ.</h2>
+  <header id="mobile-header">
+    <div class="header-container">
+        <!-- Left side: Logo -->
+        <div class="logo">
+        <a href="index.html">
+            <img src="logo.jpg" alt="Foundation Logo" />
+            </a>
+        </div>
+
+        <!-- Center: Foundation Name -->
+        <div class="foundation-name">
+            <h1>The Shola Adefolalu Gaska Foundation</h1>
+        </div>
+
+        <!-- Right side: Container for Donate Button and Menu Icon -->
+        <div class="right-side">
+            <div class="donate-button">
+                <a href="donate.html">Donate</a>
+            </div>
+            <div class="menu-icon" onclick="toggleDrawer()">&#9776;</div>
         </div>
     </div>
-    
-    <div class="foundation-section">
-    <h1>THE SHOLA ADEFOLALU GASKA FOUNDATION</h1>
-    <p>The Shola Adefolalu Gaska Foundation also known as the Sholly Smile Factory is a nonprofit organisation set up to bring smiles to the faces of people in need (especially women and children) by providing financial, emotional and spiritual support.</p>
-    <p> The foundation is registered with the Nigerian Corporate Affairs Commission and the Lagos State Ministry of Women Affairs and Poverty Alleviation. In 2023, we were recognised as the “Most Responsive NGO” by the Lagos State Domestic and Sexual Violence Agency.</p>
-    <p>The Sholly Smile Factory was birthed from a place of deep pain.  The loss of my dear sister – Oluwashola Adefolalu Gaska. In  helping others, I am finding healing. </p>
-    <p>Thanks to the errands God is  sending us, Sholly will no longer be remembered for the horrible  story of her death because we are creating a new, beautiful story  from her death. One that touches lives. One that re-create smiles,  like the ones Sholly is famous for.</p>
-    <p>Abimbola (Salt) Essien-Nelson, Chief Errand Girl</p>
-    
-    <div class="features-container">
-      <div class="feature">
-        <img src="children.webp" alt="Icon 1">
-        <h3>1000+</h3>
-        <p>Our initiatives have catered to 1000+ children.</p>
-      </div>
-      <div class="feature">
-        <img src="country.webp" alt="Icon 2">
-        <h3>6</h3>
-        <p>Our tentacles spread over six states in Nigeria.</p>
-      </div>
-      <div class="feature">
-        <img src="women.webp" alt="Icon 3">
-        <h3>5000+</h3>
-        <p>We have reached five thousand plus women through our various partnerships.</p>
-      </div>
+</header>
+
+<!-- Navigation Drawer -->
+<div class="drawer" id="navDrawer">
+    <div class="close-icon" onclick="toggleDrawer()">&times;</div> <!-- Close icon -->
+    <div class="nav-item">
+        <a href="about.html"><span>ABOUT US</span></a>
+        <span class="arrow" onclick="toggleSubMenu('aboutSubMenu')">&#9662;</span>
     </div>
-    <a href="about.html#financials" class="learn-more-button">Learn more</a>
-  </div>
-  
-  
-    <div class="activity-section">
-    <h1>GOD ERRANDS</h1>
-    <div class="cards-container">
-      <div class="card">
-        <img src="food.jpg" alt="Activity 1">
-        <h3>Food Care Packages</h3>
-        <p>We give out food care packages to vulnerable families in need every month.</p>
-        <a href="our_work.html#food" class="learn-more-button">Learn more</a>
-      </div>
-      <div class="card">
-        <img src="tssp.png" alt="Activity 2">
-        <h3>Serenity Place</h3>
-        <p>We operate a ten-bed Jesus Christ-Centric Safe Haven and an Oasis of Serenity for survivors of domestic abuse and their children.</p>
-        <a href="our_work.html#tssp" class="learn-more-button">Learn more</a>
-      </div>
-      <div class="card">
-      <div class="circular-logo-container">
-            <img src="alive.png" alt="Logo" class="circular-logo">
-        </div>
-        <h3>Love is a Verb</h3>
-        <p>We operate a social safety-net program that provides a N25,000 monthly allowance to extremely economically vulnerable women across Nigeria.</p>
-        <a href="our_work.html#alive" class="learn-more-button">Learn more</a>
-      </div>
+    <div class="sub-menu" id="aboutSubMenu">
+        <div><a href="about.html#mission">Our Mission</a></div>
+        <div><a href="about.html#why">Our Why</a></div>
+        <div><a href="about.html#team">Our Team</a></div>
+        <div><a href="about.html#board">Board of Trustees</a></div>
+        <div><a href="about.html#financials">Financials</a></div>
+        <div><a href="about.html#awards">Awards</a></div>
     </div>
-    <a href="about.html#financials" class="learn-more-button">Download Financials</a>
-  </div>
-  
-  <section class="our-partners">
-  <h1>OUR PARTNERS</h1>
-  <div class="marquee marquee--9">
-  <img class="marquee__item" src="ceehope.jpg" width="100" height="100" alt="">
-  <img class="marquee__item" src="crisp.jpg" width="100" height="100" alt="">
-  <img class="marquee__item" src="darabel.jpg" width="100" height="100" alt="">
-  <img class="marquee__item" src="dsva.webp" width="100" height="100" alt="">
-  <img class="marquee__item" src="essentials.jpg" width="100" height="100" alt="">
-  <img class="marquee__item" src="get_work.jpg" width="100" height="100" alt="">
-  <img class="marquee__item" src="prayingmums.jpg" width="100" height="100" alt="">
-  <img class="marquee__item" src="tea.jpg" width="100" height="100" alt="">
-  <img class="marquee__item" src="tees.jpg" width="100" height="100" alt="">
-  </div>
-  </section>
-<section class="donate-section">
-  <div class="donate-content">
-    <h2>Support The Shola Adefolalu Gaska Foundation</h2>
-    <p>Help restore the hope of vulnerable women and children</p>
-     <div class="donate-button">
+    
+    <div class="nav-item">
+        <a href="our_work.html"><span>WHAT WE DO</span></a>
+        <span class="arrow" onclick="toggleSubMenu('whatWeDoSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="whatWeDoSubMenu">
+        <div><a href="our_work.html#god_errands">Our God Errands</a></div>
+        <div><a href="our_work.html#testimonials">Our Testimonials</a></div>
+    </div>
+    
+    <div class="nav-item">
+        <a href="media.html"><span>RESOURCES AND MEDIA</span></a>
+        <span class="arrow" onclick="toggleSubMenu('resourcesSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="resourcesSubMenu">
+        <div><a href="media.html#stories">Our Stories</a></div>
+        <div><a href="media.html#projects">Project Spotlights</a></div>
+        <div><a href="media.html#media">TSAG in the News</a></div>
+        <div><a href="media.html#photos">Photographs</a></div>
+        <div><a href="#">Videos</a></div>
+        <div><a href="media.html#books">Books</a></div>
+        <div><a href="media.html#podcasts">Podcasts</a></div>
+    </div>
+
+    <div class="drawer-donate-button" style="margin-top: auto;">
         <a href="donate.html">Donate</a>
+    </div>
+</div>
+
+
+  <div class="hero">
+
+        <div class="content">
+
+            <h2>Touching Lives.</h2>
+
+            <h2>Renewing Hopes.</h2>
+
+            <h2>Reconnecting People to Christ.</h2>
+
+        </div>
+
+    </div>
+
+    
+
+    <div class="foundation-section">
+
+    <h1>THE SHOLA ADEFOLALU GASKA FOUNDATION</h1>
+
+    <p>The Shola Adefolalu Gaska Foundation also known as the Sholly Smile Factory is a nonprofit organisation set up to bring smiles to the faces of people in need (especially women and children) by providing financial, emotional and spiritual support.</p>
+
+    <p> The foundation is registered with the Nigerian Corporate Affairs Commission and the Lagos State Ministry of Women Affairs and Poverty Alleviation. In 2023, we were recognised as the “Most Responsive NGO” by the Lagos State Domestic and Sexual Violence Agency.</p>
+
+    <p>The Sholly Smile Factory was birthed from a place of deep pain.  The loss of my dear sister – Oluwashola Adefolalu Gaska. In  helping others, I am finding healing. </p>
+
+    <p>Thanks to the errands God is  sending us, Sholly will no longer be remembered for the horrible  story of her death because we are creating a new, beautiful story  from her death. One that touches lives. One that re-create smiles,  like the ones Sholly is famous for.</p>
+
+    <p>Abimbola (Salt) Essien-Nelson, Chief Errand Girl</p>
+
+    
+
+    <div class="features-container">
+
+      <div class="feature">
+
+        <img src="children.webp" alt="Icon 1">
+
+        <h3>1000+</h3>
+
+        <p>Our initiatives have catered to 1000+ children.</p>
+
       </div>
+
+      <div class="feature">
+
+        <img src="country.webp" alt="Icon 2">
+
+        <h3>6</h3>
+
+        <p>Our tentacles spread over six states in Nigeria.</p>
+
+      </div>
+
+      <div class="feature">
+
+        <img src="women.webp" alt="Icon 3">
+
+        <h3>5000+</h3>
+
+        <p>We have reached five thousand plus women through our various partnerships.</p>
+
+      </div>
+
+    </div>
+
+    <a href="about.html#financials" class="learn-more-button">Learn more</a>
+
   </div>
+
+  
+
+  
+
+    <div class="activity-section">
+
+    <h1>GOD ERRANDS</h1>
+
+    <div class="cards-container">
+
+      <div class="card">
+
+        <img src="food.jpg" alt="Activity 1">
+
+        <h3>Food Care Packages</h3>
+
+        <p>We give out food care packages to vulnerable families in need every month.</p>
+
+        <a href="our_work.html#food" class="learn-more-button">Learn more</a>
+
+      </div>
+
+      <div class="card">
+
+        <img src="tssp.png" alt="Activity 2">
+
+        <h3>Serenity Place</h3>
+
+        <p>We operate a ten-bed Jesus Christ-Centric Safe Haven and an Oasis of Serenity for survivors of domestic abuse and their children.</p>
+
+        <a href="our_work.html#tssp" class="learn-more-button">Learn more</a>
+
+      </div>
+
+      <div class="card">
+
+      <div class="circular-logo-container">
+
+            <img src="alive.png" alt="Logo" class="circular-logo">
+
+        </div>
+
+        <h3>Love is a Verb</h3>
+
+        <p>We operate a social safety-net program that provides a N25,000 monthly allowance to extremely economically vulnerable women across Nigeria.</p>
+
+        <a href="our_work.html#alive" class="learn-more-button">Learn more</a>
+
+      </div>
+
+    </div>
+
+    <a href="about.html#financials" class="learn-more-button">Download Financials</a>
+
+  </div>
+
+  
+
+  <section class="our-partners">
+
+  <h1>OUR PARTNERS</h1>
+
+  <div class="marquee marquee--9">
+
+  <img class="marquee__item" src="ceehope.jpg" width="100" height="100" alt="">
+
+  <img class="marquee__item" src="crisp.jpg" width="100" height="100" alt="">
+
+  <img class="marquee__item" src="darabel.jpg" width="100" height="100" alt="">
+
+  <img class="marquee__item" src="dsva.webp" width="100" height="100" alt="">
+
+  <img class="marquee__item" src="essentials.jpg" width="100" height="100" alt="">
+
+  <img class="marquee__item" src="get_work.jpg" width="100" height="100" alt="">
+
+  <img class="marquee__item" src="prayingmums.jpg" width="100" height="100" alt="">
+
+  <img class="marquee__item" src="tea.jpg" width="100" height="100" alt="">
+
+  <img class="marquee__item" src="tees.jpg" width="100" height="100" alt="">
+
+  </div>
+
+  </section>
+
+<section class="donate-section">
+
+  <div class="donate-content">
+
+    <h2>Support The Shola Adefolalu Gaska Foundation</h2>
+
+    <p>Help restore the hope of vulnerable women and children</p>
+
+     <div class="donate-button">
+
+        <a href="donate.html">Donate</a>
+
+      </div>
+
+  </div>
+
 </section>
 
+
+
 <section class="latest-news">
+
   <h1>THE FOUNDATION IN THE NEWS</h1>
+
   <div class="news-cards">
+
     <div class="news-card">
+
       <img src="queencollege.jpg" alt="News 1">
+
       <h3>Shola Adefolalu Gaska Foundation announces inaugural winners of Professor Daniel Oladele Adefolalu Prizes</h3>
+
       <p>The Shola Adefolalu Gaska Foundation is dedicated to promoting educational excellence and supporting students in their academic pursuits.</p>
+
       <a href="https://freedomonline.com.ng/shola-adefolalu-gaska-foundation-announces-inaugural-winners-of-professor-daniel-oladele-adefolalu-prizes/">Read more <span>&rarr;</span></a>
+
     </div>
+
     
+
     <div class="news-card">
+
       <img src="alive.png" alt="News 2">
+
       <h3>The Shola Adefolalu Gaska Foundation launches initiative to strengthen families.</h3>
+
       <p> The initiative aims to touch the lives of vulnerable women and families across Nigeria, beginning with Lagos, Cross River, Akwa Ibom, Niger and ...</p>
+
       <a href="https://www.thisdaylive.com/index.php/2024/06/02/the-shola-adefolalu-gaska-foundation-launches-initiative-to-strengthen-families/">Read more <span>&rarr;</span></a>
+
     </div>
+
   <div class="news-card">
+
       <img src="salt.jpg" alt="News 3">
+
       <h3>16 Days of Activism: The Sholly Place Shines While Offering Hope</h3>
+
       <p>The Shola Adefolalu Gaska Foundation aka the Sholly Smile Factory which runs the shelter is a not-for-profit organisation set up in honour ...</p>
+
       <a href="https://bonewssng.com/16-days-of-activism-the-sholly-place-shines-while-offering-hope/">Read more <span>&rarr;</span></a>
+
     </div>
+
   </div>
   <a href="media.html#media" class="learn-more-button">More News</a>
+
 </section>
+
 <section class="social-media-section">
+
   <h2>FOLLOW US ON SOCIAL MEDIA FOR WEEKLY UPDATES</h2>
+
   <div class="social-icons">
+
     <a href="https://web.facebook.com/SaltDivineEN" class="social-icon"><img src="facebook.png" alt="Facebook"></a>
+
     <a href="https://www.instagram.com/the_sholly_smile_factory/" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
+
     <a href="https://www.linkedin.com/company/the-shola-adefolalu-gaska-foundation/" class="social-icon"><img src="linkedin.png" alt="LinkedIn"></a>
+
   </div>
+
 </section>
+
 <div class="email-list">
+
         <h3>Join our email list</h3>
+
         <p>Get the latest news and resources directly in your inbox.</p>
+
         <button>Sign up</button>
+
     </div>
+
     <footer>
+
         <p>&copy; 2024 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
+
     </footer>
-</div>
-<div id="mobile">
-<p>Mobile version still under construction</p>
-</div>
+
+<script>
+	function toggleDrawer() {
+        const drawer = document.getElementById('navDrawer');
+        const isOpen = drawer.classList.toggle('open');
+
+        if (isOpen) {
+            // Close all submenus when opening the drawer
+            const subMenus = document.querySelectorAll('.sub-menu');
+            subMenus.forEach((subMenu) => {
+                subMenu.classList.remove('open');
+            });
+        }
+    }
+
+    function toggleSubMenu(menuId) {
+        const subMenu = document.getElementById(menuId);
+        subMenu.classList.toggle('open');
+    }
+    
+</script>
 </body>
+
 </html>
+
 

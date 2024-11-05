@@ -4,11 +4,396 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media and Resources</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+    /* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+    	/* Hide both divs by default */
+#mobile-header, #navDrawer, #desktop-header {
+    display: none;
+}
+
+/* Show div with ID x for mobile devices */
+@media (max-width: 767px) { /* Adjust the max-width as needed for your mobile breakpoint */
+    #mobile-header, #navDrawer  {
+        display: block; /* or inline-block, flex, etc., based on your layout needs */
+    }
+}
+
+/* Show div with ID y for desktop devices */
+@media (min-width: 768px) { /* Adjust the min-width as needed for your desktop breakpoint */
+    #desktop-header {
+        display: block; /* or inline-block, flex, etc., based on your layout needs */
+    }
+}
+
+    @media only screen and (max-width: 768px) {
+	/* Header styling */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px 0; /* Top and bottom padding */
+            width: 100%; /* Ensures header takes full width */
+            position: relative; /* Positioning context for the drawer */
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center; /* Vertically centers items */
+            justify-content: space-between; /* Space items to occupy full width */
+            padding: 0 20px; /* Add horizontal padding */
+        }
+
+        .logo {
+            flex: none; /* Prevent flex-grow, keeps logo size fixed */
+        }
+
+        .foundation-name {
+            flex: 1; /* Allow foundation name to take available space */
+            text-align: center; /* Center text within its space */
+            margin: 0; /* Remove any default margins */
+        }
+
+        /* New styling for right-side container */
+        .right-side {
+            display: flex; /* Align donate button and menu icon in a column */
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-end; /* Align items to the right */
+        }
+
+        .menu-icon {
+            flex: none; /* Prevent flex-grow, keeps menu icon size fixed */
+            cursor: pointer; 
+            font-size: 24px; /* Adjust font size as needed */
+            margin-top: 10px; /* Space between donate button and menu icon */
+        }
+
+        /* Logo styling */
+        .logo img {
+            height: 50px;
+            max-width: 100%; /* Adjust logo size for smaller screens */
+        }
+
+        /* Foundation name styling */
+        .foundation-name h1 {
+            font-size: 4vw; /* Responsive font size */
+            margin: 0;
+        }
+        
+        /* Donate button styling */
+        .donate-button a {
+            background-color: #FFCC00; /* Example yellow color for the button */
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center; /* Center text in the button */
+        }
+
+        .donate-button a:hover {
+            background-color: #FFD633;
+        }
+
+        
+        .drawer-donate-button {
+            margin-top: auto;
+            margin-bottom: 50px;
+            text-align: center;
+            padding: 16px;
+            background-color: #FFCC00;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .drawer-donate-button a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .drawer-donate-button a:hover {
+            background-color: #FFD633;
+        }
+
+        
+        
+        
+        /* Navigation drawer styling */
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            overflow-y: auto;
+            border-top-right-radius: 8px; /* Rounded corner for Material Design */
+            border-bottom-right-radius: 8px;
+        }
+
+        .drawer.open {
+            transform: translateX(0);
+        }
+
+        
+
+        .nav-item {
+            font-size: 18px;
+            padding: 12px 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f0f0f0;
+            color: #FFD633;
+            transition: background-color 0.2s;
+        }
+
+        .nav-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        .sub-menu {
+            display: none;
+            padding-left: 16px;
+        }
+
+        .sub-menu.open {
+            display: block;
+        }
+
+        .sub-menu div {
+            padding: 8px 0;
+        }
+
+        .sub-menu a {
+            text-decoration: none;
+            color: #FFD633;
+            font-size: 16px;
+        }
+
+        .sub-menu a:hover {
+            text-decoration: underline;
+        }
+
+        .arrow {
+            font-size: 30px;
+        }
+
+
+        /* Close icon in the drawer */
+        .close-icon {
+            cursor: pointer;
+            font-size: 24px;
+            margin-bottom: 20px; /* Space below the close icon */
+        }
+        
+       } 
+       
+       @media only screen and (min-width: 769px) {
+        /* Basic styling for layout */
+        /* Header styling */
+header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Logo styling */
+.logo img {
+  height: 50px;
+}
+
+/* Navigation styling */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+/* Default hide for all dropdown menus */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  list-style: none;
+  min-width: 300px;
+  z-index: 10;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown:hover .resources {
+  display: flex; /* Only apply flex layout on hover */
+  gap: 20px;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 15px;
+  white-space: nowrap;
+  color: #333;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+
+/* Flex layout for individual columns */
+.dropdown-column {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically within each column */
+  gap: 8px;
+}
+
+/* Heading and link styles */
+.resources h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.resources a {
+  color: #333;
+  text-decoration: none;
+}
+
+.resources a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Donate button styling */
+.donate-button a {
+  background-color: #FFCC00; /* Example yellow color for the button */
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.donate-button a:hover {
+  background-color: #FFD633;
+}
+
+} 
+    .photos-section, .stories-section, .projects-section, .media-section, .publications-section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .photo-cards, .story-cards, .project-cards, .media-cards, .publication-cards, .podcast-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .photo-card, .story-card, .project-card, .media-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 15px;
+            width: 200px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .publication-card, .podcast-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 15px;
+            width: 500px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        
+        .photo-card img, .story-card img, .project-card img, .media-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .photo-card h4, .story-card h4, .project-card h4, .media-card h4, .publication-card h4, .podcast-card h4 {
+            margin: 10px 0 5px;
+        }
+
+        .photo-card p, .story-card p, .project-card p, .media-card p, .publication-card p, .podcast-card p {
+            margin: 0;
+            color: #555;
+        }
+
+        .photo-card a, .project-card a, .story-card a, .media-card a, .publication-card a, .podcast-card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #FFCC00;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .photo-card a, .project-card a:hover, .story-card a:hover, .media-card a:hover, .publication-card a:hover, .podcast-card a:hover {
+            background-color: #FFD633;
+        }
+        
+       
+.publication-card img,  .podcast-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+ .page-header {
+  background-color: #FFD700; /* Shade of yellow */
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1.2rem;
+}
+
+	
+    </style>
 </head>
 <body>
-<div id="desktop">
-<header>
+<header id="desktop-header">
     <div class="header-container">
       <!-- Left side: Logo -->
       <div class="logo">
@@ -68,10 +453,79 @@
       </div>
     </div>
   </header>
-  <section class="resource-media-section">
+  <header id="mobile-header">
+    <div class="header-container">
+        <!-- Left side: Logo -->
+        <div class="logo">
+        <a href="index.html">
+            <img src="logo.jpg" alt="Foundation Logo" />
+            </a>
+        </div>
+
+        <!-- Center: Foundation Name -->
+        <div class="foundation-name">
+            <h1>The Shola Adefolalu Gaska Foundation</h1>
+        </div>
+
+        <!-- Right side: Container for Donate Button and Menu Icon -->
+        <div class="right-side">
+            <div class="donate-button">
+                <a href="donate.html">Donate</a>
+            </div>
+            <div class="menu-icon" onclick="toggleDrawer()">&#9776;</div>
+        </div>
+    </div>
+</header>
+
+<!-- Navigation Drawer -->
+<div class="drawer" id="navDrawer">
+    <div class="close-icon" onclick="toggleDrawer()">&times;</div> <!-- Close icon -->
+    <div class="nav-item">
+        <a href="about.html"><span>ABOUT US</span></a>
+        <span class="arrow" onclick="toggleSubMenu('aboutSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="aboutSubMenu">
+        <div><a href="about.html#mission">Our Mission</a></div>
+        <div><a href="about.html#why">Our Why</a></div>
+        <div><a href="about.html#team">Our Team</a></div>
+        <div><a href="about.html#board">Board of Trustees</a></div>
+        <div><a href="about.html#financials">Financials</a></div>
+        <div><a href="about.html#awards">Awards</a></div>
+    </div>
+    
+    <div class="nav-item">
+        <a href="our_work.html"><span>WHAT WE DO</span></a>
+        <span class="arrow" onclick="toggleSubMenu('whatWeDoSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="whatWeDoSubMenu">
+        <div><a href="our_work.html#god_errands">Our God Errands</a></div>
+        <div><a href="our_work.html#testimonials">Our Testimonials</a></div>
+    </div>
+    
+    <div class="nav-item">
+        <a href="media.html"><span>RESOURCES AND MEDIA</span></a>
+        <span class="arrow" onclick="toggleSubMenu('resourcesSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="resourcesSubMenu">
+        <div><a href="media.html#stories">Our Stories</a></div>
+        <div><a href="media.html#projects">Project Spotlights</a></div>
+        <div><a href="media.html#media">TSAG in the News</a></div>
+        <div><a href="media.html#photos">Photographs</a></div>
+        <div><a href="#">Videos</a></div>
+        <div><a href="media.html#books">Books</a></div>
+        <div><a href="media.html#podcasts">Podcasts</a></div>
+    </div>
+
+    <div class="drawer-donate-button" style="margin-top: auto;">
+        <a href="donate.html">Donate</a>
+    </div>
+</div>
+
+
+
+  <header class="page-header">
   <h2>RESOURCES AND MEDIA</h2>
-  </div>
-</section>
+</header>
     <div class="stories-section" id="stories">
         <h2>Our Stories</h2>
         <div class="story-cards" id="story-cards-container"></div>
@@ -101,11 +555,26 @@
     <footer>
         <p>&copy; 2024 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
     </footer>
-</div>
-<div id="mobile">
-<p>Mobile version still under construction</p>
-</div>
+
     <script>
+    	function toggleDrawer() {
+        const drawer = document.getElementById('navDrawer');
+        const isOpen = drawer.classList.toggle('open');
+
+        if (isOpen) {
+            // Close all submenus when opening the drawer
+            const subMenus = document.querySelectorAll('.sub-menu');
+            subMenus.forEach((subMenu) => {
+                subMenu.classList.remove('open');
+            });
+        }
+    }
+
+    function toggleSubMenu(menuId) {
+        const subMenu = document.getElementById(menuId);
+        subMenu.classList.toggle('open');
+    }
+    
        // Data for photo albums
         const photoAlbums = [
             {
@@ -431,4 +900,5 @@
     </script>
 </body>
 </html>
+
 

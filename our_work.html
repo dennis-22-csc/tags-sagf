@@ -5,25 +5,289 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What We Do</title>
     <style>
+    /* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
     /* Hide both divs by default */
-#mobile, #desktop {
+#mobile-header, #navDrawer, #desktop-header {
     display: none;
 }
 
 /* Show div with ID x for mobile devices */
 @media (max-width: 767px) { /* Adjust the max-width as needed for your mobile breakpoint */
-    #mobile {
+    #mobile-header, #navDrawer  {
         display: block; /* or inline-block, flex, etc., based on your layout needs */
     }
 }
 
 /* Show div with ID y for desktop devices */
 @media (min-width: 768px) { /* Adjust the min-width as needed for your desktop breakpoint */
-    #desktop {
+    #desktop-header {
         display: block; /* or inline-block, flex, etc., based on your layout needs */
     }
 }
 
+    @media only screen and (max-width: 768px) {
+	/* Header styling */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px 0; /* Top and bottom padding */
+            width: 100%; /* Ensures header takes full width */
+            position: relative; /* Positioning context for the drawer */
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center; /* Vertically centers items */
+            justify-content: space-between; /* Space items to occupy full width */
+            padding: 0 20px; /* Add horizontal padding */
+        }
+
+        .logo {
+            flex: none; /* Prevent flex-grow, keeps logo size fixed */
+        }
+
+        .foundation-name {
+            flex: 1; /* Allow foundation name to take available space */
+            text-align: center; /* Center text within its space */
+            margin: 0; /* Remove any default margins */
+        }
+
+        /* New styling for right-side container */
+        .right-side {
+            display: flex; /* Align donate button and menu icon in a column */
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-end; /* Align items to the right */
+        }
+
+        .menu-icon {
+            flex: none; /* Prevent flex-grow, keeps menu icon size fixed */
+            cursor: pointer; 
+            font-size: 24px; /* Adjust font size as needed */
+            margin-top: 10px; /* Space between donate button and menu icon */
+        }
+
+        /* Logo styling */
+        .logo img {
+            height: 50px;
+            max-width: 100%; /* Adjust logo size for smaller screens */
+        }
+
+        /* Foundation name styling */
+        .foundation-name h1 {
+            font-size: 4vw; /* Responsive font size */
+            margin: 0;
+        }
+        
+        /* Donate button styling */
+        .donate-button a {
+            background-color: #FFCC00; /* Example yellow color for the button */
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center; /* Center text in the button */
+        }
+
+        .donate-button a:hover {
+            background-color: #FFD633;
+        }
+
+        
+        .drawer-donate-button {
+            margin-top: auto;
+            margin-bottom: 50px;
+            text-align: center;
+            padding: 16px;
+            background-color: #FFCC00;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .drawer-donate-button a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .drawer-donate-button a:hover {
+            background-color: #FFD633;
+        }
+
+        
+        
+        
+        /* Navigation drawer styling */
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            overflow-y: auto;
+            border-top-right-radius: 8px; /* Rounded corner for Material Design */
+            border-bottom-right-radius: 8px;
+        }
+
+        .drawer.open {
+            transform: translateX(0);
+        }
+
+        
+
+        .nav-item {
+            font-size: 18px;
+            padding: 12px 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f0f0f0;
+            color: #FFD633;
+            transition: background-color 0.2s;
+        }
+
+        .nav-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        .sub-menu {
+            display: none;
+            padding-left: 16px;
+        }
+
+        .sub-menu.open {
+            display: block;
+        }
+
+        .sub-menu div {
+            padding: 8px 0;
+        }
+
+        .sub-menu a {
+            text-decoration: none;
+            color: #FFD633;
+            font-size: 16px;
+        }
+
+        .sub-menu a:hover {
+            text-decoration: underline;
+        }
+
+        .arrow {
+            font-size: 30px;
+        }
+
+
+        /* Close icon in the drawer */
+        .close-icon {
+            cursor: pointer;
+            font-size: 24px;
+            margin-bottom: 20px; /* Space below the close icon */
+        }
+        
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+           text-align: center;
+        }
+        .errand-card {
+        	display: flex;
+
+            flex-direction: column;
+            justify-content: center;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 16px;
+        }
+        .card-content {
+            display: flex;
+            flex-direction: column;
+        }
+        .left-column, .right-column {
+            width: 100%;
+        }
+        .errand-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .errand-description {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .errand-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+        .arrow-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+        .arrow {
+            cursor: pointer;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+        .completed-tasks {
+            text-align: center;
+            font-weight: 600;
+            color: #FFD700;
+            margin-top: 12px;
+        }
+        
+        /* Testimonials Section */
+.testimonial-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    padding: 0 16px;
+}
+
+.testimonial-card {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    height: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    cursor: pointer; /* Show pointer cursor */
+}
+.testimonial-card:hover {
+            transform: scale(1.05); /* Slightly enlarge card on hover */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Highlight on hover */
+
+        }
+        
+  } 
+  
+  @media only screen and (min-width: 769px) {
         /* Basic styling for layout */
         /* Header styling */
 header {
@@ -130,20 +394,7 @@ header {
   background-color: #FFD633;
 }
 
- footer {
-            text-align: center;
-            padding: 10px;
-        }   
-        
-  .about-header-section {
-  background-color: #FFD700; /* Shade of yellow */
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 1.2rem;
-}
-
-        .section {
+.section {
             padding: 20px;
             border-bottom: 1px solid #ddd;
         }
@@ -210,7 +461,59 @@ header {
             font-size: 2em;
             margin: 0 10px;
         }
+        
+        /* Testimonials Section */
+        .testimonial-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow cards to wrap to next line on small screens */
+            justify-content: center; /* Center cards horizontally */
+            gap: 20px; /* Space between cards */
+            max-width: 1200px; /* Set a max width for the container */
+            margin: 0 auto; /* Center the container on the page */
+        }
 
+        .testimonial-card {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px; /* Fixed width for cards */
+            height: auto; /* Auto height based on content */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s; /* Smooth hover effect */
+            cursor: pointer; /* Show pointer cursor */
+ 
+
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Highlight on hover */
+            transform: scale(1.05); /* Slightly enlarge card on hover */
+            
+        }
+        
+
+
+
+} 
+.testimonial-link {
+    text-decoration: none; /* Remove underline */
+    color: black;
+}
+ footer {
+            text-align: center;
+            padding: 10px;
+        }   
+        
+  .page-header {
+  background-color: #FFD700; /* Shade of yellow */
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1.2rem;
+}
+
+        
         .completed-tasks {
             text-align: center;
             font-weight: bold;
@@ -251,41 +554,13 @@ header {
             flex-direction: column;
         }
 
-        /* Testimonials Section */
-        .testimonial-container {
-            display: flex;
-            flex-wrap: wrap; /* Allow cards to wrap to next line on small screens */
-            justify-content: center; /* Center cards horizontally */
-            gap: 20px; /* Space between cards */
-            max-width: 1200px; /* Set a max width for the container */
-            margin: 0 auto; /* Center the container on the page */
-        }
-
-        .testimonial-card {
-            background-color: #ffffff;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 20px;
-            width: 300px; /* Fixed width for cards */
-            height: auto; /* Auto height based on content */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s; /* Smooth hover effect */
-        }
-
-        .testimonial-card:hover {
-            transform: scale(1.05); /* Slightly enlarge card on hover */
-        }
-
-        @media (max-width: 768px) {
-            .testimonial-card {
-                width: 90%; /* Adjust card width on small screens */
-            }
-        }
+        
+        
     </style>
 </head>
 <body>
-<div id="desktop">
-<header>
+
+<header id="desktop-header">
     <div class="header-container">
       <!-- Left side: Logo -->
       <div class="logo">
@@ -345,9 +620,78 @@ header {
       </div>
     </div>
   </header>
-<section class="about-header-section">
+  <header id="mobile-header">
+    <div class="header-container">
+        <!-- Left side: Logo -->
+        <div class="logo">
+        <a href="index.html">
+            <img src="logo.jpg" alt="Foundation Logo" />
+            </a>
+        </div>
+
+        <!-- Center: Foundation Name -->
+        <div class="foundation-name">
+            <h1>The Shola Adefolalu Gaska Foundation</h1>
+        </div>
+
+        <!-- Right side: Container for Donate Button and Menu Icon -->
+        <div class="right-side">
+            <div class="donate-button">
+                <a href="donate.html">Donate</a>
+            </div>
+            <div class="menu-icon" onclick="toggleDrawer()">&#9776;</div>
+        </div>
+    </div>
+</header>
+
+<!-- Navigation Drawer -->
+<div class="drawer" id="navDrawer">
+    <div class="close-icon" onclick="toggleDrawer()">&times;</div> <!-- Close icon -->
+    <div class="nav-item">
+        <a href="about.html"><span>ABOUT US</span></a>
+        <span class="arrow" onclick="toggleSubMenu('aboutSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="aboutSubMenu">
+        <div><a href="about.html#mission">Our Mission</a></div>
+        <div><a href="about.html#why">Our Why</a></div>
+        <div><a href="about.html#team">Our Team</a></div>
+        <div><a href="about.html#board">Board of Trustees</a></div>
+        <div><a href="about.html#financials">Financials</a></div>
+        <div><a href="about.html#awards">Awards</a></div>
+    </div>
+    
+    <div class="nav-item">
+        <a href="our_work.html"><span>WHAT WE DO</span></a>
+        <span class="arrow" onclick="toggleSubMenu('whatWeDoSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="whatWeDoSubMenu">
+        <div><a href="our_work.html#god_errands">Our God Errands</a></div>
+        <div><a href="our_work.html#testimonials">Our Testimonials</a></div>
+    </div>
+    
+    <div class="nav-item">
+        <a href="media.html"><span>RESOURCES AND MEDIA</span></a>
+        <span class="arrow" onclick="toggleSubMenu('resourcesSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="resourcesSubMenu">
+        <div><a href="media.html#stories">Our Stories</a></div>
+        <div><a href="media.html#projects">Project Spotlights</a></div>
+        <div><a href="media.html#media">TSAG in the News</a></div>
+        <div><a href="media.html#photos">Photographs</a></div>
+        <div><a href="#">Videos</a></div>
+        <div><a href="media.html#books">Books</a></div>
+        <div><a href="media.html#podcasts">Podcasts</a></div>
+    </div>
+
+    <div class="drawer-donate-button" style="margin-top: auto;">
+        <a href="donate.html">Donate</a>
+    </div>
+</div>
+
+
+<header class="page-header">
   <h2>WHAT WE DO</h2>
-  </section>
+  </header>
     <!-- What We Do Section -->
     <section class="section" id="god-errands">
         <div class="section-title">OUR GOD ERRANDS</div>
@@ -416,11 +760,26 @@ header {
 <footer>
         <p>&copy; 2024 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
     </footer>
-</div>
-<div id="mobile">
-<p>Mobile version still under construction</p>
-</div>
+
     <script>
+    	function toggleDrawer() {
+        const drawer = document.getElementById('navDrawer');
+        const isOpen = drawer.classList.toggle('open');
+
+        if (isOpen) {
+            // Close all submenus when opening the drawer
+            const subMenus = document.querySelectorAll('.sub-menu');
+            subMenus.forEach((subMenu) => {
+                subMenu.classList.remove('open');
+            });
+        }
+    }
+
+    function toggleSubMenu(menuId) {
+        const subMenu = document.getElementById(menuId);
+        subMenu.classList.toggle('open');
+    }
+    
     // Images data for each errand (add more image paths as needed)
     const errandImages = {
         "errand1": [
@@ -503,14 +862,16 @@ header {
     });
     
     // Testimonials Data
+
 const testimonialsData = [
-    "I thank God for making me to know TSSP (The Sholly Serenity Place)  when I have been having a heavy burden and marital emotional  distress in my marriage over 4 - 5 years which the journey looks like  hell with prayers and fasting till it seems hope is gone.  My marriage has been toxic and a friend introduced me to TSSP. TSSP  brings smiles and laughter to myself and children….The staff there are  friendly, nice  respectful, caring and accommodating and even the  environment…..The Sholly Serenity Place is “Salt” in my life and my  children……I have a new family in TSSP. I have so much to say but in  short “I THANK YOU GOD” for how far He has been with me and my  children. I LOVE TSSP.",
-    "“ I thank God for making me to know TSSP (The Sholly Serenity Place)  when I have been having a heavy burden and marital emotional  distress in my marriage over 4 - 5 years which the journey looks like  hell with prayers and fasting till it seems hope is gone.  My marriage has been toxic and a friend introduced me to TSSP. TSSP  brings smiles and laughter to myself and children….The staff there are  friendly, nice  respectful, caring and accommodating and even the  environment…..The Sholly Serenity Place is “Salt” in my life and my  children……I have a new family in TSSP. I have so much to say but in  short “I THANK YOU GOD” for how far He has been with me and my  children. I LOVE TSSP”.",
-    "“ I thank God for making me to know TSSP (The Sholly Serenity Place)  when I have been having a heavy burden and marital emotional  distress in my marriage over 4 - 5 years which the journey looks like  hell with prayers and fasting till it seems hope is gone.  My marriage has been toxic and a friend introduced me to TSSP. TSSP  brings smiles and laughter to myself and children….The staff there are  friendly, nice  respectful, caring and accommodating and even the  environment…..The Sholly Serenity Place is “Salt” in my life and my  children……I have a new family in TSSP. I have so much to say but in  short “I THANK YOU GOD” for how far He has been with me and my  children. I LOVE TSSP”.",
-    "“ I thank God for making me to know TSSP (The Sholly Serenity Place)  when I have been having a heavy burden and marital emotional  distress in my marriage over 4 - 5 years which the journey looks like  hell with prayers and fasting till it seems hope is gone.  My marriage has been toxic and a friend introduced me to TSSP. TSSP  brings smiles and laughter to myself and children….The staff there are  friendly, nice  respectful, caring and accommodating and even the  environment…..The Sholly Serenity Place is “Salt” in my life and my  children……I have a new family in TSSP. I have so much to say but in  short “I THANK YOU GOD” for how far He has been with me and my  children. I LOVE TSSP”.",
-    "“ I thank God for making me to know TSSP (The Sholly Serenity Place)  when I have been having a heavy burden and marital emotional  distress in my marriage over 4 - 5 years which the journey looks like  hell with prayers and fasting till it seems hope is gone.  My marriage has been toxic and a friend introduced me to TSSP. TSSP  brings smiles and laughter to myself and children….The staff there are  friendly, nice  respectful, caring and accommodating and even the  environment…..The Sholly Serenity Place is “Salt” in my life and my  children……I have a new family in TSSP. I have so much to say but in  short “I THANK YOU GOD” for how far He has been with me and my  children. I LOVE TSSP”.",
-    "“ I thank God for making me to know TSSP (The Sholly Serenity Place)  when I have been having a heavy burden and marital emotional  distress in my marriage over 4 - 5 years which the journey looks like  hell with prayers and fasting till it seems hope is gone.  My marriage has been toxic and a friend introduced me to TSSP. TSSP  brings smiles and laughter to myself and children….The staff there are  friendly, nice  respectful, caring and accommodating and even the  environment…..The Sholly Serenity Place is “Salt” in my life and my  children……I have a new family in TSSP. I have so much to say but in  short “I THANK YOU GOD” for how far He has been with me and my  children. I LOVE TSSP”.",
-    "“ I thank God for making me to know TSSP (The Sholly Serenity Place)  when I have been having a heavy burden and marital emotional  distress in my marriage over 4 - 5 years which the journey looks like  hell with prayers and fasting till it seems hope is gone.  My marriage has been toxic and a friend introduced me to TSSP. TSSP  brings smiles and laughter to myself and children….The staff there are  friendly, nice  respectful, caring and accommodating and even the  environment…..The Sholly Serenity Place is “Salt” in my life and my  children……I have a new family in TSSP. I have so much to say but in  short “I THANK YOU GOD” for how far He has been with me and my  children. I LOVE TSSP”."
+    {
+        text: "I thank God for making me to know TSSP (The Sholly Serenity Place) when I have been having a heavy burden and marital emotional distress in my marriage over 4 - 5 years which the journey looks like hell with prayers and fasting till it seems hope is gone. My marriage has been toxic and a friend introduced me to TSSP. TSSP brings smiles and laughter to myself and children….The staff there are friendly, nice respectful, caring and accommodating and even the environment…..The Sholly Serenity Place is “Salt” in my life and my children……I have a new family in TSSP. I have so much to say but in short “I THANK YOU GOD” for how far He has been with me and my children. I LOVE TSSP.",
+        url: "#"
+    },
+    {
+        text: "... The staff there are so friendly, nice, respectful, caring and accommodating and even the environment.... The Sholly Serenity Place is 'Salt' in my life and my children.....\"<br><br>#TSSPResidentFeedback<br><br>August 2024",
+        url: "https://web.facebook.com/photo.php?fbid=814702747316495&set=pb.100063303304967.-2207520000&type=3"
+    }
 ];
 
 const testimonialsContainer = document.querySelector('.testimonial-container');
@@ -518,10 +879,19 @@ const testimonialsContainer = document.querySelector('.testimonial-container');
         // Function to create testimonial cards
         function createTestimonialCards() {
             testimonialsData.forEach(testimonial => {
+            // Create an anchor element
+        const link = document.createElement('a');
+        link.href = testimonial.url; // Use the URL from your data
+        link.target = '_blank'; // Open in a new tab (optional)
+        link.className = 'testimonial-link';
+                // Create the testimonial card
                 const testimonialCard = document.createElement('div');
                 testimonialCard.className = 'testimonial-card';
-                testimonialCard.innerHTML = `<p>${testimonial}</p>`;
-                testimonialsContainer.appendChild(testimonialCard);
+                testimonialCard.innerHTML = `<p>${testimonial.text}</p>`; // Adjust based on your data structure
+
+        // Append the card to the link, then append the link to the container
+        link.appendChild(testimonialCard);
+        testimonialsContainer.appendChild(link);
             });
         }
 
@@ -532,4 +902,5 @@ const testimonialsContainer = document.querySelector('.testimonial-container');
          </script>
 </body>
 </html>
+
 
