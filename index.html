@@ -2061,45 +2061,51 @@ text-align: center;
   transform: scale(1.1);
 }
 
-.email-list {
- height: 150px;
-            background-color: white;
-            border: 5px solid yellow;
-            margin: 20px auto; /* Center the section */
-            position: relative;
-            text-align: center;
-            padding-top: 30px; /* Add padding to avoid text being cut */
-}
-
-.email-list h3 {
-            margin: 0;
-            position: absolute;
-            top: -20px; /* Position to cut the upper border */
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: white;
-            padding: 0 10px;
-        }
-
-.email-list p {
-            margin: 10px 0;
-        }
-
-        .email-list button {
-            padding: 10px 20px;
-            background-color: #FFD700;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 1em;
-            border-radius: 5;
-            }
-
         footer {
             text-align: center;
             padding: 10px;
         }
 
+.email-list {
+    background-color: white;
+    border: 5px solid yellow;
+    margin: 20px auto; /* Center the section */
+    position: relative;
+    text-align: center;
+    padding: 20px; /* Add padding for content spacing */
+    width: 100%;
+    max-width: 500px; /* Optional max-width for responsive design */
+    box-sizing: border-box;
+}
+
+.email-list h3 {
+    margin: 0;
+    position: absolute;
+    top: -20px; /* Position to cut the upper border */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 0 10px;
+}
+
+.email-list p {
+    margin: 10px 0;
+}
+
+.iframe-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.iframe-container iframe {
+    width: 100%;
+    max-width: 480px;
+    height: 150px;
+    border: 1px solid #EEE;
+    background: white;
+    box-sizing: border-box;
+}
 
 
 
@@ -2487,10 +2493,12 @@ text-align: center;
   </div>
 </section>
 <div class="email-list">
-        <h3>Join our email list</h3>
-        <p>Get the latest news and resources directly in your inbox.</p>
-        <button>Sign up</button>
+    <h3>Join our email list</h3>
+    <p>Get the latest news and resources directly in your inbox.</p>
+    <div class="iframe-container">
+        <iframe src="https://sagf2017.substack.com/embed" frameborder="0" scrolling="no"></iframe>
     </div>
+</div>
     <footer>
         <p>&copy; 2024 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
     </footer>
