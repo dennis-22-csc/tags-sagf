@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Reports</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+       
+        /* Hide both divs by default */
+#mobile-header, #navDrawer, #desktop-header {
+    display: none;
+}
+
+/* Show div with ID x for mobile devices */
+@media (max-width: 767px) { /* Adjust the max-width as needed for your mobile breakpoint */
+    #mobile-header, #navDrawer  {
+        display: block; /* or inline-block, flex, etc., based on your layout needs */
+    }
+}
+
+/* Show div with ID y for desktop devices */
+@media (min-width: 768px) { /* Adjust the min-width as needed for your desktop breakpoint */
+    #desktop-header {
+        display: block; /* or inline-block, flex, etc., based on your layout needs */
+    }
+}
+
+@media only screen and (max-width: 768px) {
+	/* Header styling */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px 0; /* Top and bottom padding */
+            width: 100%; /* Ensures header takes full width */
+            position: relative; /* Positioning context for the drawer */
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center; /* Vertically centers items */
+            justify-content: space-between; /* Space items to occupy full width */
+            padding: 0 20px; /* Add horizontal padding */
+        }
+
+        .logo {
+            flex: none; /* Prevent flex-grow, keeps logo size fixed */
+        }
+
+        .foundation-name {
+            flex: 1; /* Allow foundation name to take available space */
+            text-align: center; /* Center text within its space */
+            margin: 0; /* Remove any default margins */
+        }
+
+        /* New styling for right-side container */
+        .right-side {
+            display: flex; /* Align donate button and menu icon in a column */
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-end; /* Align items to the right */
+        }
+
+        .menu-icon {
+            flex: none; /* Prevent flex-grow, keeps menu icon size fixed */
+            cursor: pointer; 
+            font-size: 24px; /* Adjust font size as needed */
+            margin-top: 10px; /* Space between donate button and menu icon */
+        }
+
+        /* Logo styling */
+        .logo img {
+            height: 50px;
+            max-width: 100%; /* Adjust logo size for smaller screens */
+        }
+
+        /* Foundation name styling */
+        .foundation-name h1 {
+            font-size: 4vw; /* Responsive font size */
+            margin: 0;
+        }
+        
+        /* Donate button styling */
+        .donate-button a {
+            background-color: #FFCC00; /* Example yellow color for the button */
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center; /* Center text in the button */
+        }
+
+        .donate-button a:hover {
+            background-color: #FFD633;
+        }
+
+        
+        .drawer-donate-button {
+            margin-top: auto;
+            margin-bottom: 50px;
+            text-align: center;
+            padding: 16px;
+            background-color: #FFCC00;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .drawer-donate-button a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .drawer-donate-button a:hover {
+            background-color: #FFD633;
+        }
+
+        
+        
+        
+        /* Navigation drawer styling */
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            overflow-y: auto;
+            border-top-right-radius: 8px; /* Rounded corner for Material Design */
+            border-bottom-right-radius: 8px;
+        }
+
+        .drawer.open {
+            transform: translateX(0);
+        }
+
+        
+
+        .nav-item {
+            font-size: 18px;
+            padding: 12px 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f0f0f0;
+            color: #FFD633;
+            transition: background-color 0.2s;
+        }
+
+        .nav-item:hover {
+            background-color: #f5f5f5;
+        }
+        .nav-item a {
+    text-decoration: none; /* Remove underline */
+    color: black;
+}
+
+        .sub-menu {
+            display: none;
+            padding-left: 16px;
+        }
+
+        .sub-menu.open {
+            display: block;
+        }
+
+        .sub-menu div {
+            padding: 8px 0;
+        }
+
+        .sub-menu a {
+            text-decoration: none;
+            color: #FFD633;
+            font-size: 16px;
+        }
+
+        .sub-menu a:hover {
+            text-decoration: underline;
+        }
+
+        .arrow {
+            font-size: 30px;
+        }
+
+
+        /* Close icon in the drawer */
+        .close-icon {
+            cursor: pointer;
+            font-size: 24px;
+            margin-bottom: 20px; /* Space below the close icon */
+        }
+        
+  } 
+  
+   @media only screen and (min-width: 769px) {
+/* Header styling */
+header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Logo styling */
+.logo img {
+  height: 50px;
+}
+
+/* Navigation styling */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+/* Default hide for all dropdown menus */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  list-style: none;
+  min-width: 300px;
+  z-index: 10;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown:hover .resources {
+  display: flex; /* Only apply flex layout on hover */
+  gap: 20px;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 15px;
+  white-space: nowrap;
+  color: #333;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+
+/* Flex layout for individual columns */
+.dropdown-column {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically within each column */
+  gap: 8px;
+}
+
+/* Heading and link styles */
+.resources h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.resources a {
+  color: #333;
+  text-decoration: none;
+}
+
+.resources a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Donate button styling */
+.donate-button a {
+  background-color: #FFCC00; /* Example yellow color for the button */
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.donate-button a:hover {
+  background-color: #FFD633;
+}
+
+} 
+
+ footer {
+            text-align: center;
+            padding: 10px;
+        }
+ .page-header {
+  background-color: #FFD700; /* Shade of yellow */
+  color: white;
+  text-align: center;
+  
+  font-size: 1.2rem;
+}
+  
+
+
+        /* Flexbox Centering Container */
+        .reports-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+
+        /* Centered Quarterly Reports Grid */
+        .quarterly-reports {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            width: 100%;
+            padding: 0 10px;
+        }
+
+        /* Card Style for Quarterly Reports */
+        .quarterly-report {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .quarterly-report:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Infographics and Quarterly Reports */
+        .quarterly-report img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .quarterly-report h4 {
+            font-size: 1.1em;
+            color: #333;
+            margin-top: 8px;
+            margin-bottom: 10px;
+        }
+
+        /* Download Button in Quarterly Reports */
+        .download-button {
+            display: inline-block;
+            padding: 8px 12px;
+            margin-top: 10px;
+            background-color: #FFCC00;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-button:hover {
+            background-color: #FFD633;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h3 {
+                font-size: 1.5em;
+            }
+
+            .quarterly-report h4 {
+                font-size: 1em;
+            }
+
+            .download-button {
+                font-size: 0.8em;
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header id="desktop-header">
+    <div class="header-container">
+      <!-- Left side: Logo -->
+      <div class="logo">
+        <a href="index.html">
+    <img src="logo.jpg" alt="Foundation Logo" />
+</a>
+      </div>
+
+      <!-- Center: Navigation Links -->
+      <nav>
+        <ul class="nav-links">
+          <li class="dropdown">
+            <a href="about.html">ABOUT US</a>
+            <ul class="dropdown-menu">
+              <li><a href="about.html#mission">Our Mission</a></li>
+              <li><a href="about.html#why">Our Why</a></li>
+              <li><a href="about.html#team">Our Team</a></li>
+              <li><a href="about.html#board">Board of Trustees</a></li>
+              <li><a href="about.html#financials">Financials</a></li>
+              <li><a href="about.html#awards">Awards</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="our_work.html">WHAT WE DO</a>
+            <ul class="dropdown-menu">
+              <li><a href="our_work.html#god_errands">Our God Errands</a></li>
+              <li><a href="our_work.html#testimonials">Our Testimonials</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+  <a href="media.html">RESOURCES AND MEDIA</a>
+  <ul class="dropdown-menu resources">
+    <div class="dropdown-column">
+      <h4>NEWS & STORIES</h4>
+      <a href="media.html#stories">Our Stories</a>
+      <a href="media.html#projects">Project Spotlights</a>
+      <a href="media.html#media">TSAG in the News</a>
+    </div>
+    <div class="dropdown-column">
+      <h4>MULTIMEDIA</h4>
+      <a href="media.html#photos">Photographs</a>
+      <a href="#">Videos</a>
+    </div>
+    <div class="dropdown-column">
+      <h4>RESOURCES</h4>
+      <a href="media.html#books">Books</a>
+      <a href="media.html#podcasts">Podcasts</a>
+    </div>
+  </ul>
+</li>
+        </ul>
+      </nav>
+
+      <!-- Right side: Donate Button -->
+      <div class="donate-button">
+        <a href="donate.html">Donate</a>
+      </div>
+    </div>
+  </header>
+<header id="mobile-header">
+    <div class="header-container">
+        <!-- Left side: Logo -->
+        <div class="logo">
+        <a href="index.html">
+            <img src="logo.jpg" alt="Foundation Logo" />
+            </a>
+        </div>
+
+        <!-- Center: Foundation Name -->
+        <div class="foundation-name">
+            <h1>The Shola Adefolalu Gaska Foundation</h1>
+        </div>
+
+        <!-- Right side: Container for Donate Button and Menu Icon -->
+        <div class="right-side">
+            <div class="donate-button">
+                <a href="donate.html">Donate</a>
+            </div>
+            <div class="menu-icon" onclick="toggleDrawer()">&#9776;</div>
+        </div>
+    </div>
+</header>
+
+<!-- Navigation Drawer -->
+<div class="drawer" id="navDrawer">
+    <div class="close-icon" onclick="toggleDrawer()">&times;</div> <!-- Close icon -->
+    <div class="nav-item">
+        <a href="about.html"><span>ABOUT US</span></a>
+        <span class="arrow" onclick="toggleSubMenu('aboutSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="aboutSubMenu">
+        <div><a href="about.html#mission">Our Mission</a></div>
+        <div><a href="about.html#why">Our Why</a></div>
+        <div><a href="about.html#team">Our Team</a></div>
+        <div><a href="about.html#board">Board of Trustees</a></div>
+        <div><a href="about.html#financials">Financials</a></div>
+        <div><a href="about.html#awards">Awards</a></div>
+    </div>
+    
+    <div class="nav-item">
+        <a href="our_work.html"><span>WHAT WE DO</span></a>
+        <span class="arrow" onclick="toggleSubMenu('whatWeDoSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="whatWeDoSubMenu">
+        <div><a href="our_work.html#god_errands">Our God Errands</a></div>
+        <div><a href="our_work.html#testimonials">Our Testimonials</a></div>
+    </div>
+    
+    <div class="nav-item">
+        <a href="media.html"><span>RESOURCES AND MEDIA</span></a>
+        <span class="arrow" onclick="toggleSubMenu('resourcesSubMenu')">&#9662;</span>
+    </div>
+    <div class="sub-menu" id="resourcesSubMenu">
+        <div><a href="media.html#stories">Our Stories</a></div>
+        <div><a href="media.html#projects">Project Spotlights</a></div>
+        <div><a href="media.html#media">TSAG in the News</a></div>
+        <div><a href="media.html#photos">Photographs</a></div>
+        <div><a href="#">Videos</a></div>
+        <div><a href="media.html#books">Books</a></div>
+        <div><a href="media.html#podcasts">Podcasts</a></div>
+    </div>
+
+    <div class="drawer-donate-button" style="margin-top: auto;">
+        <a href="donate.html">Donate</a>
+    </div>
+</div>
+
+<header class="page-header">
+  <h2>Quarterly Reports - 2024</h2>
+</header>
+    <div class="reports-container">
+        <div id="quarterly-reports" class="quarterly-reports"></div>
+    </div>
+<footer>
+        <p>&copy; 2024 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Data for Quarterly Reports
+        const quarterlyReportsData = [
+            { title: "Q1 2024", image: "infographics_q1_24.jpg", reportUrl: "path/to/q1-report.pdf" },
+            { title: "Q2 2024", image: "infographics_q2_24.jpg", reportUrl: "path/to/q2-report.pdf" },
+            { title: "Q3 2024", image: "infographics_q3_24.jpg", reportUrl: "path/to/q3-report.pdf" },
+        ];
+
+        // Function to populate Quarterly Reports section
+        function populateQuarterlyReports() {
+            const quarterlyContainer = document.getElementById("quarterly-reports");
+            quarterlyReportsData.forEach(report => {
+                const card = document.createElement("div");
+                card.className = "quarterly-report";
+                card.innerHTML = `
+                    <img src="${report.image}" alt="${report.title}">
+                    <h4>${report.title}</h4>
+                    <a href="${report.reportUrl}" class="download-button" target="_blank">Download Report</a>
+                `;
+                quarterlyContainer.appendChild(card);
+            });
+        }
+
+        // Initialize the function to populate reports
+        populateQuarterlyReports();
+    </script>
+
+</body>
+</html>
+
