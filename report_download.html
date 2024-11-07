@@ -548,39 +548,49 @@ header {
 <header class="page-header">
   <h2>Quarterly Reports - 2024</h2>
 </header>
-    <div class="reports-container">
-        <div id="quarterly-reports" class="quarterly-reports"></div>
-    </div>
+<div class="reports-container">
+    <div id="quarterly-reports" class="quarterly-reports"></div>
+</div>
 <footer>
-        <p>&copy; 2024 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
-    </footer>
+    <p>&copy; 2024 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
+</footer>
 
-    <script>
-        // Data for Quarterly Reports
-        const quarterlyReportsData = [
-            { title: "Q1 2024", image: "infographics_q1_24.jpg", reportUrl: "path/to/q1-report.pdf" },
-            { title: "Q2 2024", image: "infographics_q2_24.jpg", reportUrl: "path/to/q2-report.pdf" },
-            { title: "Q3 2024", image: "infographics_q3_24.jpg", reportUrl: "path/to/q3-report.pdf" },
-        ];
+<script>
+    // Data for Quarterly Reports
+    const quarterlyReportsData = [
+        { title: "Q1 2024", image: "infographics_q1_24.jpg", reportUrl: "path/to/q1-report.pdf" },
+        { title: "Q2 2024", image: "infographics_q2_24.jpg", reportUrl: "https://drive.google.com/uc?export=download&id=1oXaM4SdQwzghfo_NKdfwCKLS5jxXptsP" },
+        { title: "Q3 2024", image: "infographics_q3_24.jpg", reportUrl: "https://drive.google.com/uc?export=download&id=1h08qdKRcEyrtCBYLFi1Mgp8juRNg1e6I" },
+    ];
 
-        // Function to populate Quarterly Reports section
-        function populateQuarterlyReports() {
-            const quarterlyContainer = document.getElementById("quarterly-reports");
-            quarterlyReportsData.forEach(report => {
-                const card = document.createElement("div");
-                card.className = "quarterly-report";
-                card.innerHTML = `
-                    <img src="${report.image}" alt="${report.title}">
-                    <h4>${report.title}</h4>
-                    <a href="${report.reportUrl}" class="download-button" target="_blank">Download Report</a>
-                `;
-                quarterlyContainer.appendChild(card);
-            });
-        }
+    // Function to populate Quarterly Reports section
+    function populateQuarterlyReports() {
+        const quarterlyContainer = document.getElementById("quarterly-reports");
+        quarterlyReportsData.forEach(report => {
+            const card = document.createElement("div");
+            card.className = "quarterly-report";
+            card.innerHTML = `
+                <img src="${report.image}" alt="${report.title}">
+                <h4>${report.title}</h4>
+                <button onclick="downloadReport('${report.reportUrl}')" class="download-button">Download Report</button>
+            `;
+            quarterlyContainer.appendChild(card);
+        });
+    }
 
-        // Initialize the function to populate reports
-        populateQuarterlyReports();
-    </script>
+    // Function to download report without navigating to a new page
+    function downloadReport(url) {
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = true; // Set the download attribute to initiate download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link); // Clean up
+    }
+
+    // Initialize the function to populate reports
+    populateQuarterlyReports();
+</script>
 
 </body>
 </html>
