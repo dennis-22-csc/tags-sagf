@@ -410,6 +410,33 @@ header {
   font-size: 1.2rem;
 }
 
+.video-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.video-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px; /* Optional: limit max width */
+     margin-top: 20px;
+}
+
+.video {
+    width: 100%;
+    max-width: 600px; /* Optional: limit video size */
+    height: 400px; /* Adjust as needed */  
+}
+
+
+ 
+
 	
     </style>
 </head>
@@ -456,7 +483,7 @@ header {
     <div class="dropdown-column">
       <h4>MULTIMEDIA</h4>
       <a href="media.html#photos">Photographs</a>
-      <a href="#">Videos</a>
+      <a href="media.html/#video-section">Videos</a>
     </div>
     <div class="dropdown-column">
       <h4>RESOURCES</h4>
@@ -532,7 +559,7 @@ header {
         <div><a href="media.html#projects">Project Spotlights</a></div>
         <div><a href="media.html#media">TSAG in the News</a></div>
         <div><a href="media.html#photos">Photographs</a></div>
-        <div><a href="#">Videos</a></div>
+        <div><a href="media.html/#video-section">Videos</a></div>
         <div><a href="media.html#books">Books</a></div>
         <div><a href="media.html#podcasts">Podcasts</a></div>
     </div>
@@ -563,6 +590,10 @@ header {
     <div class="photos-section" id="photos">
         <h2>Photographs</h2>
         <div class="photo-cards" id="photo-cards-container"></div>
+    </div>
+    <div class="video-section" id="video-section">
+        <h2>Videos</h2>
+        <div class="video-cards" id="video-cards-container"></div>
     </div>
 
     <div class="publications-section">
@@ -705,6 +736,8 @@ header {
                 link:'https://web.facebook.com/media/set/?set=a.1799742073622204&type=3' 
             }
         ];
+        
+        
 
         // Data for stories
         const stories = [
@@ -912,6 +945,28 @@ header {
                 container.appendChild(card);
             });
         }
+        
+        // Function to create and insert the video
+function insertVideo(videoId) {
+    // Get the container where the video will be inserted
+    const container = document.getElementById('video-cards-container');
+
+    // Create an iframe element
+    const iframe = document.createElement('iframe');
+    
+    // Set the iframe's attributes
+    iframe.classList.add('video'); // Add a class for styling (optional)
+    iframe.src = `https://www.youtube.com/embed/${videoId}`; // Set the video ID dynamically
+    iframe.frameborder = '0'; // Optional: for a clean border
+    iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'; // Optional: for allowing specific features
+    iframe.allowFullscreen = true; // Allow fullscreen mode
+    
+    // Append the iframe to the container
+    container.appendChild(iframe);
+}
+
+
+       
 
         // Generate all cards on page load
         window.onload = function() {
@@ -921,6 +976,8 @@ header {
             generateNewsCards();
             generatePublicationCards();
             generatePodcastCards();
+            insertVideo('qhcUV_NZxLw');
+            
         };
     </script>
 </body>
