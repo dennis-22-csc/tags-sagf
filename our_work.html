@@ -480,44 +480,55 @@ header {
             font-size: 2em;
             margin: 0 10px;
         }
-        
-        /* Testimonials Section */
-        .testimonial-container {
-            display: flex;
-            flex-wrap: wrap; /* Allow cards to wrap to next line on small screens */
-            justify-content: center; /* Center cards horizontally */
-            gap: 20px; /* Space between cards */
-            max-width: 1200px; /* Set a max width for the container */
-            margin: 0 auto; /* Center the container on the page */
-        }
+   
+   /* Testimonials Section */
+#testimonials {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-        .testimonial-card {
-            background-color: #ffffff;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 20px;
-            width: 300px; /* Fixed width for cards */
-            height: auto; /* Auto height based on content */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s; /* Smooth hover effect */
-            cursor: pointer; /* Show pointer cursor */
- 
+.testimonial-category {
+    text-align: center; /* Center-align everything within each testimonial category */
+    margin-bottom: 40px; /* Add some spacing below each category */
+}
 
-        }
-
-        .testimonial-card:hover {
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Highlight on hover */
-            transform: scale(1.05); /* Slightly enlarge card on hover */
-            
-        }
-        
+.testimonial-category h3 {
+    font-size: 1.5em; /* Adjust the font size as needed */
+    font-weight: bold;
+    margin-bottom: 20px; /* Space between the title and the testimonials */
+    color: #333; /* Color for the titles */
+}
 
 
+.testimonial-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
 
-} 
-.testimonial-link {
-    text-decoration: none; /* Remove underline */
-    color: black;
+.testimonial-card {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    height: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.testimonial-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        width: 100%; /* Full width on small screens */
+    }
 }
  footer {
             text-align: center;
@@ -768,10 +779,31 @@ header {
             <div class="completed-tasks">Women across 8 states empowered till date</div>
         </div>
     </section>
-<section id="testimonials">
-    <h2>Our Testimonials</h2>
-    <div class="testimonial-container">
-        <!-- Testimonials will be inserted here by JavaScript -->
+    <section id="testimonials">
+    <h2>Our TSSP Testimonials  (2021 to date)</h2>
+    
+    <!-- Residents Section -->
+    <div class="testimonial-category">
+        <h3>Residents</h3>
+        <div class="testimonial-container" id="residents-testimonials">
+            <!-- Resident testimonials will be inserted here by JavaScript -->
+        </div>
+    </div>
+    
+    <!-- Team Members Section -->
+    <div class="testimonial-category">
+        <h3>TSSP Team Members</h3>
+        <div class="testimonial-container" id="team-testimonials">
+            <!-- Team member testimonials will be inserted here by JavaScript -->
+        </div>
+    </div>
+    
+    <!-- Volunteers Section -->
+    <div class="testimonial-category">
+        <h3>Volunteers</h3>
+        <div class="testimonial-container" id="volunteer-testimonials">
+            <!-- Volunteer testimonials will be inserted here by JavaScript -->
+        </div>
     </div>
 </section>
 <footer>
@@ -878,45 +910,46 @@ header {
         image.addEventListener('click', () => enlargeImage(image.src));
     });
     
-    // Testimonials Data
 
-const testimonialsData = [
-    {
-        text: "I thank God for making me to know TSSP (The Sholly Serenity Place) when I have been having a heavy burden and marital emotional distress in my marriage over 4 - 5 years which the journey looks like hell with prayers and fasting till it seems hope is gone. My marriage has been toxic and a friend introduced me to TSSP. TSSP brings smiles and laughter to myself and children….The staff there are friendly, nice respectful, caring and accommodating and even the environment…..The Sholly Serenity Place is “Salt” in my life and my children……I have a new family in TSSP. I have so much to say but in short “I THANK YOU GOD” for how far He has been with me and my children. I LOVE TSSP.",
-        url: "#"
-    },
-    {
-        text: "... The staff there are so friendly, nice, respectful, caring and accommodating and even the environment.... The Sholly Serenity Place is 'Salt' in my life and my children.....\"<br><br>#TSSPResidentFeedback<br><br>August 2024",
-        url: "https://web.facebook.com/photo.php?fbid=814702747316495&set=pb.100063303304967.-2207520000&type=3"
-    }
+const residentTestimonials = [
+    "I am so thankful to Grandma for accommodating me and my children. My lifestyle in general has changed, I have become free and social, meeting people and making friends. I remember, at first being scared as I did not know I will meet, so I prayed about the whole thing, also I was sick for a while but God used Grandma to perfect my health. I am grateful for the hospitality, corrections with love and kind gestures, in her words...I remember how chaotic my life was. Not being certain about what life had in store for me, but since I have been here, I feel at peace. I now pray with certainty and assurance that my prayers answered.",
+    "I thank God for making me to know TSSP (The Sholly Serenity Place) when I have been having a heavy burden and marital emotional distress in my marriage over 4 - 5 years which the journey looks like hell with prayers and fasting till it seems hope is gone. My marriage has been toxic and a friend introduced me to TSSP…. TSSP brings smiles and laughter to myself and children…. The staff there are friendly, respectful, caring and accommodating…",
+"My prayer life has changed. My mind transformed. My experience taught me how to forgive. I also learnt how to put God first in everything I do…. even my children are behaving better now….",
+    "I\'m happy here because since I come here, the love here, I've never experienced it before. I don't even know how to appreciate God for many things He has done in my life. I've come to know God better than before. I pray now unlike before when I didn't even used to pray. Small, small I am now reading the bible that I've never ever read before. Because one of my eyes got bad it affected my reading, so I never bothered to read anything talk less of the Bible. But when I came here, we have morning devotion and everybody will read Bible and they treated me like they didn't care that one of my eyes is bad...it really encouraged me to start reading my Bible, especially since the Bible was given to me free when I came here. I really, really thank God for all He has done",
+    "My life has truly changed since I arrived, I feel God's presence when I came to Sholly Serenity place and it drew me closer to God. My prayer life and Bible study changed, I learnt to be more disciplined and tolerate people."
 ];
 
-const testimonialsContainer = document.querySelector('.testimonial-container');
+const teamMemberTestimonials = [
+    "Working here has been nothing short of a uniquely divine experience. At the risk of sounding spiritual, one of my hearts desires has been to work in a place that unashamedly honors God and seeks after Godly things and honestly that's what TSSP is all about. Not to say we don't have our struggles or issues, after all Jesus's disciples had issues, yet on a daily basis we make tangible contact with the faithfulness of God who has not once forsaken us since I started working here. What more could I ask for?",
+    "Working with Sholly's place is excellent. It is the center of God's presence. I work for the first time of my life with people of love, care and full of His Spirit. We work together as a family and it makes my work easy and for this, I am very grateful.",
+    "God's presence through worship music being played round the house. The ambience is top notch. The atmosphere is very peaceful. My work experience has taught me serve and not to think about myself alone. My experience has drawn me closer to God"
+];
 
-        // Function to create testimonial cards
-        function createTestimonialCards() {
-            testimonialsData.forEach(testimonial => {
-            // Create an anchor element
-        const link = document.createElement('a');
-        link.href = testimonial.url; // Use the URL from your data
-        link.target = '_blank'; // Open in a new tab (optional)
-        link.className = 'testimonial-link';
-                // Create the testimonial card
-                const testimonialCard = document.createElement('div');
-                testimonialCard.className = 'testimonial-card';
-                testimonialCard.innerHTML = `<p>${testimonial.text}</p>`; // Adjust based on your data structure
+const volunteerTestimonials = [
+    "The first thing that struck me when I stepped into the Sholly Serenity Place was the ambiance, there was this sense of ‘welcome home’. There was sense of hope and peace and everywhere was just calm",
+    "TSSP is a safe haven. More like a home on the journey to home. I see ladies come in broken and with so much palpable fear and timidity. And within a few days or weeks, they come alive and are transformed into someone filled with so much hope that they express as confidence and improved self-esteem. I see God's redemptive act in action in their lives, and it is a privilege to be part of this team, to the glory of God.",
+    "I come to Sholly’s home and it feels like family for me, it’s beyond just volunteering for me, it’s how we pray together and share beautiful moments and milestones together without anyone feeling left out.... It’s how we are one in Unity and in Love. I love volunteering here and I will choose to do this Over and Over again...."
+];
 
-        // Append the card to the link, then append the link to the container
-        link.appendChild(testimonialCard);
-        testimonialsContainer.appendChild(link);
-            });
-        }
+function renderTestimonials(containerId, testimonials) {
+    const container = document.getElementById(containerId);
+    
+    testimonials.forEach(text => {
+        const testimonialCard = document.createElement('div');
+        testimonialCard.className = 'testimonial-card';
+        testimonialCard.innerHTML = `<p>${text}</p>`;
+        
+        container.appendChild(testimonialCard);
+    });
+}
 
-        // Create the testimonial cards on page load
-        createTestimonialCards();
+// Render testimonials for each category
+renderTestimonials("residents-testimonials", residentTestimonials);
+renderTestimonials("team-testimonials", teamMemberTestimonials);
+renderTestimonials("volunteer-testimonials", volunteerTestimonials);
 
-
-         </script>
+  
+           </script>
 </body>
 </html>
 
