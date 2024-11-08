@@ -554,11 +554,10 @@ header {
 <footer>
     <p>&copy; 2024 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
 </footer>
-
 <script>
     // Data for Quarterly Reports
     const quarterlyReportsData = [
-        { title: "Q1 2024", image: "infographics_q1_24.jpg", reportUrl: "path/to/q1-report.pdf" },
+        { title: "Q1 2024", image: "infographics_q1_24.jpg", reportUrl: "#" },
         { title: "Q2 2024", image: "infographics_q2_24.jpg", reportUrl: "https://drive.google.com/uc?export=download&id=1oXaM4SdQwzghfo_NKdfwCKLS5jxXptsP" },
         { title: "Q3 2024", image: "infographics_q3_24.jpg", reportUrl: "https://drive.google.com/uc?export=download&id=1h08qdKRcEyrtCBYLFi1Mgp8juRNg1e6I" },
     ];
@@ -572,26 +571,32 @@ header {
             card.innerHTML = `
                 <img src="${report.image}" alt="${report.title}">
                 <h4>${report.title}</h4>
-                <button onclick="downloadReport('${report.reportUrl}')" class="download-button">Download Report</button>
+                <button onclick="downloadReport(this, '${report.reportUrl}')" class="download-button">Download Report</button>
             `;
             quarterlyContainer.appendChild(card);
         });
     }
 
     // Function to download report without navigating to a new page
-    function downloadReport(url) {
+    function downloadReport(button, url) {
+        // Change button text to "Downloading Report"
+        button.textContent = "Downloading Report";
+
+        // Create a link and start the download
         const link = document.createElement("a");
         link.href = url;
         link.download = true; // Set the download attribute to initiate download
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link); // Clean up
+
+        // Optional: Change the text back to "Download Report" after some time
+        setTimeout(() => {
+            button.textContent = "Download Report";
+        }, 3000); // Adjust delay as needed
     }
 
     // Initialize the function to populate reports
     populateQuarterlyReports();
 </script>
-
-</body>
-</html>
 
