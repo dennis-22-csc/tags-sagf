@@ -2176,17 +2176,21 @@ text-align: center;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
+  overflow: auto; /* Allow scrolling within the modal */
 }
 
 /* Modal Content */
 .modal-content {
   background: #fff;
   border-radius: 8px;
-  max-width: 500px;
   margin: 10% auto;
   padding: 20px;
   position: relative;
   animation: fadeIn 0.3s ease-in-out;
+  width: 90%; /* Mobile-friendly width */
+  max-width: 500px; /* Cap width for larger screens */
+  max-height: 80vh; /* Limit height for smaller screens */
+  overflow-y: auto; /* Enable scrolling within the popup */ 
 }
 
 /* Header */
@@ -2253,6 +2257,24 @@ text-align: center;
   .modal-body {
     font-size: 14px;
   }
+  
+  .close-btn {
+    font-size: 28px; /* Larger close button for mobile */
+  }
+
+  .modal-header h2 {
+    font-size: 20px; /* Adjust header font size */
+  }
+
+  .modal-body p {
+    font-size: 14px; /* Smaller text for mobile */
+  }
+
+  .donate-button {
+    font-size: 16px; /* Adjust button font size */
+    padding: 10px 0;
+  }
+
 
 }
  
