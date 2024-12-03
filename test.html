@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popup Modal Example</title>
+  <style>
+  /* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+/* Button Styles */
+.open-popup-btn {
+  padding: 12px 20px;
+  background-color: #6200ea;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.open-popup-btn:hover {
+  background-color: #3700b3;
+}
+
+/* Modal Overlay */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  background: #fff;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 10% auto;
+  padding: 20px;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Header */
+.modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+  text-align: center;
+  color: #333;
+}
+
+/* Body */
+.modal-body {
+  margin-top: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.modal-body .highlight-text {
+  color: #6200ea;
+  font-weight: 500;
+}
+
+/* Footer */
+.modal-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.donate-btn {
+  padding: 12px 20px;
+  background-color: #f50057;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.donate-btn:hover {
+  background-color: #c51162;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .modal-body {
+    font-size: 14px;
+  }
+
+  .donate-btn {
+    font-size: 14px;
+  }
+
+  .open-popup-btn {
+    font-size: 14px;
+  }
+}
+  </style>
+</head>
+<body>
+
+<!-- Popup Modal -->
+<div id="givingTuesdayModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closePopupBtn">&times;</span>
+    <div class="modal-header">
+      <h2>Join Us on GivingTuesday</h2>
+    </div>
+    <div class="modal-body">
+      <p>
+        <strong>What is GivingTuesday?</strong><br>
+        GivingTuesday is a global day of generosity, a day to inspire people around the world to support causes they care about.
+      </p>
+      <p>
+        This GivingTuesday, please consider supporting <strong>The Shola Adefolalu Gaska Foundation</strong> and its shelter for domestic abuse survivors, <strong>The Sholly Serenity Place</strong>.
+      </p>
+      <p>
+        Your donations will help create a safe space for survivors and enable us to continue providing essential services to those in need.
+      </p>
+      <p class="highlight-text">
+        <strong>Special Matching Fund Opportunity:</strong> The more you give to the foundation on GivingTuesday, the more we receive from Global Giving’s matching fund!
+      </p>
+    </div>
+    <div class="modal-footer donate-button">
+      <a href="https://globalgiving.org/projects/feeding-dv-survivors-in-shelter-in-lagos-nigeria" target="_blank">Donate Now</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// Function to show the popup modal
+function showModal() {
+  const modal = document.getElementById('givingTuesdayModal');
+  console.log("showModal called");  // Debugging log
+  modal.style.display = 'block';
+}
+
+// Function to close the popup modal
+function closeModal() {
+  console.log("closeModal called");  // Debugging log
+  const modal = document.getElementById('givingTuesdayModal');
+  modal.style.display = 'none';
+}
+
+// Show the modal after 5 seconds of page load
+window.onload = function() {
+  console.log("Window loaded");  // Debugging log
+  setTimeout(showModal, 5000);
+};
+
+// Use addEventListener to handle the close button click event
+document.getElementById('closePopupBtn').addEventListener('click', closeModal);
+</script>
+
+</body>
+</html>
+

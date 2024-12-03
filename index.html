@@ -2166,29 +2166,20 @@ text-align: center;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  overflow: auto; /* Allow scrolling within the modal */
 }
 
 /* Modal Content */
 .modal-content {
   background: #fff;
   border-radius: 8px;
+  max-width: 500px;
   margin: 10% auto;
   padding: 20px;
   position: relative;
   animation: fadeIn 0.3s ease-in-out;
-  width: 90%; /* Mobile-friendly width */
-  max-width: 500px; /* Cap width for larger screens */
-  max-height: 80vh; /* Limit height for smaller screens */
-  overflow-y: auto; /* Enable scrolling within the popup */ 
 }
 
 /* Header */
-.modal-header {
-  position: relative; /* Ensure the header is independent of the close button */
-  padding: 20px 40px 20px 20px; /* Add padding to accommodate the close button */
-  text-align: center;
-}
 .modal-header h2 {
   margin: 0;
   font-size: 20px;
@@ -2205,7 +2196,7 @@ text-align: center;
 }
 
 .modal-body .highlight-text {
-  color: #6200ea;
+  color: #ff4500;
   font-weight: 500;
 }
 
@@ -2218,8 +2209,8 @@ text-align: center;
 /* Close Button */
 .close-btn {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 10px;
+  right: 15px;
   font-size: 24px;
   font-weight: bold;
   color: #aaa;
@@ -2248,35 +2239,16 @@ text-align: center;
     width: 90%;
     padding: 15px;
   }
-  
-  .modal-header {
-    padding: 20px; /* Reduce padding for smaller screens */
-  }
 
   .modal-body {
     font-size: 14px;
   }
-  
-  .close-btn {
-    font-size: 28px; /* Larger close button for mobile */
+
+  .open-popup-btn {
+    font-size: 14px;
   }
-
-  .modal-header h2 {
-    font-size: 20px; /* Adjust header font size */
-  }
-
-  .modal-body p {
-    font-size: 14px; /* Smaller text for mobile */
-  }
-
-  .donate-button {
-    font-size: 16px; /* Adjust button font size */
-    padding: 10px 0;
-  }
-
-
 }
- 
+
  </style>
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
@@ -2811,28 +2783,26 @@ text-align: center;
   
   
 // Popup
-// Get elements
-const givingTuesdayModal = document.getElementById('givingTuesdayModal');
-const closePopupBtn = document.getElementById('closePopupBtn');
+// Function to show the popup modal
+function showModal() {
+  const modal = document.getElementById('givingTuesdayModal');
+  modal.style.display = 'block';
+}
 
-// Show Modal 5 seconds after the page loads
-//window.onload = function () {
-  //setTimeout(() => {
-    //givingTuesdayModal.style.display = 'none';
-  //}, 5000); // 5000ms = 5 seconds
-//};
+// Function to close the popup modal
+function closeModal() {
+  const modal = document.getElementById('givingTuesdayModal');
+  modal.style.display = 'none';
+}
 
-// Close Modal
-closePopupBtn.onclick = function () {
-  givingTuesdayModal.style.display = 'none';
+// Show the modal after 5 seconds of page load
+window.onload = function() {
+  setTimeout(showModal, 5000);
 };
 
-// Close Modal on clicking outside content
-window.onclick = function (event) {
-  if (event.target === givingTuesdayModal) {
-    givingTuesdayModal.style.display = 'none';
-  }
-};
+// Close the modal when the close button is clicked
+document.getElementById('closePopupBtn').onclick = closeModal;
+
 </script>
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 
