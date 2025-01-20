@@ -734,11 +734,11 @@ section {
             <h3>Yearly Expenditure Infographics</h3>
             <div id="yearly-infographics" class="yearly-infographics"></div>
         </div>
-        <div>
+        <!--<div>
             <h3>Quarterly Reports - 2024</h3>
             <div id="quarterly-reports" class="quarterly-reports"></div>
         </div>
-        <a href="#" class="download-button" id="openModalButton">Download Reports</a>
+        <a href="#" class="download-button" id="openModalButton">Download 2024 Detailed Report</a>-->
         <!-- Modal (Form Popup) -->
         <div id="myModal" class="subscribe-modal">
         <!-- Modal Content -->
@@ -830,7 +830,7 @@ section {
     <img class="modal-content" id="modalImage">
 </div>
 <footer>
-        <p>&copy; 2024 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
+        <p>&copy; 2025 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
     </footer>
 
     <script>
@@ -879,6 +879,7 @@ const yearlyInfographicsData = [
     { title: "2021", image: "infographics_21.jpg" },
     { title: "2022", image: "infographics_22.jpg" },
     { title: "2023", image: "infographics_23.jpg" },
+    { title: "2024", image: "infographics_24.jpg" },
 ];
 
 // Data for Quarterly Reports
@@ -931,7 +932,7 @@ function populateYearlyInfographics() {
 }
 
 // Function to populate Quarterly Reports section
-function populateQuarterlyReports() {
+/*function populateQuarterlyReports() {
     const quarterlyContainer = document.getElementById("quarterly-reports");
     quarterlyReportsData.forEach(report => {
         const card = document.createElement("div");
@@ -942,7 +943,7 @@ function populateQuarterlyReports() {
             `;
         quarterlyContainer.appendChild(card);
     });
-}
+}*/
 
 // Function to handle card clicks and open modal with image
 function openModal(imageSrc) {
@@ -970,7 +971,7 @@ function enableImageExpansion() {
 populateTeam();
 populateTrustees();
 populateYearlyInfographics();
-populateQuarterlyReports();
+//populateQuarterlyReports();
 enableImageExpansion();
 
 // Get modal element and buttons
