@@ -2320,8 +2320,18 @@ text-align: center;
   margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  resize: vertical;
   font-family: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* Use this for a single line */
+}
+
+/* Multi-line truncation */
+.share-text.multiline {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Show only 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .copy-button {
