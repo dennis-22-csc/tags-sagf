@@ -2271,6 +2271,7 @@ text-align: center;
 
 .modal-button:hover, .modal-link:hover {
   color: black;
+  transform: translateY(-1px);
 }
 
 
@@ -2293,9 +2294,10 @@ text-align: center;
 .social-container {
   display: none;
   width: 100%;
-  gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  gap: 10px;
   margin-top: 15px;
 }
 
@@ -2303,21 +2305,59 @@ text-align: center;
   display: flex;
 }
 
-.share-trigger {
-  position: relative;
+/* Ensuring buttons are well-aligned */
+.share-text-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Update social button styles */
+.share-text {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.copy-button {
+  padding: 10px 16px;
+  background: #FFCC00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  text-align: center;
+}
+
+.copy-button:hover {
+  background: #e6b800;
+  color: black;
+}
+
+/* Platform colors */
+.facebook { background: #1877F2; }
+.whatsapp { background: #25D366; }
+.linkedin { background: #0A66C2; }
+
+
 .social-button {
   padding: 10px 15px;
   border-radius: 5px;
   color: white;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   text-decoration: none;
   transition: transform 0.2s;
   font-size: 14px;
+  min-width: 120px; /* Ensuring uniform size */
 }
 
 .social-button i {
@@ -2326,36 +2366,20 @@ text-align: center;
   text-align: center;
 }
 
-/* Platform colors */
-.facebook { background: #1877F2; }
-.whatsapp { background: #25D366; }
-.linkedin { background: #0A66C2; }
-
 /* Mobile adjustments */
 @media (max-width: 600px) {
-  .social-button {
-    width: 100%;
-    justify-content: center;
-    padding: 12px 15px;
+  .social-container {
+    flex-direction: column;
   }
   
-  .social-button i {
-    font-size: 20px;
+  .copy-button {
+    width: 100%;
   }
-}
 
-.share-trigger i {
-  margin-right: 8px;
-  font-size: 16px;
-}
-
-.modal-link {
-  /* Add transition for hover effect */
-  transition: transform 0.2s ease;
-}
-
-.modal-link:hover {
-  transform: translateY(-1px);
+  .social-button {
+    width: 100%;
+    padding: 12px 15px;
+  }
 }
  </style>
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
@@ -2871,6 +2895,7 @@ text-align: center;
 
   var AUTOHIDE = Boolean(0);
   
+
 const modalData = {
   header: "MIRACLES HAPPEN!",
   body: [
@@ -2919,7 +2944,7 @@ function initModal() {
   const modal = document.getElementById('dynamicModal');
   const header = modal.querySelector('.modal-header');
   const body = modal.querySelector('.modal-body');
-  const footer = modal.querySelector('.modal-footer'); // Only declare once
+  const footer = modal.querySelector('.modal-footer');
 
   // Populate Header
   header.innerHTML = `<h2>${modalData.header}</h2>`;
@@ -2934,68 +2959,81 @@ function initModal() {
   // Populate Footer
   const socialContainer = document.createElement('div');
   socialContainer.className = 'social-container';
+  socialContainer.innerHTML = `
+    <div class="share-text-container">
+      <div class="share-text" contenteditable="false">${modalData.shareText} ${modalData.footer[0].url}</div>
+      <button class="copy-button">Copy Text</button>
+    </div>
+    ${modalData.shareOptions.map(item => `
+      <button class="social-button ${item.platform}" data-platform="${item.platform}">
+        <i class="fab ${item.icon}"></i> ${item.text}
+      </button>
+    `).join('')}
+  `;
   
-  // Create social buttons
-  socialContainer.innerHTML = modalData.shareOptions.map(item => {
-  const shareUrl = getShareURL(
-    item.platform,
-    modalData.shareText,
-    modalData.footer[0].url
-  );
-  return `
-    <a href="${shareUrl}" 
-       class="social-button ${item.platform}" 
-       target="_blank"
-       rel="noopener noreferrer">
-      <i class="fab ${item.icon}"></i>
-      ${item.text}
-    </a>`;
-}).join('');
-
-  // Create main footer buttons
- footer.innerHTML = modalData.footer.map(item => {
-  if(item.type === 'trigger') {
-    return `
-      <button class="modal-button share-trigger">
-        <i class="fas fa-share-nodes"></i>
-        ${item.text}
-      </button>`;
-  }
-  return `<a href="${item.url}" class="modal-link" target="_blank">${item.text}</a>`;
-}).join('');
-
-  // Add social container and event listeners
-  footer.appendChild(socialContainer);
-  modal.querySelector('.share-trigger').addEventListener('click', () => {
-    socialContainer.classList.toggle('active');
+   // Copy text event listener
+  socialContainer.querySelector('.copy-button').addEventListener('click', function() {
+    const shareText = socialContainer.querySelector('.share-text').textContent;
+    navigator.clipboard.writeText(shareText).then(() => {
+      this.textContent = 'Copied!';
+      setTimeout(() => this.textContent = 'Copy Text', 2000);
+    });
   });
 
-  // Event Listeners
+  // Create main footer buttons
+  footer.innerHTML = modalData.footer.map(item => {
+    if (item.type === 'trigger') {
+      return `<button class="modal-button share-trigger">
+        <i class="fas fa-share-nodes"></i> ${item.text}
+      </button>`;
+    }
+    return `<a href="${item.url}" class="modal-link" target="_blank">${item.text}</a>`;
+  }).join('');
+
+  footer.appendChild(socialContainer);
+
+  // Delay binding event listener to ensure button exists
+  setTimeout(() => {
+    document.querySelector('.share-trigger').addEventListener('click', () => {
+      socialContainer.classList.toggle('active');
+    });
+  }, 100);
+
+  socialContainer.addEventListener('click', function(e) {
+    const button = e.target.closest('.social-button');
+    if (!button) return;
+
+    e.preventDefault();
+    const platform = button.dataset.platform;
+    const shareText = socialContainer.querySelector('.share-text').value;
+    const shareUrl = getShareURL(platform, shareText, modalData.footer[0].url);
+    window.open(shareUrl, '_blank');
+  });
+
+  // Modal close event
   modal.querySelector('.close-btn').addEventListener('click', closeModal);
   modal.addEventListener('click', e => {
     if (e.target === modal) closeModal();
   });
 }
 
-// Add social sharing functions
+// Fix share function by adding the missing URL parameter
 function getShareURL(platform, text, url) {
   const baseText = encodeURIComponent(text);
   const fullURL = encodeURIComponent(url);
-  
-  switch(platform) {
+
+  switch (platform) {
     case 'facebook':
-      return `https://www.facebook.com/sharer.php?u=${fullURL}&quote=${baseText}`;
-      
-    case 'linkedin':
-      return `https://www.linkedin.com/sharing/share-offsite/?url=${fullURL}&title=${baseText}`;
-      
+      return `https://www.facebook.com/sharer.php?u=${fullURL}`;
     case 'whatsapp':
       return `https://wa.me/?text=${baseText}%0A%0A${fullURL}`;
-
+    case 'linkedin':
+      return `https://www.linkedin.com/sharing/share-offsite/?url=${fullURL}`;
     default:
       return '#';
   }
 }
+
 // Modal Control Functions
 function showModal() {
   document.getElementById('dynamicModal').style.display = 'flex';
@@ -3010,6 +3048,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initModal();
   setTimeout(showModal, 5000);
 });
+
 </script>
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 
