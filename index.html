@@ -3005,7 +3005,7 @@ function initModal() {
     e.preventDefault();
     const platform = button.dataset.platform;
     const shareText = socialContainer.querySelector('.share-text').value;
-    const shareUrl = getShareURL(platform, shareText, modalData.footer[0].url);
+    const shareUrl = getShareURL(platform);
     window.open(shareUrl, '_blank');
   });
 
@@ -3016,18 +3016,14 @@ function initModal() {
   });
 }
 
-// Fix share function by adding the missing URL parameter
-function getShareURL(platform, text, url) {
-  const baseText = encodeURIComponent(text);
-  const fullURL = encodeURIComponent(url);
-
+function getShareURL(platform) {
   switch (platform) {
     case 'facebook':
-      return `https://www.facebook.com/sharer.php?u=${fullURL}`;
+      return `https://www.facebook.com/sharer.php`;
     case 'whatsapp':
-      return `https://wa.me/?text=${baseText}%0A%0A${fullURL}`;
+      return `https://wa.me/`;
     case 'linkedin':
-      return `https://www.linkedin.com/sharing/share-offsite/?url=${fullURL}`;
+      return `https://www.linkedin.com/sharing/share-offsite/`;
     default:
       return '#';
   }
