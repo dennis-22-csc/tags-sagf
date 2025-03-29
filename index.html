@@ -2979,19 +2979,23 @@ function initModal() {
 
 // Add social sharing functions
 function getShareURL(platform, text, url) {
-  const encodedText = encodeURIComponent(text + url);
+  const baseText = encodeURIComponent(text);
+  const fullURL = encodeURIComponent(url);
+  
   switch(platform) {
     case 'facebook':
-      return `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+      return `https://www.facebook.com/sharer.php?u=${fullURL}&quote=${baseText}`;
+      
     case 'linkedin':
-      return `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+      return `https://www.linkedin.com/sharing/share-offsite/?url=${fullURL}&title=${baseText}`;
+      
     case 'whatsapp':
-      return `https://api.whatsapp.com/send?text=${encodedText}`;
+      return `https://wa.me/?text=${baseText}%0A%0A${fullURL}`;
+
     default:
       return '#';
   }
 }
-
 // Modal Control Functions
 function showModal() {
   document.getElementById('dynamicModal').style.display = 'flex';
