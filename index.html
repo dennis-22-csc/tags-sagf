@@ -39,7 +39,7 @@
 
 
 <link rel="icon" type="image/x-icon" href="logo.jpg">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
 
   <style>
@@ -2156,58 +2156,6 @@ text-align: center;
     color: #2BB2FC;
   } 
   
-/* Modal Overlay */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-}
-
-/* Modal Content */
-.modal-content {
-  background: #fff;
-  border-radius: 8px;
-  max-width: 500px; /* Cap width for larger screens */
-  max-height: 80vh; /* Limit height for smaller screens */
-  overflow-y: auto; /* Enable scrolling within the popup */
-  margin: 10% auto;
-  padding: 20px;
-  position: relative;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-/* Header */
-.modal-header h2 {
-  margin: 0;
-  font-size: 20px;
-  text-align: center;
-  color: #333;
-}
-
-/* Body */
-.modal-body {
-  margin-top: 15px;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #555;
-}
-
-.modal-body .highlight-text {
-  color: #FFCC00;
-  font-weight: 500;
-}
-
-/* Footer */
-.modal-footer {
-  text-align: center;
-  margin-top: 20px;
-}
 
 /* Close Button */
 .close-btn {
@@ -2236,21 +2184,179 @@ text-align: center;
   }
 }
 
-/* Responsive Design */
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 0;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+  margin: auto;
+}
+
+.modal-header {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-body {
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.modal-body p {
+  margin: 15px 0;
+}
+
+.modal-footer {
+  padding: 20px;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.highlight-text {
+  color: #FFCC00;
+  font-weight: 500;
+}
+
+.close-btn {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.modal-button {
+  padding: 10px 20px;
+  background: #ff4500;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.modal-link {
+  padding: 10px 20px;
+  background: #ff4500;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.modal-button:hover, .modal-link:hover {
+  background: #0052a3;
+}
+
+
 @media (max-width: 600px) {
   .modal-content {
+    width: 95%;
     padding: 15px;
   }
-
+  
   .modal-body {
     font-size: 14px;
   }
-
-  .open-popup-btn {
-    font-size: 14px;
+  
+  .modal-button {
+    width: 100%;
+    text-align: center;
   }
 }
 
+.social-container {
+  display: none;
+  width: 100%;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.social-container.active {
+  display: flex;
+}
+
+.share-trigger {
+  position: relative;
+}
+
+/* Update social button styles */
+.social-button {
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: transform 0.2s;
+  font-size: 14px;
+}
+
+.social-button i {
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+}
+
+/* Platform colors */
+.facebook { background: #1877F2; }
+.whatsapp { background: #25D366; }
+.linkedin { background: #0A66C2; }
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .social-button {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 15px;
+  }
+  
+  .social-button i {
+    font-size: 20px;
+  }
+}
+
+.share-trigger i {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.modal-link {
+  /* Add transition for hover effect */
+  transition: transform 0.2s ease;
+}
+
+.modal-link:hover {
+  transform: translateY(-1px);
+}
  </style>
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
@@ -2717,35 +2823,13 @@ text-align: center;
     <footer>
         <p>&copy; 2025 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
     </footer>
-<!-- Popup Modal -->
-<div id="givingTuesdayModal" class="modal">
+    
+<div id="dynamicModal" class="modal">
   <div class="modal-content">
-    <span class="close-btn" id="closePopupBtn">&times;</span>
-    <div class="modal-header">
-      <h2>Join Us today December 3, 2024 GivingTuesday</h2>
-    </div>
-    <div class="modal-body">
-      <p>
-        <strong>What is GivingTuesday?</strong><br>
-        GivingTuesday is a global day of generosity, a day to inspire people around the world to support causes they care about.
-      </p>
-      <br>
-      <p>
-        This GivingTuesday, please consider supporting <strong>The Shola Adefolalu Gaska Foundation</strong> and its shelter for domestic abuse survivors, <strong>The Sholly Serenity Place</strong>.
-      </p>
-       <br>
-      <p>
-        Your donations will help create a safe space for survivors and enable us to continue providing essential services to those in need.
-      </p>
-       <br>
-      <p class="highlight-text">
-        <strong>Special Matching Fund Opportunity:</strong> The more you give to the foundation on GivingTuesday, the more we receive from Global Giving’s matching fund!
-      </p>
-       <br>
-    </div>
-    <div class="modal-footer donate-button">
-      <a href="https://globalgiving.org/projects/feeding-dv-survivors-in-shelter-in-lagos-nigeria" target="_blank">Donate Now</a>
-    </div>
+    <span class="close-btn">&times;</span>
+    <div class="modal-header"></div>
+    <div class="modal-body"></div>
+    <div class="modal-footer"></div>
   </div>
 </div>
 
@@ -2787,28 +2871,141 @@ text-align: center;
 
   var AUTOHIDE = Boolean(0);
   
-  
-// Popup
-// Function to show the popup modal
-function showModal() {
-  const modal = document.getElementById('givingTuesdayModal');
-  modal.style.display = 'none';
-}
-
-// Function to close the popup modal
-function closeModal() {
-  const modal = document.getElementById('givingTuesdayModal');
-  modal.style.display = 'none';
-}
-
-// Show the modal after 5 seconds of page load
-window.onload = function() {
-  setTimeout(showModal, 5000);
+const modalData = {
+  header: "MIRACLES HAPPEN!",
+  body: [
+    {
+      type: "text",
+      content: "I'm overjoyed to share that the <strong>The Shola Adefolalu Gaska Foundation</strong> has been adopted by an incredible organization based in Lagos, Nigeria!"
+    },
+    {
+      type: "text",
+      content: "Remember when I shared my hopes for this last year? Well, it's finally happened! This amazing organization will launch an official fundraising campaign for us during their annual Africa Week next month! <span class='highlight-text'>Hint: It’s an embassy!!! Woohoo!</span>"
+    },
+    {
+      type: "highlight",
+      content: "This God sha!"
+    },
+    {
+      type: "text",
+      content: "We have the green light to begin socializing the fundraising platform, so donations can start rolling in! I invite you to be part of this incredible testimony."
+    },
+    {
+      type: "text",
+      content: "Salt Essien Nelson - Chief Errand Girl"
+    }
+  ],
+  footer: [
+    {
+      text: "Donate Now",
+      url: "https://fundrayser.org/campaign/Join-Us-in-Making-the-World-a-Better-Place,-One-Smile,-One-Life-at-a-Time_?cid=67dd7ef45963adf39c43bc5c",
+      type: "link"
+    },
+    {
+      text: "Share the News",
+      type: "trigger",
+      action: "share"
+    }
+  ],
+  shareOptions: [
+    { platform: "facebook", text: "Share on Facebook", icon: "fa-facebook-f" },
+    { platform: "whatsapp", text: "Share on WhatsApp", icon: "fa-whatsapp" },
+    { platform: "linkedin", text: "Share on LinkedIn", icon: "fa-linkedin-in" }
+  ],
+  shareText: "Help support The Shola Adefolalu Gaska Foundation's incredible work! Join me in making a difference: "
 };
 
-// Close the modal when the close button is clicked
-document.getElementById('closePopupBtn').onclick = closeModal;
+function initModal() {
+  const modal = document.getElementById('dynamicModal');
+  const header = modal.querySelector('.modal-header');
+  const body = modal.querySelector('.modal-body');
+  const footer = modal.querySelector('.modal-footer'); // Only declare once
 
+  // Populate Header
+  header.innerHTML = `<h2>${modalData.header}</h2>`;
+
+  // Populate Body
+  body.innerHTML = modalData.body.map(item => {
+    const tag = item.type === 'highlight' ? 'div' : 'p';
+    const className = item.type === 'highlight' ? 'highlight-text' : '';
+    return `<${tag} class="${className}">${item.content}</${tag}>`;
+  }).join('');
+
+  // Populate Footer
+  const socialContainer = document.createElement('div');
+  socialContainer.className = 'social-container';
+  
+  // Create social buttons
+  socialContainer.innerHTML = modalData.shareOptions.map(item => {
+  const shareUrl = getShareURL(
+    item.platform,
+    modalData.shareText,
+    modalData.footer[0].url
+  );
+  return `
+    <a href="${shareUrl}" 
+       class="social-button ${item.platform}" 
+       target="_blank"
+       rel="noopener noreferrer">
+      <i class="fab ${item.icon}"></i>
+      ${item.text}
+    </a>`;
+}).join('');
+
+  // Create main footer buttons
+ footer.innerHTML = modalData.footer.map(item => {
+  if(item.type === 'trigger') {
+    return `
+      <button class="modal-button share-trigger">
+        <i class="fas fa-share-nodes"></i>
+        ${item.text}
+      </button>`;
+  }
+  return `<a href="${item.url}" class="modal-link" target="_blank">${item.text}</a>`;
+}).join('');
+
+  // Add social container and event listeners
+  footer.appendChild(socialContainer);
+  modal.querySelector('.share-trigger').addEventListener('click', () => {
+    socialContainer.classList.toggle('active');
+  });
+
+  // Event Listeners
+  modal.querySelector('.close-btn').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeModal();
+  });
+}
+
+// Add social sharing functions
+function getShareURL(platform, text, url) {
+  const encodedText = encodeURIComponent(text + url);
+  switch(platform) {
+    case 'facebook':
+      return `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    case 'linkedin':
+      return `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+    case 'whatsapp':
+      return `https://api.whatsapp.com/send?text=${encodedText}`;
+    default:
+      return '#';
+  }
+}
+
+// Modal Control Functions
+function showModal() {
+  document.getElementById('dynamicModal').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('dynamicModal').style.display = 'none';
+}
+
+// Initialize and Show Modal
+document.addEventListener('DOMContentLoaded', () => {
+  initModal();
+  setTimeout(showModal, 5000);
+});
 </script>
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 
