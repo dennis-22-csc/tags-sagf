@@ -443,12 +443,16 @@ header {
         }
         
         .errand-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 4px;
-            cursor: pointer; /* Make the image clickable */
-        }
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    object-position: center; /* Center the image */
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #f5f5f5; /* Neutral background for letterboxing */
+    padding: 5px; /* Small padding around image */
+    box-sizing: border-box;
+}
         
         .arrow-container {
             display: flex;
@@ -572,7 +576,106 @@ header {
   padding: 20px 0;
   font-size: 1.2rem;
 }
-      
+
+/* Text Switcher Styles */
+.text-switcher-container {
+    position: relative;
+    min-height: 200px;
+}
+
+.text-content {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    transition: opacity 0.5s ease;
+}
+
+.text-controls {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+    position: static; 
+}
+
+.text-control-btn {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+.text-control-btn:hover,
+.left-arrow:hover,
+.right-arrow:hover {
+    color: #FFD633;
+}
+
+/* TTS Controls */
+.tts-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #e0e0e0;
+    gap: 10px;
+}
+
+.tts-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #FFCC00;
+    padding: 10px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tts-toggle:hover {
+    background-color: #FFD633;
+    transform: translateY(-2px);
+}
+
+.tts-toggle.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.tts-toggle.active:hover {
+    background-color: #45a049;
+}
+
+.tts-label {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.tts-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.tts-status {
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Focus styles for cards */
+.errand-card:focus {
+    outline: 3px solid #FFCC00;
+    outline-offset: 2px;
+}
+
+.errand-card.active {
+    box-shadow: 0 0 0 3px #FFCC00;
+}
+
     </style>
 </head>
 <body>
@@ -704,67 +807,26 @@ header {
     </div>
 </div>
 
+<!-- TTS Controls at the top -->
+<div class="tts-controls">
+    <div class="tts-toggle" id="tts-toggle">
+        <svg class="tts-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+        <span class="tts-label" id="tts-label">Turn On Audio</span>
+    </div>
+    <div class="tts-status" id="tts-status">Audio is off</div>
+</div>
+
 <header class="page-header">
   <h2>WHAT WE DO</h2>
   </header>
     <!-- What We Do Section -->
     <section class="section" id="god-errands">
         <div class="section-title">OUR GOD ERRANDS</div>
-
-        <!-- Errand Card 1 -->
-        <div class="errand-card" id="food">
-            <div class="card-content">
-                <div class="left-column">
-                    <div class="errand-title">Fighting Food Poverty</div>
-                    <p class="errand-description">Since September 2020, we have been giving out Sholly COVID-19 Care packages to vulnerable families in need every month. In each package, each family gets bags of rice, beans, garri and vegetable oil. </p>
-                </div>
-                <div class="right-column">
-                    <img src="care_packages/may_2022.jpg" alt="Errand 1 Image" class="errand-image" id="errand1-image">
-                    <div class="arrow-container">
-                        <span class="arrow left-arrow" onclick="switchImage('errand1', -1)">&#9664;</span>
-                        <span class="arrow right-arrow" onclick="switchImage('errand1', 1)">&#9654;</span>
-                    </div>
-                </div>
-            </div>
-            <div class="completed-tasks">400+ food packages distributed till date</div>
-        </div>
-
-        <!-- Errand Card 2 -->
-        <div class="errand-card" id="tssp">
-            <div class="card-content">
-                <div class="left-column">
-                    <div class="errand-title">Providing a Safe Haven for Domestic Abuse Survivors</div>
-                    <p class="errand-description">On June 12, 2021, The Foundation opened the doors to its Shelter: The Sholly Serenity Place aka Sholly’s Safe Home. It is a ten-bed Jesus Christ-Centric Safe Haven and an Oasis of Serenity for survivors of domestic abuse and their children. Our WHY is to provide safe, temporary accommodation for our residents while they receive counselling and legal advice from Lagos State’s Domestic and Sexual Violence Agency (DSVA) or the NGO/ Church handling their cases. </p>
-                    <p class="errand-description">We believe that knowing that she will have a safe place to lay her head will facilitate a quicker and smoother transition from despair to hope as she works with her Counsellor and/or Lawyer. This will, in turn, hasten her readiness to take the needed next steps towards her future. Guests referred to us are accommodated, fed and cared for totally free of cost. Our core values are Care, Compassion, Honesty and Respect for People.</p>
-                </div>
-                <div class="right-column">
-                    <img src="tssp/tssp1.jpg" alt="Errand 2 Image" class="errand-image" id="errand2-image">
-                    <div class="arrow-container">
-                        <span class="arrow left-arrow" onclick="switchImage('errand2', -1)">&#9664;</span>
-                        <span class="arrow right-arrow" onclick="switchImage('errand2', 1)">&#9654;</span>
-                    </div>
-                </div>
-            </div>
-            <div class="completed-tasks">41 women and children accommodated till date</div>
-        </div>
-
-        <!-- Errand Card 3 -->
-        <div class="errand-card" id="alive">
-            <div class="card-content">
-                <div class="left-column">
-                    <div class="errand-title">Empowering Financially Vulnerable Women</div>
-                    <p class="errand-description">In May 2024, to honor the memories of loved ones gone, we launched the Adefolalu Love is A Verb (ALiVe) initiative. This social safety-net provides a N25,000 monthly allowance to extremely economically vulnerable women from across eight states in Nigeria. Our hope is to have reached families across Nigeria come Q4 2026 or sooner.</p>
-                </div>
-                <div class="right-column">
-                    <img src="alive.png" alt="Errand 3 Image" class="errand-image" id="errand3-image">
-                    <div class="arrow-container">
-                        <span class="arrow left-arrow" style="display:none;">&#9664;</span>
-                        <span class="arrow right-arrow" style="display:none;">&#9654;</span>
-                    </div>
-                </div>
-            </div>
-            <div class="completed-tasks">Women across 8 states empowered till date</div>
-        </div>
+        
+        <!-- Errand Cards will be populated by JavaScript -->
+        <div id="errands-container"></div>
     </section>
     <section id="testimonials">
     <h2>Our TSSP Testimonials  (2021 to date)</h2>
@@ -796,14 +858,155 @@ header {
 <footer>
         <p>&copy; 2025 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
     </footer>
+  <script>
+    // Errand data structure (UNTOUCHED)
+    const errandsData = [
+        {
+            id: "food",
+            title: "Fighting Food Poverty",
+            description: "Since September 2020, we have been giving out Sholly COVID-19 Care packages to vulnerable families in need every month. In each package, each family gets bags of rice, beans, garri and vegetable oil.",
+            images: [
+                "care_packages/may_2022.jpg", 
+                "care_packages/june_2022.jpg", 
+                "care_packages/dec_2022.jpg", 
+                "care_packages/special_dec_2022.jpg", 
+                "care_packages/jan_2023.jpg", 
+                "care_packages/feb_2023.jpg", 
+                "care_packages/feb_2023_abuja.jpg",
+                "care_packages/april_2023.jpg", 
+                "care_packages/jan_2024.jpg", 
+                "care_packages/feb_2024.jpg", 
+                "care_packages/march_2024.jpg", 
+                "care_packages/april_2024.jpg", 
+                "care_packages/may_2024.jpg", 
+                "care_packages/june_2024.jpg", 
+                "care_packages/july_2024.jpg", 
+                "care_packages/aug_2024.jpg"
+            ],
+            completedTasks: "400+ food packages distributed till date"
+        },
+        {
+            id: "tssp",
+            title: "Providing a Safe Haven for Domestic Abuse Survivors",
+            description: "On June 12, 2021, The Foundation opened the doors to its Shelter: The Sholly Serenity Place aka Sholly's Safe Home. It is a ten-bed Jesus Christ-Centric Safe Haven and an Oasis of Serenity for survivors of domestic abuse and their children. \n\nOur WHY is to provide safe, temporary accommodation for our residents while they receive counselling and legal advice from Lagos State's Domestic and Sexual Violence Agency (DSVA) or the NGO/ Church handling their cases.  \n\nWe believe that knowing that she will have a safe place to lay her head will facilitate a quicker and smoother transition from despair to hope as she works with her Counsellor and/or Lawyer. This will, in turn, hasten her readiness to take the needed next steps towards her future. \n\nGuests referred to us are accommodated, fed and cared for totally free of cost. \n\nOur core values are Care, Compassion, Honesty and Respect for People.",
+            images: ["tssp/tssp1.jpg", "tssp/tssp2.jpg", "tssp/tssp3.jpg", "tssp/tssp4.jpg", "tssp/tssp5.jpg", "tssp/tssp6.jpg", "tssp/tssp7.jpg", "tssp/tssp8.jpg", "tssp/tssp9.jpg", "tssp/tssp10.jpg", "tssp/tssp11.jpg", "tssp/tssp12.jpg"],
+            completedTasks: "41 women and children accommodated till date"
+        },
+        {
+            id: "alive",
+            title: "Empowering Financially Vulnerable Women",
+            description: "In May 2024, to honor the memories of loved ones gone, we launched the Adefolalu Love is A Verb (ALiVe) initiative. \n\nThis social safety-net provides a 25,000 naira monthly allowance to extremely economically vulnerable women from across twelve states in Nigeria.  \n\nOur hope is to have reached families across Nigeria come Q4 2026 or sooner.",
+            images: ["alive.png"],
+            completedTasks: "Women across 12 states empowered till date"
+        },
+        {
+            id: "masterclass",
+            title: "#PayWhatYouCan Masterclass Academy",
+            description: "The #PayWhatYouCan Masterclass Academy is an empowering learning and fundraising initiative by The Shola Adefolalu Gaska Foundation (TSAGF) — also known as The Sholly Smile Factory.",
+            images: ["masterclass1.jpg", "masterclass2.jpg", "masterclass3.jpg"],
+            completedTasks: "Pilot program launching November 2025",
+            hasTextSwitcher: true,
+            texts: [
+                "The #PayWhatYouCan Masterclass Academy is an empowering learning and fundraising initiative by The Shola Adefolalu Gaska Foundation (TSAGF) — also known as The Sholly Smile Factory.",
+                "Our goal is simple yet profound: To make personal growth and transformation accessible to all — while raising vital support for women and children rebuilding their lives at The Sholly Serenity Place (TSSP), our safe haven for survivors of domestic abuse.",
+                "Every quarter in 2026, we plan to host expert-led online masterclasses across areas like finance, leadership, communication, service, wellness, and purpose. Participants 'pay what you can' — and every naira raised goes directly toward the operations of TSSP.",
+                "It's a win-win: You learn. You grow. You help others heal.",
+                "The Pilot: A 5-Week #PayWhatYouCan Masterclass Series (November–December 2025) with the theme: Start Your 2026 Strong",
+                "Why Register? Because growth should not be gated by money — and generosity creates ripple effects. When you register, you gain access to world-class experts, acquire tools to elevate your life, and help survivors of domestic violence rebuild their futures.",
+                "What Makes This Different: Inclusive Giving, Transformational Content, Purpose-Driven Impact, and Legacy of Love. 100% of proceeds go toward supporting survivors at TSSP.",
+                "Together, We Grow and Give. The #PayWhatYouCan Masterclass Academy is more than a learning platform — it's a movement for hope, empowerment, and impact."
+            ]
+        }
+    ];
 
-    <script>
-    	function toggleDrawer() {
+    // Current image index tracker for each errand (UNTOUCHED)
+    const currentImageIndex = {};
+
+    // Detect if device is mobile (UNTOUCHED)
+    function isMobileDevice() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+               (window.innerWidth <= 768);
+    }
+
+    // Function to render all errand cards (UNTOUCHED)
+    function renderErrandCards() {
+        const container = document.getElementById('errands-container');
+        
+        errandsData.forEach(errand => {
+            currentImageIndex[errand.id] = 0;
+            
+            const card = document.createElement('div');
+            card.className = 'errand-card';
+            card.id = errand.id;
+            card.tabIndex = 0;
+            
+            let leftColumnContent = '';
+            if (errand.hasTextSwitcher) {
+                const isMobile = isMobileDevice();
+                const pauseButtonStyle = isMobile ? 'display:none;' : '';
+                const playButtonStyle = isMobile ? 'display:inline-block;' : 'display:none;';
+                
+                leftColumnContent = `
+                    <div class="errand-title">${errand.title}</div>
+                    <div class="text-switcher-container">
+                        <div class="text-content" id="${errand.id}-text">
+                            ${errand.description}
+                        </div>
+                        <div class="text-controls">
+                            <button id="${errand.id}-pause-btn" class="text-control-btn" title="Pause Text Switching" style="${pauseButtonStyle}">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <rect x="6" y="4" width="4" height="16"></rect>
+                                    <rect x="14" y="4" width="4" height="16"></rect>
+                                </svg>
+                            </button>
+                            <button id="${errand.id}-play-btn" class="text-control-btn" style="${playButtonStyle}" title="Play Text Switching">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5,3 19,12 5,21"></polygon>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            } else {
+                leftColumnContent = `
+                    <div class="errand-title">${errand.title}</div>
+                    <p class="errand-description">${errand.description.replace(/\n/g, '<br>')}</p>
+                `;
+            }
+            
+            card.innerHTML = `
+                <div class="card-content">
+                    <div class="left-column">
+                        ${leftColumnContent}
+                    </div>
+                    <div class="right-column">
+                        <img src="${errand.images[0]}" alt="${errand.title} Image" class="errand-image" id="${errand.id}-image">
+                        <div class="arrow-container">
+                            <span class="arrow left-arrow" onclick="switchImage('${errand.id}', -1)">&#9664;</span>
+                            <span class="arrow right-arrow" onclick="switchImage('${errand.id}', 1)">&#9654;</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="completed-tasks">${errand.completedTasks}</div>
+            `;
+            
+            container.appendChild(card);
+            
+            if (errand.images.length <= 1) {
+                const arrows = card.querySelectorAll('.arrow');
+                arrows.forEach(arrow => arrow.style.display = 'none');
+            }
+            
+            const image = card.querySelector('.errand-image');
+            image.addEventListener('click', () => enlargeImage(image.src));
+        });
+    }
+
+    function toggleDrawer() {
         const drawer = document.getElementById('navDrawer');
         const isOpen = drawer.classList.toggle('open');
 
         if (isOpen) {
-            // Close all submenus when opening the drawer
             const subMenus = document.querySelectorAll('.sub-menu');
             subMenus.forEach((subMenu) => {
                 subMenu.classList.remove('open');
@@ -816,43 +1019,14 @@ header {
         subMenu.classList.toggle('open');
     }
     
-    // Images data for each errand (add more image paths as needed)
-    const errandImages = {
-        "errand1": [
-            "care_packages/may_2022.jpg", 
-            "care_packages/june_2022.jpg", 
-            "care_packages/dec_2022.jpg", 
-            "care_packages/special_dec_2022.jpg", 
-            "care_packages/jan_2023.jpg", 
-            "care_packages/feb_2023.jpg", 
-            "care_packages/feb_2023_abuja.jpg",
-            "care_packages/april_2023.jpg", 
-            "care_packages/jan_2024.jpg", 
-            "care_packages/feb_2024.jpg", 
-            "care_packages/march_2024.jpg", 
-            "care_packages/april_2024.jpg", 
-            "care_packages/may_2024.jpg", 
-            "care_packages/june_2024.jpg", 
-            "care_packages/july_2024.jpg", 
-            "care_packages/aug_2024.jpg"
-        ],
-        "errand2": ["tssp/tssp1.jpg", "tssp/tssp2.jpg", "tssp/tssp3.jpg", "tssp/tssp4.jpg", "tssp/tssp5.jpg", "tssp/tssp6.jpg", "tssp/tssp7.jpg", "tssp/tssp8.jpg", "tssp/tssp9.jpg", "tssp/tssp10.jpg", "tssp/tssp11.jpg", "tssp/tssp12.jpg"],
-        "errand3": ["alive.png"] // Only one image, so arrows hidden
-    };
-
-    // Current image index tracker for each errand
-    const currentImageIndex = {
-        "errand1": 0,
-        "errand2": 0,
-        "errand3": 0
-    };
-
-    // Function to switch images
+    // Function to switch images (UNTOUCHED)
     function switchImage(errandId, direction) {
-        const images = errandImages[errandId];
+        const errand = errandsData.find(e => e.id === errandId);
+        if (!errand) return;
+        
+        const images = errand.images;
         currentImageIndex[errandId] += direction;
 
-        // Loop back if at the end or beginning of the images
         if (currentImageIndex[errandId] < 0) {
             currentImageIndex[errandId] = images.length - 1;
         } else if (currentImageIndex[errandId] >= images.length) {
@@ -862,15 +1036,7 @@ header {
         document.getElementById(`${errandId}-image`).src = images[currentImageIndex[errandId]];
     }
 
-    // Show arrows for errand images with more than one image
-    Object.keys(errandImages).forEach(errandId => {
-        const images = errandImages[errandId];
-        if (images.length > 1) {
-            document.querySelectorAll(`.${errandId} .left-arrow, .${errandId} .right-arrow`).forEach(arrow => arrow.style.display = 'block');
-        }
-    });
-
-    // Function to enlarge the image on click
+    // Function to enlarge the image on click (UNTOUCHED)
     function enlargeImage(imageSrc) {
         const overlay = document.createElement('div');
         overlay.classList.add('overlay');
@@ -879,25 +1045,19 @@ header {
         img.src = imageSrc;
         img.classList.add('expanded-image');
         
-        // Close icon
-            const closeIcon = document.createElement('span');
-            closeIcon.className = 'close-icon';
-            closeIcon.innerHTML = '&times;'; // Close icon (X)
-            closeIcon.onclick = () => {
-                document.body.removeChild(overlay);
-            };
+        const closeIcon = document.createElement('span');
+        closeIcon.className = 'close-icon';
+        closeIcon.innerHTML = '&times;'; 
+        closeIcon.onclick = () => {
+            document.body.removeChild(overlay);
+        };
 
         overlay.appendChild(img);
-        overlay.appendChild(closeIcon); // Add close button to cancel to overlay
+        overlay.appendChild(closeIcon); 
         document.body.appendChild(overlay);
     }
-
-    // Add click event listeners to images
-    document.querySelectorAll('.errand-image').forEach(image => {
-        image.addEventListener('click', () => enlargeImage(image.src));
-    });
     
-
+// Testimonial data (UNTOUCHED)
 const residentTestimonials = [
     "I am so thankful to Grandma for accommodating me and my children. My lifestyle in general has changed, I have become free and social, meeting people and making friends. I remember, at first being scared as I did not know I will meet, so I prayed about the whole thing, also I was sick for a while but God used Grandma to perfect my health. I am grateful for the hospitality, corrections with love and kind gestures, in her words...I remember how chaotic my life was. Not being certain about what life had in store for me, but since I have been here, I feel at peace. I now pray with certainty and assurance that my prayers answered.",
     "I thank God for making me to know TSSP (The Sholly Serenity Place) when I have been having a heavy burden and marital emotional distress in my marriage over 4 - 5 years which the journey looks like hell with prayers and fasting till it seems hope is gone. My marriage has been toxic and a friend introduced me to TSSP…. TSSP brings smiles and laughter to myself and children…. The staff there are friendly, respectful, caring and accommodating…",
@@ -913,9 +1073,9 @@ const teamMemberTestimonials = [
 ];
 
 const volunteerTestimonials = [
-    "The first thing that struck me when I stepped into the Sholly Serenity Place was the ambiance, there was this sense of ‘welcome home’. There was sense of hope and peace and everywhere was just calm",
+    "The first thing that struck me when I stepped into the Sholly Serenity Place was the ambiance, there was this sense of 'welcome home'. There was sense of hope and peace and everywhere was just calm",
     "TSSP is a safe haven. More like a home on the journey to home. I see ladies come in broken and with so much palpable fear and timidity. And within a few days or weeks, they come alive and are transformed into someone filled with so much hope that they express as confidence and improved self-esteem. I see God's redemptive act in action in their lives, and it is a privilege to be part of this team, to the glory of God.",
-    "I come to Sholly’s home and it feels like family for me, it’s beyond just volunteering for me, it’s how we pray together and share beautiful moments and milestones together without anyone feeling left out.... It’s how we are one in Unity and in Love. I love volunteering here and I will choose to do this Over and Over again...."
+    "I come to Sholly's home and it feels like family for me, it's beyond just volunteering for me, it's how we pray together and share beautiful moments and milestones together without anyone feeling left out.... It's how we are one in Unity and in Love. I love volunteering here and I will choose to do this Over and Over again...."
 ];
 
 function renderTestimonials(containerId, testimonials) {
@@ -930,14 +1090,858 @@ function renderTestimonials(containerId, testimonials) {
     });
 }
 
-// Render testimonials for each category
-renderTestimonials("residents-testimonials", residentTestimonials);
-renderTestimonials("team-testimonials", teamMemberTestimonials);
-renderTestimonials("volunteer-testimonials", volunteerTestimonials);
+// Text switching functionality for the Masterclass Academy card (UNTOUCHED)
+const textSwitchIntervals = {};
+const currentTextIndexes = {};
+const isTextSwitchingPaused = {};
+let isMasterclassActive = false; 
 
-  
-           </script>
+// NEW: Track which cards have completed their first TTS read (Title + First Text + Tasks)
+const hasCardBeenInitiallyRead = {};
+
+// NEW: Track cards that are currently being spoken to prevent duplicate TTS
+const currentlySpeakingCards = {};
+
+
+// TTS variables (MODIFIED: Removed tts, added selectedVoice)
+let selectedVoice = null; 
+let isTtsReady = false;
+let isTtsEnabled = true; 
+let isTtsSpeaking = false;
+let currentCardSpeaking = null;
+let intersectionObserver;
+let hasPlayedWelcome = false; 
+let isWelcomeMessagePlaying = false; 
+let hasUserInteracted = false; 
+let interactionListenerAdded = false; 
+let isMobileInitialized = false; 
+
+// Initialize text switching for cards that have it (MODIFIED: Removed auto-start for mobile)
+function initTextSwitching() {
+    errandsData.forEach(errand => {
+        if (errand.hasTextSwitcher) {
+            currentTextIndexes[errand.id] = 0;
+            isTextSwitchingPaused[errand.id] = false;
+            hasCardBeenInitiallyRead[errand.id] = false; 
+            currentlySpeakingCards[errand.id] = false; 
+            
+            const textElement = document.getElementById(`${errand.id}-text`);
+            if (textElement) {
+                textElement.textContent = errand.texts[currentTextIndexes[errand.id]];
+            }
+            updateTextSwitchingButtons(errand.id);
+            
+            // 🔥 FINAL FIX: DO NOT start the text switching interval automatically on mobile. 
+            // Mobile devices will rely purely on user button presses via switchTextManual.
+        } else {
+             hasCardBeenInitiallyRead[errand.id] = false; 
+             currentlySpeakingCards[errand.id] = false;
+        }
+    });
+}
+
+// Update text switching buttons visual state (UNTOUCHED)
+function updateTextSwitchingButtons(errandId) {
+    const pauseBtn = document.getElementById(`${errandId}-pause-btn`);
+    const playBtn = document.getElementById(`${errandId}-play-btn`);
+    
+    if (pauseBtn && playBtn) {
+        if (isTextSwitchingPaused[errandId]) {
+            pauseBtn.style.display = 'none';
+            playBtn.style.display = 'inline-block';
+        } else {
+            if (isMobileDevice()) {
+                pauseBtn.style.display = 'none';
+                playBtn.style.display = 'inline-block';
+            } else {
+                pauseBtn.style.display = 'inline-block';
+                playBtn.style.display = 'none';
+            }
+        }
+    }
+}
+
+// Start text switching interval for a specific errand (MODIFIED - Removed mobile check)
+function startTextSwitching(errandId) {
+    // Prevent starting if already running or if paused
+    if (textSwitchIntervals[errandId] !== undefined || isTextSwitchingPaused[errandId]) {
+        return;
+    }
+    
+    // Only starts if initiated by desktop TTS onend event (via startTextSwitchingDesktop)
+    textSwitchIntervals[errandId] = setInterval(() => switchText(errandId), 5000);
+    console.log(`Text switching interval started for ${errandId}`);
+}
+
+// Start text switching on Desktop (Only called by TTS onend event or Play button) (UNTOUCHED)
+function startTextSwitchingDesktop(errandId) {
+    if (textSwitchIntervals[errandId] !== undefined || isTextSwitchingPaused[errandId]) {
+        return;
+    }
+    textSwitchIntervals[errandId] = setInterval(() => switchText(errandId), 5000);
+    console.log(`Desktop-specific text switching interval started for ${errandId}`);
+}
+
+
+// Switch to next text for a specific errand (UNTOUCHED)
+function switchText(errandId) {
+    const errand = errandsData.find(e => e.id === errandId);
+    if (!errand || !errand.hasTextSwitcher) return;
+    
+    if (isTtsSpeaking && isTtsEnabled && currentCardSpeaking === errandId) {
+        console.log('Skipping switch - currently speaking with TTS (switch will occur onend)');
+        return;
+    }
+    
+    currentTextIndexes[errandId] = (currentTextIndexes[errandId] + 1) % errand.texts.length;
+    const textElement = document.getElementById(`${errandId}-text`);
+    
+    if (textElement) {
+        textElement.style.opacity = 0;
+        
+        setTimeout(() => {
+            textElement.textContent = errand.texts[currentTextIndexes[errandId]];
+            textElement.style.opacity = 1;
+            
+            console.log('Switched to text:', currentTextIndexes[errandId]);
+            
+            if (isTtsEnabled && !isTextSwitchingPaused[errandId] && isCardActive(errandId)) {
+                
+                let isLastText = currentTextIndexes[errandId] === errand.texts.length - 1;
+                
+                console.log(`Auto-speaking new text. Is last text: ${isLastText}`);
+                
+                const updatedContent = getCardContent(errandId, false, isLastText);
+                speakText(updatedContent, errandId); 
+            }
+        }, 300);
+    }
+}
+
+// Manual text switching for mobile (UNTOUCHED)
+function switchTextManual(errandId) {
+    const errand = errandsData.find(e => e.id === errandId);
+    if (!errand || !errand.hasTextSwitcher) return;
+    
+    if (isTtsSpeaking && currentCardSpeaking === errandId) {
+        console.log('Stopping current TTS for manual text switch');
+        stopTTS();
+    }
+    
+    currentTextIndexes[errandId] = (currentTextIndexes[errandId] + 1) % errand.texts.length;
+    const textElement = document.getElementById(`${errandId}-text`);
+    
+    if (textElement) {
+        textElement.style.opacity = 0;
+        
+        setTimeout(() => {
+            textElement.textContent = errand.texts[currentTextIndexes[errandId]];
+            textElement.style.opacity = 1;
+            
+            console.log('Manually switched to text:', currentTextIndexes[errandId]);
+            
+            if (isTtsEnabled && isCardActive(errandId) && !isWelcomeMessagePlaying) {
+                
+                let isLastText = currentTextIndexes[errandId] === errand.texts.length - 1;
+                
+                console.log(`Auto-speaking NEW text after manual switch. Is last text: ${isLastText}`);
+                
+                const updatedContent = getCardContent(errandId, false, isLastText);
+                if (updatedContent) {
+                    speakText(updatedContent, errandId);
+                }
+            }
+        }, 300);
+    }
+}
+
+// Pause text switching for a specific errand (UNTOUCHED)
+function pauseTextSwitching(errandId) {
+    isTextSwitchingPaused[errandId] = true;
+    updateTextSwitchingButtons(errandId);
+    clearInterval(textSwitchIntervals[errandId]);
+    textSwitchIntervals[errandId] = undefined;
+    stopTTS(); 
+    console.log(`Text switching paused for ${errandId}`);
+}
+
+// Play/resume text switching for a specific errand (UNTOUCHED)
+function playTextSwitching(errandId) {
+    // NEW: On mobile, manually switch to next text instead of starting interval
+    if (isMobileDevice()) {
+        switchTextManual(errandId);
+        return;
+    }
+    
+    isTextSwitchingPaused[errandId] = false;
+    updateTextSwitchingButtons(errandId);
+    
+    if (isCardActive(errandId) && textSwitchIntervals[errandId] === undefined) {
+        startTextSwitchingDesktop(errandId); 
+    }
+    
+    console.log(`Text switching resumed for ${errandId}`);
+    
+    if (isTtsEnabled && isCardActive(errandId) && !isWelcomeMessagePlaying) {
+        const errand = errandsData.find(e => e.id === errandId);
+        if (errand && errand.hasTextSwitcher) {
+            console.log('Resuming TTS playback with current text');
+            
+            const isLastText = currentTextIndexes[errand.id] === errand.texts.length - 1;
+            const updatedContent = getCardContent(errandId, false, isLastText);
+            
+            if (updatedContent) {
+                speakText(updatedContent, errandId);
+            }
+        }
+    }
+}
+
+// Check if a card is currently active (in view) (UNTOUCHED)
+function isCardActive(cardId) {
+    if (cardId === 'masterclass') {
+        return isMasterclassActive || isMobileDevice(); 
+    }
+    return false; 
+}
+
+// Play welcome message on user interaction (UNTOUCHED - Uses new Utterance)
+function playWelcomeMessage() {
+    if (hasPlayedWelcome || !isTtsEnabled || isWelcomeMessagePlaying || !selectedVoice) return;
+    
+    const welcomeText = "Welcome to The Shola Adefolalu Gaska Foundation (TSAGF). In this page, you will be learning about what we do, that is, our God Errands.";
+    
+    console.log('Attempting to play welcome message...');
+    
+    if (isTtsReady) {
+        window.speechSynthesis.cancel(); 
+        
+        const welcomeTts = new SpeechSynthesisUtterance(welcomeText);
+        welcomeTts.voice = selectedVoice;
+        welcomeTts.rate = 0.9;
+        welcomeTts.pitch = 1;
+        welcomeTts.volume = 1;
+        
+        hasPlayedWelcome = true;
+        isWelcomeMessagePlaying = true;
+        
+        welcomeTts.onstart = function() {
+            isTtsSpeaking = true;
+            updateTTSButtonState();
+            console.log('Welcome message started playing');
+        };
+        
+        welcomeTts.onend = function() {
+            isTtsSpeaking = false;
+            isWelcomeMessagePlaying = false;
+            updateTTSButtonState();
+            console.log('Welcome message finished');
+            
+            if (!isMobileDevice()) {
+                initIntersectionObserver();
+                setTimeout(() => {
+                    const visibleCard = findFirstVisibleCard();
+                    if (visibleCard && isTtsEnabled) {
+                        const isInitial = !hasCardBeenInitiallyRead[visibleCard.id] || !errandsData.find(e => e.id === visibleCard.id && e.hasTextSwitcher);
+                        const content = getCardContent(visibleCard.id, isInitial, isInitial && (currentTextIndexes[visibleCard.id] === errandsData.find(e => e.id === visibleCard.id)?.texts.length - 1 || false));
+                        if (content) {
+                            console.log('Speaking content for initially visible card after welcome:', visibleCard.id);
+                            speakText(content, visibleCard.id);
+                            if (errandsData.find(e => e.id === visibleCard.id && e.hasTextSwitcher)) {
+                                hasCardBeenInitiallyRead[visibleCard.id] = true;
+                            }
+                        }
+                    }
+                }, 100);
+            } else {
+                initMobileCardTouchListeners();
+            }
+        };
+        
+        welcomeTts.onerror = function(event) {
+            isTtsSpeaking = false;
+            isWelcomeMessagePlaying = false;
+            hasPlayedWelcome = true; 
+            updateTTSButtonState();
+            console.error('Welcome message TTS error:', event.error);
+            
+            if (!isMobileDevice()) {
+                initIntersectionObserver();
+            } else {
+                initMobileCardTouchListeners();
+            }
+        };
+        
+        window.speechSynthesis.speak(welcomeTts);
+    } else {
+        setTimeout(playWelcomeMessage, 500);
+    }
+}
+
+// Handle card touch on mobile (FIXED: Only stop TTS when tapping a different card)
+function handleCardTouch(cardId) {
+    console.log(`DEBUG: handleCardTouch called with cardId: ${cardId}`);
+    
+    if (!isTtsEnabled || !hasPlayedWelcome || isWelcomeMessagePlaying) {
+        console.log('Card touch blocked - welcome message playing or TTS disabled');
+        return;
+    }
+    
+    // FIXED: Only stop TTS if we're tapping a DIFFERENT card
+    if (currentCardSpeaking && currentCardSpeaking !== cardId) {
+        console.log(`Switching from card ${currentCardSpeaking} to card ${cardId}, stopping current TTS`);
+        stopTTS();
+    }
+    
+    // FIXED: If tapping the same card that's currently speaking, do nothing
+    if (currentCardSpeaking === cardId && isTtsSpeaking) {
+        console.log(`Card ${cardId} is already speaking, ignoring tap on same card`);
+        return;
+    }
+    
+    // FIXED: If card is marked as currently speaking but TTS isn't actually speaking, reset state
+    if (currentlySpeakingCards[cardId] && !isTtsSpeaking) {
+        currentlySpeakingCards[cardId] = false;
+    }
+    
+    // FIXED: If card is already marked as speaking, don't start again
+    if (currentlySpeakingCards[cardId]) {
+        console.log(`Card ${cardId} is already being spoken, ignoring duplicate touch`);
+        return;
+    }
+
+    const errand = errandsData.find(e => e.id === cardId);
+    
+    // --- CRITICAL FIX: STATIC CARD Logic (Errands 1, 2, 3) ---
+    if (!errand || !errand.hasTextSwitcher) {
+        
+        if (hasCardBeenInitiallyRead[cardId]) {
+            console.log(`Static card ${cardId} already read. Ignoring subsequent touch.`);
+            currentlySpeakingCards[cardId] = false; 
+            currentCardSpeaking = null;
+            return; 
+        }
+
+        currentlySpeakingCards[cardId] = true;
+        
+        const cardElement = document.getElementById(cardId);
+        const title = cardElement.querySelector('.errand-title')?.textContent || '';
+        const description = errand.description.replace(/\n/g, ' '); 
+        const tasks = cardElement.querySelector('.completed-tasks')?.textContent || '';
+        
+        const content = `${title}. ${description}. ${tasks}`; 
+
+        if (content) {
+            console.log(`Speaking content for touched static card: ${cardId} (First Read)`);
+            speakText(content, cardId); 
+            hasCardBeenInitiallyRead[cardId] = true;
+        } else {
+            currentlySpeakingCards[cardId] = false; 
+        }
+        
+        return; 
+    }
+
+    // --- Logic for Text-Switcher Card (Masterclass - Card 4) ---
+    console.log(`Card ${cardId} touched on mobile`);
+    
+    currentlySpeakingCards[cardId] = true;
+    
+    const isInitial = !hasCardBeenInitiallyRead[cardId];
+    const isLastText = errand.hasTextSwitcher && currentTextIndexes[cardId] === errand.texts.length - 1;
+    
+    const content = getCardContent(cardId, isInitial, isLastText);
+    
+    if (content) {
+        console.log(`Speaking content for touched text-switcher card: ${cardId}`);
+        speakText(content, cardId); 
+        if (errand.hasTextSwitcher) {
+            hasCardBeenInitiallyRead[cardId] = true; 
+        }
+    } else {
+        currentlySpeakingCards[cardId] = false;
+    }
+}
+
+// Initialize mobile card touch listeners (UNTOUCHED)
+function initMobileCardTouchListeners() {
+    console.log('DEBUG: Initializing mobile card touch listeners');
+    
+    document.querySelectorAll('.errand-card').forEach(card => {
+        if (!card.id) {
+            console.warn('DEBUG: Card without ID found:', card);
+            return;
+        }
+        
+        console.log(`DEBUG: Setting up listeners for card: ${card.id}`);
+        
+        card.removeEventListener('touchstart', handleMobileCardTouch);
+        card.removeEventListener('click', handleMobileCardClick);
+        
+        card.addEventListener('touchstart', handleMobileCardTouch, { passive: true });
+        card.addEventListener('click', handleMobileCardClick);
+    });
+    console.log('Mobile card touch listeners initialized');
+}
+
+// Handle mobile card touch (UNTOUCHED)
+function handleMobileCardTouch(event) {
+    if (!isMobileDevice()) return;
+    
+    const card = event.currentTarget;
+    const cardId = card.id;
+    
+    try {
+        event.preventDefault();
+    } catch (e) {
+    }
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    
+    console.log(`Mobile touch on card: ${cardId}`);
+    handleCardTouch(cardId);
+}
+
+// Handle mobile card click (UNTOUCHED)
+function handleMobileCardClick(event) {
+    if (!isMobileDevice()) return;
+    
+    const card = event.currentTarget;
+    const cardId = card.id;
+    
+    try {
+        event.preventDefault();
+    } catch (e) {
+    }
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    
+    console.log(`Mobile click on card: ${cardId}`);
+    handleCardTouch(cardId);
+}
+
+
+// TTS Speak function (FINAL FIX: Creates a new Utterance every time)
+function speakText(text, cardId) {
+    if (!isTtsReady || !isTtsEnabled || !hasPlayedWelcome || isWelcomeMessagePlaying || !selectedVoice) {
+        console.log('TTS blocked (conditions not met or voice not ready)');
+        return;
+    }
+    
+    // 1. Aggressively stop any currently running speech and reset state
+    window.speechSynthesis.cancel(); 
+    isTtsSpeaking = false;
+    currentCardSpeaking = null;
+    Object.keys(currentlySpeakingCards).forEach(id => currentlySpeakingCards[id] = false);
+
+    // 2. CREATE A BRAND NEW UTTERANCE OBJECT FOR ISOLATION
+    const newTts = new SpeechSynthesisUtterance(text);
+    newTts.voice = selectedVoice;
+    newTts.rate = 0.9;
+    newTts.pitch = 1;
+    newTts.volume = 1;
+
+    // 3. Set the state for the new object's lifetime
+    currentCardSpeaking = cardId;
+    currentlySpeakingCards[cardId] = true;
+
+    newTts.onstart = function() {
+        isTtsSpeaking = true;
+        updateTTSButtonState();
+        console.log('TTS started speaking for:', cardId);
+    };
+    
+    newTts.onend = function() {
+        isTtsSpeaking = false;
+        currentlySpeakingCards[cardId] = false;
+        updateTTSButtonState();
+        console.log('TTS finished speaking for:', cardId);
+        
+        const errand = errandsData.find(e => e.id === cardId);
+        if (errand && errand.hasTextSwitcher && isTtsEnabled && !isTextSwitchingPaused[cardId] && isCardActive(cardId)) {
+            
+            if (errand.id === 'masterclass' && !isMobileDevice() && !hasCardBeenInitiallyRead[errand.id]) {
+                 console.log('Masterclass initial TTS finished. Starting interval.');
+                 startTextSwitchingDesktop(errand.id);
+            }
+            
+            if (currentTextIndexes[cardId] !== errand.texts.length - 1) {
+                console.log('Auto-switching to next text after TTS finished');
+                currentCardSpeaking = null; 
+                switchText(cardId);
+            } else {
+                currentCardSpeaking = null;
+            }
+        } else {
+            currentCardSpeaking = null;
+        }
+    };
+    
+    newTts.onerror = function(event) {
+        isTtsSpeaking = false;
+        currentlySpeakingCards[cardId] = false;
+        currentCardSpeaking = null;
+        updateTTSButtonState();
+        console.error('TTS error:', event.error);
+    };
+
+    // 4. Speak the new, isolated utterance
+    try {
+        window.speechSynthesis.speak(newTts);
+    } catch (error) {
+        console.error('TTS speak error on new utterance:', error);
+        currentlySpeakingCards[cardId] = false;
+    }
+}
+
+
+// Stop TTS function (MODIFIED)
+function stopTTS() {
+    window.speechSynthesis.cancel(); 
+    isTtsSpeaking = false;
+    
+    Object.keys(currentlySpeakingCards).forEach(cardId => {
+        currentlySpeakingCards[cardId] = false;
+    });
+    
+    currentCardSpeaking = null;
+    updateTTSButtonState();
+    console.log('TTS stopped');
+}
+
+
+// Initialize TTS (MODIFIED: Stores voice, sets mobile default to OFF)
+function initTTS() {
+    if ('speechSynthesis' in window) {
+        
+        if (isMobileDevice()) {
+            isTtsEnabled = false;
+            console.log('Mobile device detected - TTS disabled by default');
+        }
+        
+        speechSynthesis.onvoiceschanged = function() {
+            const voices = speechSynthesis.getVoices();
+            const preferredVoice = voices.find(voice => 
+                voice.lang.includes('en') && (voice.name.includes('Natural') || voice.name.includes('Google US English'))
+            ) || voices.find(voice => voice.lang.includes('en'));
+            
+            if (preferredVoice) {
+                selectedVoice = preferredVoice; 
+            }
+            isTtsReady = true;
+            console.log('TTS voices loaded, initialization complete');
+            
+            updateTTSButtonState();
+            
+            if (!isMobileDevice()) {
+                console.log('Desktop device - initializing auto-play flow');
+                initDesktopFlow();
+            } else {
+                console.log('Mobile device - waiting for user to enable audio');
+            }
+        };
+        
+        const voices = speechSynthesis.getVoices();
+        if (voices.length > 0) {
+            const preferredVoice = voices.find(voice => 
+                voice.lang.includes('en') && (voice.name.includes('Natural') || voice.name.includes('Google US English'))
+            ) || voices.find(voice => voice.lang.includes('en'));
+            
+            if (preferredVoice) {
+                selectedVoice = preferredVoice;
+            }
+            isTtsReady = true;
+            console.log('TTS voices available immediately');
+            
+            updateTTSButtonState();
+            
+            if (!isMobileDevice()) {
+                console.log('Desktop device - initializing auto-play flow');
+                initDesktopFlow();
+            } else {
+                console.log('Mobile device - waiting for user to enable audio');
+            }
+        } else {
+            console.log('Waiting for voices to load...');
+        }
+        
+    } else {
+        console.warn('Speech Synthesis not supported');
+        const ttsToggle = document.getElementById('tts-toggle');
+        if (ttsToggle) ttsToggle.style.display = 'none';
+    }
+}
+
+
+// Initialize desktop flow (UNTOUCHED)
+function initDesktopFlow() {
+    if (isMobileDevice()) return;
+    
+    window.addEventListener('scroll', handleDesktopInitialInteraction, { once: false });
+    console.log('Desktop scroll listener added for welcome message');
+}
+
+// Handle desktop initial interaction (UNTOUCHED)
+function handleDesktopInitialInteraction() {
+    if (!hasUserInteracted && !hasPlayedWelcome && isTtsEnabled) {
+        hasUserInteracted = true;
+        console.log('Desktop initial interaction detected, playing welcome message...');
+        playWelcomeMessage();
+        
+        window.removeEventListener('scroll', handleDesktopInitialInteraction);
+    }
+}
+
+// Initialize Intersection Observer (DESKTOP ONLY) (UNTOUCHED)
+function initIntersectionObserver() {
+    if (isMobileDevice()) {
+        console.log('Skipping intersection observer on mobile');
+        return;
+    }
+    
+    const rootMarginVertical = window.innerHeight * 0.25;
+    
+    const options = {
+        root: null, 
+        rootMargin: `-${rootMarginVertical}px 0px -${window.innerHeight - rootMarginVertical - 1}px 0px`, 
+        threshold: 0 
+    };
+    
+    intersectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const card = entry.target;
+            const cardId = card.id;
+
+            if (entry.isIntersecting) {
+                const rect = card.getBoundingClientRect();
+                const activationLine = window.innerHeight * 0.25;
+
+                if (rect.top <= activationLine) {
+                    
+                    console.log(`Card ${cardId} crossed the top-line (IN)`);
+                    
+                    if (cardId === 'masterclass') {
+                        isMasterclassActive = true;
+                        if (!isTextSwitchingPaused[cardId] && textSwitchIntervals[cardId] === undefined) {
+                            console.log('Masterclass card activated, interval start deferred until first TTS read completes.');
+                        }
+                    } 
+
+                    if (isTtsEnabled && hasPlayedWelcome && !isWelcomeMessagePlaying && currentCardSpeaking !== cardId) {
+                        
+                        stopTTS(); 
+                        
+                        const isInitial = !hasCardBeenInitiallyRead[cardId] || !errandsData.find(e => e.id === cardId && e.hasTextSwitcher);
+                        const errand = errandsData.find(e => e.id === cardId);
+                        const isLastText = errand && errand.hasTextSwitcher && currentTextIndexes[cardId] === errand.texts.length - 1;
+                        
+                        const content = getCardContent(cardId, isInitial, isLastText);
+                        
+                        if (content) {
+                            console.log(`Speaking content for card: ${cardId}. Initial Read: ${isInitial}`);
+                            speakText(content, cardId);
+                            if (errand && errand.hasTextSwitcher) {
+                                hasCardBeenInitiallyRead[cardId] = true;
+                            }
+                        }
+                    }
+                }
+
+            } else {
+                console.log(`Card ${cardId} scrolled OUT of the target zone`);
+
+                if (currentCardSpeaking === cardId) {
+                    const rect = card.getBoundingClientRect();
+                    if (rect.bottom < window.innerHeight * 0.25) { 
+                        console.log(`Card ${cardId} scrolled out of view, stopping TTS`);
+                        stopTTS();
+                    }
+                }
+
+                if (errandsData.find(e => e.id === cardId && e.hasTextSwitcher)) {
+                    if (cardId === 'masterclass') {
+                        isMasterclassActive = false;
+                    }
+                    if (textSwitchIntervals[cardId] !== undefined) {
+                        clearInterval(textSwitchIntervals[cardId]);
+                        textSwitchIntervals[cardId] = undefined;
+                        console.log(`Card ${cardId} deactivated, text switching stopped`);
+                    }
+                }
+            }
+        });
+    }, options);
+    
+    document.querySelectorAll('.errand-card').forEach(card => {
+        if (!card.id) {
+            console.warn("Errand card without ID skipped by IntersectionObserver:", card);
+            return;
+        }
+        intersectionObserver.observe(card);
+    });
+    
+    console.log('Intersection Observer initialized for desktop with 25% top-line targeting');
+}
+
+// Update TTS button visual state (UNTOUCHED)
+function updateTTSButtonState() {
+    const ttsToggle = document.getElementById('tts-toggle');
+    const ttsLabel = document.getElementById('tts-label');
+    const ttsStatus = document.getElementById('tts-status');
+    
+    if (!ttsToggle) return;
+    
+    if (isTtsEnabled) {
+        ttsToggle.classList.add('active');
+        ttsLabel.textContent = 'Turn Off Audio';
+        ttsStatus.textContent = isTtsSpeaking ? 'Speaking...' : 'Audio is on';
+    } else {
+        ttsToggle.classList.remove('active');
+        ttsLabel.textContent = 'Turn On Audio';
+        ttsStatus.textContent = 'Audio is off';
+    }
+}
+
+// Enable TTS function (UNTOUCHED)
+function enableTTS() {
+    isTtsEnabled = true;
+    updateTTSButtonState();
+    console.log('TTS enabled');
+    
+    if (isMobileDevice() && !hasPlayedWelcome && isTtsReady) {
+        console.log('Mobile: Playing welcome message on first TTS enable');
+        playWelcomeMessage();
+    }
+    else if (!isMobileDevice() && !hasPlayedWelcome && hasUserInteracted && isTtsReady) {
+        playWelcomeMessage();
+    } 
+    else if (hasPlayedWelcome && !isWelcomeMessagePlaying) {
+        if (!isMobileDevice()) {
+            setTimeout(() => {
+                const visibleCard = findFirstVisibleCard();
+                if (visibleCard && !currentCardSpeaking) {
+                    const isInitial = !hasCardBeenInitiallyRead[visibleCard.id] || !errandsData.find(e => e.id === visibleCard.id && e.hasTextSwitcher);
+                    const errand = errandsData.find(e => e.id === visibleCard.id);
+                    const isLastText = errand && errand.hasTextSwitcher && currentTextIndexes[visibleCard.id] === errand.texts.length - 1;
+                    
+                    const content = getCardContent(visibleCard.id, isInitial, isLastText);
+                    
+                    if (content) {
+                        console.log('Speaking content for initially visible card:', visibleCard.id);
+                        speakText(content, visibleCard.id);
+                        if (errand && errand.hasTextSwitcher) {
+                            hasCardBeenInitiallyRead[visibleCard.id] = true; 
+                        }
+                    }
+                }
+            }, 50);
+        }
+    }
+}
+
+// Disable TTS function (UNTOUCHED)
+function disableTTS() {
+    isTtsEnabled = false;
+    stopTTS(); 
+    errandsData.forEach(errand => {
+        hasCardBeenInitiallyRead[errand.id] = false;
+    });
+    updateTTSButtonState();
+    console.log('TTS disabled');
+}
+
+// Toggle TTS on/off (UNTOUCHED)
+function toggleTTS() {
+    if (isTtsEnabled) {
+        disableTTS();
+    } else {
+        enableTTS();
+    }
+}
+
+// Add this helper function to find the first visible card (desktop only) (UNTOUCHED)
+function findFirstVisibleCard() {
+    const cards = document.querySelectorAll('.errand-card');
+    for (let card of cards) {
+        const rect = card.getBoundingClientRect();
+        if (rect.top >= 0 && rect.top <= window.innerHeight * 0.8) {
+            return card;
+        }
+    }
+    return null;
+}
+
+// Get card content for TTS (UNTOUCHED)
+function getCardContent(cardId, isInitialRead = false, isLastText = false) {
+    const card = document.getElementById(cardId);
+    if (!card) return '';
+    
+    const title = card.querySelector('.errand-title')?.textContent || '';
+    const tasks = card.querySelector('.completed-tasks')?.textContent || '';
+    
+    const errand = errandsData.find(e => e.id === cardId);
+    
+    if (errand && errand.hasTextSwitcher) {
+        const currentTextIndex = currentTextIndexes[cardId] || 0;
+        const currentText = errand.texts[currentTextIndex]; 
+        
+        console.log(`TTS Content Logic: Card ${cardId}, Initial: ${isInitialRead}, Last Text: ${isLastText}`);
+        
+        if (isInitialRead) {
+            return `${title}. ${currentText}. ${tasks}`;
+        } else if (isLastText) {
+            return `${currentText}. ${tasks}`;
+        } else {
+            return `${currentText}.`;
+        }
+    } else {
+        const description = card.querySelector('.errand-description')?.textContent || '';
+        return `${title}. ${description}. ${tasks}`;
+    }
+}
+
+// Initialize everything when page loads (UNTOUCHED)
+document.addEventListener('DOMContentLoaded', function() {
+    renderErrandCards();
+    initTextSwitching();
+    
+    const ttsToggle = document.getElementById('tts-toggle');
+    
+    if (ttsToggle) {
+        ttsToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleTTS();
+        });
+    }
+    
+    errandsData.forEach(errand => {
+        if (errand.hasTextSwitcher) {
+            const pauseBtn = document.getElementById(`${errand.id}-pause-btn`);
+            const playBtn = document.getElementById(`${errand.id}-play-btn`);
+            
+            if (pauseBtn) {
+                pauseBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    pauseTextSwitching(errand.id);
+                });
+            }
+            if (playBtn) {
+                playBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    playTextSwitching(errand.id);
+                });
+            }
+        }
+    });
+    
+    renderTestimonials("residents-testimonials", residentTestimonials);
+    renderTestimonials("team-testimonials", teamMemberTestimonials);
+    renderTestimonials("volunteer-testimonials", volunteerTestimonials);
+    
+    initTTS();
+    
+    console.log('Initialization complete: TTS system ready');
+});
+</script>
 </body>
 </html>
-
-

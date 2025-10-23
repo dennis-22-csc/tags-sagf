@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The TSAGF #PayWhatYouCan Masterclass Academy - Empowering learning while supporting survivors of domestic abuse">
+    <!-- Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TSAGF #PayWhatYouCan Masterclass Academy">
+    <meta property="og:description" content="Empowering learning while supporting survivors of domestic abuse at The Sholly Serenity Place">
+    <meta property="og:image" content="https://www.theshollysmilefactory.org/masterclass/masterclass1.jpg">
+    <meta property="og:url" content="https://www.theshollysmilefactory.org/masterclass-academy">
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="theshollysmilefactory.org">
+    <meta property="twitter:url" content="https://www.theshollysmilefactory.org/masterclass-academy">
+    <meta name="twitter:title" content="TSAGF #PayWhatYouCan Masterclass Academy">
+    <meta name="twitter:description" content="Empowering learning while supporting survivors of domestic abuse">
+    <meta name="twitter:image" content="https://www.theshollysmilefactory.org/masterclass/masterclass1.jpg">
+    <title>#PayWhatYouCan Masterclass Academy | The Shola Adefolalu Gaska Foundation</title>
+    <link rel="icon" type="image/x-icon" href="logo.jpg">
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styling */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FFCC00;
+        }
+
+        .donate-button a {
+            background-color: #FFCC00;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .donate-button a:hover {
+            background-color: #FFD633;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #FFCC00 0%, #FFD633 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: #333;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #FFCC00;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .section-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .section-text {
+            flex: 1;
+        }
+
+        .section-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .section-image:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Masterclass Schedule */
+        .schedule-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 30px;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .schedule-table th {
+            background-color: #FFCC00;
+            color: #333;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .schedule-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .schedule-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .schedule-table tr:hover {
+            background-color: #fff9e6;
+        }
+
+        /* Registration Section */
+        .registration-steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .step {
+            flex: 1;
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #FFCC00;
+            color: white;
+            border-radius: 50%;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Impact Section */
+        .impact-stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .stat {
+            flex: 1;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #FFCC00;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            background-color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #fff9e6;
+        }
+
+        .faq-answer {
+            background-color: #f9f9f9;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-answer.open {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            color: #FFCC00;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #FFCC00;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-content {
+                flex-direction: column;
+            }
+
+            .registration-steps, .impact-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .schedule-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="logo.jpg" alt="Foundation Logo" />
+                    </a>
+                </div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="our_work.html">What We Do</a></li>
+                        <li><a href="media.html">Resources</a></li>
+                    </ul>
+                </nav>
+                <div class="donate-button">
+                    <a href="donate.html">Donate</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>#PayWhatYouCan Masterclass Academy</h1>
+            <p>Empowering learning and personal growth while supporting survivors of domestic abuse at The Sholly Serenity Place</p>
+            <a href="#registration" class="cta-button">Register Now</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">About the Initiative</h2>
+            <div class="section-content">
+                <div class="section-text">
+                    <p>The #PayWhatYouCan Masterclass Academy is an empowering learning and fundraising initiative by The Shola Adefolalu Gaska Foundation (TSAGF) — also known as The Sholly Smile Factory.</p>
+                    <p>Our goal is simple yet profound: To make personal growth and transformation accessible to all — while raising vital support for women and children rebuilding their lives at The Sholly Serenity Place (TSSP), our safe haven for survivors of domestic abuse.</p>
+                    <p>Every quarter in 2026, we plan to host expert-led online masterclasses across areas like finance, leadership, communication, service, wellness, and purpose. Participants "pay what they can" — and every naira raised goes directly toward the operations of TSSP.</p>
+                    <p>It's a win-win: You learn. You grow. You help others heal.</p>
+                </div>
+                <div class="section-image">
+                    <img src="masterclass1.jpg" alt="Masterclass Academy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pilot Program Section -->
+    <section class="section" id="pilot">
+        <div class="container">
+            <h2 class="section-title">The Pilot Program</h2>
+            <div class="section-content">
+                <div class="section-image">
+                    <img src="masterclass2.jpg" alt="Pilot Program">
+                </div>
+                <div class="section-text">
+                    <h3>Start Your 2026 Strong</h3>
+                    <p>To test interest in this initiative, we are launching five powerful Saturday masterclasses between November and December 2025. Each one is designed to help participants step into the new year with focus, strength, and clarity.</p>
+                    <p>As the weeks roll in, more details will be shared on our social media platforms — so if you're reading this now, you're ahead of the game! You can already begin to register for the masterclasses that speak to your need.</p>
+                </div>
+            </div>
+
+            <div class="schedule-container">
+                <h3>Masterclass Schedule</h3>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Theme</th>
+                            <th>Facilitator</th>
+                            <th>Focus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sat, Nov 8, 2025</td>
+                            <td>Starting 2026 Strong as a Survivor</td>
+                            <td>Ms. Uche Mojekwu</td>
+                            <td>Learn how to start 2026 stronger as a survivor of domestic abuse. It is possible to leave — and thrive. (11:00 a.m. – 12:30 p.m.)</td>
+                        </tr>
+                        <tr>
+                            <td>Sat, Nov 15, 2025</td>
+                            <td>Starting 2026 with Clarity</td>
+                            <td>Mrs. Laila St. Matthew-Daniel</td>
+                            <td>Heal emotional fatigue, reconnect with purpose, and build resilience for the new year. (11:00 a.m. – 12:30 p.m.)</td>
+                        </tr>
+                        <tr>
+                            <td>Sat, Nov 22, 2025</td>
+                            <td>Serving with Excellence</td>
+                            <td>Ms. Okaima Ohizua</td>
+                            <td>Discover the principles of service and operational excellence that transform careers and organizations. (11:00 a.m. – 12:30 p.m.)</td>
+                        </tr>
+                        <tr>
+                            <td>Sat, Nov 29, 2025</td>
+                            <td>Communicating for Change</td>
+                            <td>Mrs. Lucille Ossai</td>
+                            <td>Learn how to communicate, influence, and lead effectively in 2026 and beyond. (Date and Time: To be confirmed)</td>
+                        </tr>
+                        <tr>
+                            <td>Sat, Dec 6, 2025</td>
+                            <td>Starting 2026 Financially Strong</td>
+                            <td>Bamboo Executive</td>
+                            <td>Learn smart, practical steps to build wealth and financial confidence using the Bamboo App. (11:00 a.m. – 12:30 p.m.)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Register Section -->
+    <section class="section" id="why-register">
+        <div class="container">
+            <h2 class="section-title">Why Register?</h2>
+            <div class="section-content">
+                <div class="section-text">
+                    <p>Because growth should not be gated by money — and generosity creates ripple effects.</p>
+                    <p>When you register for a #PayWhatYouCan Masterclass:</p>
+                    <ul style="margin-left: 20px; margin-bottom: 20px;">
+                        <li>You gain direct access to world-class experts.</li>
+                        <li>You acquire tools to elevate your personal and professional life.</li>
+                        <li>You help survivors of domestic violence rebuild their futures.</li>
+                    </ul>
+                    <p>Each contribution — big or small — fuels The Sholly Serenity Place, where women and children find safety, healing, and new beginnings.</p>
+                </div>
+                <div class="section-image">
+                    <img src="masterclass3.jpg" alt="Why Register">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="section" id="registration">
+        <div class="container">
+            <h2 class="section-title">How to Register</h2>
+            <div class="registration-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Choose Your Session</h3>
+                    <p>Select the masterclass(es) you want to attend — or register for all five!</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Make Payment</h3>
+                    <p>Pay your contribution (₦2,000 – ₦10,000 or more) to:<br>
+                    <strong>The Shola Adefolalu Gaska Foundation</strong><br>
+                    First Bank – 203 389 6366</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Send Proof</h3>
+                    <p>Email your proof of payment with your full name, location, and WhatsApp number to:<br>
+                    📧 tsspdoc@gmail.com<br>
+                    CC: theshollysmilefactory@gmail.com</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Receive Link</h3>
+                    <p>Closer to your Masterclass date, you'll receive your Zoom link via a dedicated WhatsApp group.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="section" id="impact">
+        <div class="container">
+            <h2 class="section-title">Our Impact</h2>
+            <div class="impact-stats">
+                <div class="stat">
+                    <span class="stat-number">41+</span>
+                    <span class="stat-label">Women & Children Accommodated</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">400+</span>
+                    <span class="stat-label">Food Packages Distributed</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">States Reached</span>
+                </div>
+            </div>
+            <div class="section-content" style="margin-top: 40px;">
+                <div class="section-image">
+                    <img src="infographics_q3_25.jpg" alt="Our Impact">
+                </div>
+                <div class="section-text">
+                    <h3>What Makes This Different</h3>
+                    <p><strong>Inclusive Giving:</strong> Everyone can participate — no one is left behind.</p>
+                    <p><strong>Transformational Content:</strong> Learn from proven experts across diverse fields.</p>
+                    <p><strong>Purpose-Driven Impact:</strong> 100% of proceeds go toward supporting survivors at TSSP.</p>
+                    <p><strong>Legacy of Love:</strong> Every class keeps the light of Shola Adefolalu Gaska's compassion shining.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How much should I pay for a masterclass?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We operate on a "pay what you can" model. The suggested range is ₦2,000 to ₦10,000 per masterclass, but you can pay more if you're able to support our cause further, or less if that's what your circumstances allow. The important thing is participation!</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What if I can't attend the live session?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All registered participants will receive a recording of the masterclass after the live session, so you can watch it at your convenience.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can I register for multiple masterclasses?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! You can register for as many masterclasses as you'd like. We even offer a discounted bundle rate if you register for all five sessions in the pilot program.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How exactly will my payment help survivors?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>100% of proceeds go directly to The Sholly Serenity Place (TSSP), our safe haven for survivors of domestic abuse. Your contribution helps provide safe accommodation, food, counseling, and other support services for women and children rebuilding their lives.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Will there be more masterclasses after the pilot program?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! If the pilot program is successful, we plan to host expert-led online masterclasses every quarter in 2026 across various areas of personal and professional development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="section" style="background-color: #fff9e6; text-align: center;">
+        <div class="container">
+            <h2 class="section-title">Together, We Grow and Give</h2>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px;">
+                The #PayWhatYouCan Masterclass Academy is more than a learning platform — it's a movement for hope, empowerment, and impact.
+            </p>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px; font-weight: bold;">
+                Join us. Learn. Give. Rise.
+            </p>
+            <a href="#registration" class="cta-button">Register Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p>📧 tsspdoc@gmail.com</p>
+                    <p>📧 theshollysmilefactory@gmail.com</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="our_work.html">What We Do</a></li>
+                        <li><a href="media.html">Resources & Media</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Initiatives</h3>
+                    <ul>
+                        <li><a href="our_work.html#food">Fighting Food Poverty</a></li>
+                        <li><a href="our_work.html#tssp">The Sholly Serenity Place</a></li>
+                        <li><a href="our_work.html#alive">ALiVe Initiative</a></li>
+                        <li><a href="#masterclass">Masterclass Academy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 The Shola Adefolalu Gaska Foundation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle Function
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const isOpen = answer.classList.contains('open');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                item.classList.remove('open');
+            });
+            
+            document.querySelectorAll('.faq-question').forEach(item => {
+                item.querySelector('span:last-child').textContent = '+';
+            });
+            
+            // Toggle current FAQ
+            if (!isOpen) {
+                answer.classList.add('open');
+                element.querySelector('span:last-child').textContent = '−';
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

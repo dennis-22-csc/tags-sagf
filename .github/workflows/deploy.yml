@@ -1,0 +1,49 @@
+name: Deploy SAGF Folder
+
+on:
+  push:
+    branches:
+      - main # or your main branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 4. Copy files to server (using scp-action for file transfer)
+      - name: Copy files to server
+        uses: appleboy/scp-action@v0.1.7 # Use the SCP action for file transfer
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USER }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          # Source directory: the 'sagf' folder in the repo
+          source: "sagf/" 
+          # Target directory on the server
+          target: "~/tags-sagf" 
+          exclude: ".git, .github" 
+          # Overwrites files on the server
+          overwrite: true
+
+      # 5. SSH into server & deploy
+      - name: SSH into server & deploy (without backup)
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USER }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          script: |
+            # Set the base directory on the server
+            BASE_DIR=~/tags-sagf
+            
+            # Create the target directory if it doesn't exist (important for the copy action above)
+            mkdir -p $BASE_DIR 
+            
+            # Restart nginx service,.
+            sudo systemctl reload nginx
+            
+            echo "Deployment to $BASE_DIR completed successfully."
+            
+## ----------------------------------------------------------------------

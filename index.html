@@ -2675,13 +2675,19 @@ text-align: center;
         <a href="our_work.html#tssp" class="learn-more-button">Learn more</a>
       </div>
       <div class="card">
-      <div class="circular-logo-container">
+        <div class="circular-logo-container">
             <img src="alive.png" alt="Logo" class="circular-logo">
         </div>
         <h3>Adefolalu Love is a Verb Initiative</h3>
         <p>We operate a social safety-net program that provides a N25,000 monthly allowance to extremely economically vulnerable women across Nigeria.</p>
         <a href="our_work.html#alive" class="learn-more-button">Learn more</a>
       </div>
+      <div class="card">
+    <img src="masterclass1.jpg" alt="#PayWhatYouCan Masterclass Academy">
+    <h3>#PayWhatYouCan Masterclass Academy</h3>
+    <p>Empowering learning and personal growth while supporting survivors of domestic abuse at The Sholly Serenity Place.</p>
+    <a href="masterclass-academy.html" class="learn-more-button">Learn more</a>
+</div>
       </div>
       <div class="features-container">
       <div class="feature">
@@ -2896,37 +2902,41 @@ text-align: center;
   
 
 const modalData = {
-  header: "MIRACLES HAPPEN!",
+  header: "NEW INITIATIVE ALERT!",
   body: [
     {
       type: "text",
-      content: "I'm overjoyed to share that the <strong>The Shola Adefolalu Gaska Foundation</strong> has been adopted by an incredible organization based in Lagos, Nigeria!"
+      content: "I'm thrilled to announce our newest initiative: <strong>The #PayWhatYouCan Masterclass Academy</strong>!"
     },
     {
       type: "text",
-      content: "Remember when I shared my hopes for this last year? Well, it's finally happened! This amazing organization will launch an official fundraising campaign for us during their annual Africa Week next month! <span class='highlight-text'>Hint: It’s an embassy!!! Woohoo!</span>"
+      content: "This innovative program makes personal growth accessible to everyone while supporting survivors of domestic abuse at The Sholly Serenity Place."
+    },
+    {
+      type: "text",
+      content: "Starting November 2025, we'll host expert-led masterclasses where participants pay what they can afford. <span class='highlight-text'>100% of proceeds go directly to supporting women and children rebuilding their lives!</span>"
     },
     {
       type: "highlight",
-      content: "This God sha!"
+      content: "Learn. Grow. Help Others Heal."
     },
     {
       type: "text",
-      content: "We have the green light to begin socializing the fundraising platform, so donations can start rolling in! I invite you to be part of this incredible testimony."
+      content: "Join our 5-week pilot program 'Start Your 2026 Strong' featuring masterclasses on financial empowerment, leadership, communication, and personal development."
     },
     {
       type: "text",
-      content: "Salt Essien Nelson - Chief Errand Girl"
+      content: "Together, we're creating a movement of hope and empowerment!"
     }
   ],
   footer: [
     {
-      text: "Donate Now",
-      url: "https://fundrayser.org/campaign/Join-Us-in-Making-the-World-a-Better-Place,-One-Smile,-One-Life-at-a-Time_?cid=67dd7ef45963adf39c43bc5c",
+      text: "Learn More & Register",
+      url: "masterclass-academy.html",
       type: "link"
     },
     {
-      text: "Share the News",
+      text: "Share This Initiative",
       type: "trigger",
       action: "share"
     }
@@ -2935,11 +2945,11 @@ const modalData = {
     { platform: "facebook", text: "Share on Facebook", icon: "fa-facebook-f" },
     { platform: "whatsapp", text: "Share on WhatsApp", icon: "fa-whatsapp" },
     { platform: "linkedin", text: "Share on LinkedIn", icon: "fa-linkedin-in" },
-    { platform: "instagram", text: "Share on Instagram", icon: "fa-instagram" }
+    { platform: "instagram", text: "Share on Instagram", icon: "fa-instagram" },
+    { platform: "twitter", text: "Share on Twitter", icon: "fa-twitter" }
   ],
-  shareText: "Help support The Shola Adefolalu Gaska Foundation's incredible work! Join me in making a difference: "
+  shareText: "Exciting news! The Shola Adefolalu Gaska Foundation is launching a #PayWhatYouCan Masterclass Academy! Learn from experts while supporting survivors of domestic abuse. Join this movement of hope and empowerment: "
 };
-
 function initModal() {
   const modal = document.getElementById('dynamicModal');
   const header = modal.querySelector('.modal-header');
@@ -3041,10 +3051,21 @@ function closeModal() {
   document.getElementById('dynamicModal').style.display = 'none';
 }
 
+// Check if program has commenced
+function hasProgramCommenced() {
+  const programStartDate = new Date('2025-11-08'); // Set your program start date
+  const currentDate = new Date();
+  return currentDate >= programStartDate;
+}
+
 // Initialize and Show Modal
 document.addEventListener('DOMContentLoaded', () => {
   initModal();
-  setTimeout(showModal, 5000);
+  
+  // Check if program hasn't commenced yet
+  if (!hasProgramCommenced()) {
+    setTimeout(showModal, 5000);
+  }
 });
 
 </script>
