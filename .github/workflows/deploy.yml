@@ -19,8 +19,8 @@ jobs:
           host: ${{ secrets.DO_HOST }}
           username: ${{ secrets.DO_USER }}
           key: ${{ secrets.DO_SSH_KEY }}
-          # Source directory: the 'sagf' folder in the repo
-          source: "sagf/" 
+          # Source directory: the root folder of the repo
+          source: "./"
           # Target directory on the server
           target: "~/tags-sagf" 
           exclude: ".git, .github" 
