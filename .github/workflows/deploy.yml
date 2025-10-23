@@ -14,37 +14,47 @@ jobs:
 
       # 4. Copy files to server (using scp-action for file transfer)
       - name: Copy files to server
-        uses: appleboy/scp-action@v0.1.7 # Use the SCP action for file transfer
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.DO_HOST }}
           username: ${{ secrets.DO_USER }}
           key: ${{ secrets.DO_SSH_KEY }}
           # Source directory: the root folder of the repo
           source: "./"
-          # Target directory on the server
-          target: "~/tags-sagf" 
-          exclude: ".git, .github" 
-          # Overwrites files on the server
+          # *** TARGET CORRECTED TO MATCH NGINX ROOT ***
+          target: "/var/www/sagf/"
+          exclude: ".git, .github"
           overwrite: true
 
-      # 5. SSH into server & deploy
-      - name: SSH into server & deploy (without backup)
+      # 5. SSH into server & deploy (cleanup, test, and restart)
+      - name: SSH into server & deploy
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.DO_HOST }}
           username: ${{ secrets.DO_USER }}
           key: ${{ secrets.DO_SSH_KEY }}
           script: |
-            # Set the base directory on the server
-            BASE_DIR=~/tags-sagf
+            DEPLOY_PATH="/var/www/sagf/"
             
-            # Create the target directory if it doesn't exist (important for the copy action above)
-            mkdir -p $BASE_DIR 
+            # 1. Set correct file permissions for Nginx user (www-data)
+            echo "Setting ownership and permissions on ${DEPLOY_PATH}..."
+            sudo chown -R www-data:www-data ${DEPLOY_PATH}
+            sudo chmod -R 755 ${DEPLOY_PATH}
+
+            # 2. Test Nginx configuration before reloading/restarting
+            echo "Testing Nginx configuration..."
+            sudo nginx -t
             
-            # Restart nginx service
-            sudo systemctl daemon-reload
-            sudo systemctl restart nginx
-            
-            echo "Deployment to $BASE_DIR completed successfully."
-            
-## ----------------------------------------------------------------------
+            # Check the exit status of the previous command (nginx -t)
+            if [ $? -eq 0 ]; then
+                echo "Nginx config test passed. Proceeding with restart."
+                
+                # 3. Reload daemon and restart Nginx service
+                sudo systemctl daemon-reload
+                sudo systemctl restart nginx
+                echo "Deployment to ${DEPLOY_PATH} and Nginx restart completed successfully."
+            else
+                echo "Nginx configuration test FAILED. Nginx service not restarted. Check logs."
+                # Optionally, you can add 'exit 1' here to fail the GitHub Action job immediately
+                exit 1 
+            fi
