@@ -41,8 +41,9 @@ jobs:
             # Create the target directory if it doesn't exist (important for the copy action above)
             mkdir -p $BASE_DIR 
             
-            # Restart nginx service,.
-            sudo systemctl reload nginx
+            # Restart nginx service
+            sudo systemctl daemon-reload
+            sudo systemctl restart nginx
             
             echo "Deployment to $BASE_DIR completed successfully."
             
